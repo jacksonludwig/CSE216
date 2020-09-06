@@ -1,0 +1,23 @@
+Question 1:
+In a statically typed language, there would be an error as the variables require types. Also, there is a typo on line 7.
+In a dynamically typed language, there would be a runtime error due to the typo on line 7.
+
+Question 2:
+    1. λx.λy.x(xy) = x
+    2. (λx.xx)(λx.xx) = (λx.xx)(λx.xx) [fixed point: applying argument resutls in same expression]
+    3. ((λwyx.y(wyx))(λsz.z)) = λyx.yx
+
+Question 3:
+f: λa.(a+1)
+g: λa.(a/2)
+
+(((λf.λg.λx.(f(gx)))λa.(a/2))λb.(b+1))
+((λg.λx.((λa.(a/2))(gx)))(λb.(b+1)))
+λx.((λa.(a/2))((λb.(b+1))x))
+λx.((λa.(a/2))(x+1))
+λx.((x+1)/2)
+
+(x+1)/2
+
+Question 4:
+<this must be submitted on blackboard>
