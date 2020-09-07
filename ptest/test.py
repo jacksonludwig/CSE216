@@ -1,4 +1,5 @@
-import random
+def take_name():
+    return input("type here")
 
-while True:
-    print(random.randint(0, 100))
+
+print(take_name())
