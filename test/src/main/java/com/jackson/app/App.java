@@ -11,6 +11,9 @@ public class App {
         System.out.println("Hello World!");
         doSomething("hey");
         System.out.println(testMethod());
+        String[] strings = {"hi"};
+        Object[] objects = strings;
+        objects[0] = new Integer(5);
     }
 
     private static void doSomething(String thing) {
