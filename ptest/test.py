@@ -1,5 +1,6 @@
-def take_name():
-    return input("type here")
+def take_name(num):
+    print("No name " + str(num))
 
 
-print(take_name())
+for i in range(0, 10):
+    take_name(i)

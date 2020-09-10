@@ -1,7 +1,5 @@
 package com.jackson.app;
 
-import java.util.Scanner;
-
 /**
  * Hello world!
  *
@@ -13,7 +11,8 @@ public class App {
         System.out.println(testMethod());
         String[] strings = {"hi"};
         Object[] objects = strings;
-        objects[0] = new Integer(5);
+        objects[0] = 5;
+        System.out.println("hello");
     }
 
     private static void doSomething(String thing) {
