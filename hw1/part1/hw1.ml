@@ -7,13 +7,13 @@ let rec float_pow (x:float) (n:int) =
 
 
 (* Question 2 *)
-let prepend_if_same acc x =
+let prepend_if_same x acc =
   match acc with
   | [] -> [x]
   | hd::_ -> if x = hd then acc else x::acc
 
 let compress list =
-  List.fold_right(fun x acc -> prepend_if_same acc x) list []
+  List.fold_right(fun x acc -> prepend_if_same x acc) list []
 
 
 (* Question 3 *)
