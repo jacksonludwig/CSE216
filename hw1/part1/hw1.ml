@@ -15,6 +15,7 @@ let prepend_if_same acc x =
 let compress list =
   List.fold_right(fun x acc -> prepend_if_same acc x) list []
 
+
 (* Question 3 *)
 let remove_if list pred =
   List.fold_right(fun x acc -> if pred x then acc else x::acc) list []
