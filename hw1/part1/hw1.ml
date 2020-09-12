@@ -18,5 +18,5 @@ let prepend_if_same acc x =
 let compress list =
   list_reverse (List.fold_left(fun acc x -> prepend_if_same acc x) [] list)
 
-let x = [1; 2; 2; 3; 4; 5; 5; 5; 6; 2; 5; 1; 7]
-let x = compress x
+
+(* Question 3 *)
