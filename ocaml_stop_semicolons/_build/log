@@ -1,10 +1,11 @@
-# dune build hello.exe
+# dune build semis.exe
 # OCAMLPARAM: unset
-# Workspace root: /home/jackson/Unmanaged/git_repos/cse216/otest
-$ /usr/bin/nproc > /tmp/dune215e3d.output 2> /dev/null
+# Workspace root:
+# /home/jackson/Unmanaged/git_repos/cse216/ocaml_stop_semicolons
+$ /usr/bin/nproc > /tmp/dune6680d3.output 2> /dev/null
 # Auto-detected concurrency: 16
 # disable binary cache
-$ /usr/bin/ocamlc.opt -config > /tmp/duneb43e66.output
+$ /usr/bin/ocamlc.opt -config > /tmp/dunec7cacb.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -23,13 +24,13 @@ $ /usr/bin/ocamlc.opt -config > /tmp/duneb43e66.output
 #  ; env =
 #      map
 #        { "INSIDE_DUNE" :
-#            "/home/jackson/Unmanaged/git_repos/cse216/otest/_build/default"
+#            "/home/jackson/Unmanaged/git_repos/cse216/ocaml_stop_semicolons/_build/default"
 #        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/home/jackson/Unmanaged/git_repos/cse216/otest/_build/install/default/lib"
+#            "/home/jackson/Unmanaged/git_repos/cse216/ocaml_stop_semicolons/_build/install/default/lib"
 #        ; "OCAMLPATH" :
-#            "/home/jackson/Unmanaged/git_repos/cse216/otest/_build/install/default/lib"
+#            "/home/jackson/Unmanaged/git_repos/cse216/ocaml_stop_semicolons/_build/install/default/lib"
 #        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/home/jackson/Unmanaged/git_repos/cse216/otest/_build/install/default/lib/toplevel"
+#            "/home/jackson/Unmanaged/git_repos/cse216/ocaml_stop_semicolons/_build/install/default/lib/toplevel"
 #        ; "OCAML_COLOR" : "always"
 #        ; "OPAMCOLOR" : "always"
 #        }
@@ -107,7 +108,7 @@ $ /usr/bin/ocamlc.opt -config > /tmp/duneb43e66.output
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl hello.ml) > _build/default/.hello.eobjs/hello.ml.d
-$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .hello.eobjs/byte -no-alias-deps -opaque -o .hello.eobjs/byte/dune__exe__Hello.cmo -c -impl hello.ml)
-$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .hello.eobjs/byte -I .hello.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -o .hello.eobjs/native/dune__exe__Hello.cmx -c -impl hello.ml)
-$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o hello.exe .hello.eobjs/native/dune__exe__Hello.cmx)
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl semis.ml) > _build/default/.semis.eobjs/semis.ml.d
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .semis.eobjs/byte -no-alias-deps -opaque -o .semis.eobjs/byte/dune__exe__Semis.cmo -c -impl semis.ml)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .semis.eobjs/byte -I .semis.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -o .semis.eobjs/native/dune__exe__Semis.cmx -c -impl semis.ml)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o semis.exe .semis.eobjs/native/dune__exe__Semis.cmx)
