@@ -7,16 +7,17 @@ let rec float_pow (x:float) (n:int) =
 
 
 (* Question 2 *)
-let list_reverse list =
-  List.fold_left(fun acc x -> x :: acc) [] list
-
 let prepend_if_same acc x =
   match acc with
   | [] -> [x]
   | hd::_ -> if x = hd then acc else x::acc
 
 let compress list =
-  list_reverse (List.fold_left(fun acc x -> prepend_if_same acc x) [] list)
-
+  List.fold_right(fun x acc -> prepend_if_same acc x) list []
 
 (* Question 3 *)
+let remove_if list pred =
+  List.fold_right(fun x acc -> if pred x then acc else x::acc) list []
+
+
+(* Question 4 *)
