@@ -17,6 +17,7 @@ let rec compress list =
 
 
 (* Question 3 *)
+(* MUST FIX *)
 let remove_if list pred =
   List.fold_right(fun x acc -> if pred x then acc else x::acc) list []
 
