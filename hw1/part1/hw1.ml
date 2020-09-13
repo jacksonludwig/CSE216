@@ -7,14 +7,13 @@ let rec float_pow (x:float) (n:int) =
 
 
 (* Question 2 *)
-let prepend_if_same x acc =
-  match acc with
-  | [] -> [x]
-  | hd::_ -> if x = hd then acc else x::acc
-
-let compress list =
-  List.fold_right(fun x acc -> prepend_if_same x acc) list []
-
+let rec compress list =
+  match list with
+  | [] -> []
+  | hd::[] -> hd::[]
+  | hd::next::tl ->
+    if hd = next then compress2 (next::tl)
+    else hd::compress2 (next::tl)
 
 (* Question 3 *)
 let remove_if list pred =
