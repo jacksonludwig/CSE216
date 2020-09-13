@@ -17,15 +17,15 @@ let rec compress list =
 
 
 (* Question 3 *)
-let rec remove_if_2 list pred =
+let rec remove_if list pred =
   match list with
   | [] -> []
   | hd::tl ->
-    if pred hd then remove_if_2 tl pred
-    else hd::remove_if_2 tl pred
+    if pred hd then remove_if tl pred
+    else hd::remove_if tl pred
 
 let x = [1;2;3;4;5]
-let x = remove_if_2 x (fun x -> x mod 2 = 1)
+let x = remove_if x (fun x -> x mod 2 = 0)
 
 
 (* Question 4 *)
