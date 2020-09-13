@@ -26,3 +26,10 @@ let rec remove_if list pred =
 
 
 (* Question 4 *)
+let rec slice list first last =
+  if last = 0 then [] else
+    match list with
+    | [] -> []
+    | hd::tl ->
+      if first <> 0 then slice tl (first - 1) (last - 1)
+      else hd::slice tl first (last - 1)
