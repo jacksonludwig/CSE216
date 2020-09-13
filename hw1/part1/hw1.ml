@@ -17,9 +17,15 @@ let rec compress list =
 
 
 (* Question 3 *)
-(* MUST FIX *)
-let remove_if list pred =
-  List.fold_right(fun x acc -> if pred x then acc else x::acc) list []
+let rec remove_if_2 list pred =
+  match list with
+  | [] -> []
+  | hd::tl ->
+    if pred hd then remove_if_2 tl pred
+    else hd::remove_if_2 tl pred
+
+let x = [1;2;3;4;5]
+let x = remove_if_2 x (fun x -> x mod 2 = 1)
 
 
 (* Question 4 *)
