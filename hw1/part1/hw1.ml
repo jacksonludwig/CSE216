@@ -27,7 +27,8 @@ let rec remove_if list pred =
 
 (* Question 4 *)
 let rec slice list first last =
-  if last = 0 then [] else
+  if last = 0 then []
+  else
     match list with
     | [] -> []
     | hd::tl ->
