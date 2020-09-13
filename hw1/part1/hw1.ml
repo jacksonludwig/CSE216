@@ -15,6 +15,7 @@ let rec compress list =
     if hd = next then compress (next::tl)
     else hd::compress (next::tl)
 
+
 (* Question 3 *)
 let remove_if list pred =
   List.fold_right(fun x acc -> if pred x then acc else x::acc) list []
