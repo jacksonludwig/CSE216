@@ -24,8 +24,5 @@ let rec remove_if list pred =
     if pred hd then remove_if tl pred
     else hd::remove_if tl pred
 
-let x = [1;2;3;4;5]
-let x = remove_if x (fun x -> x mod 2 = 0)
-
 
 (* Question 4 *)
