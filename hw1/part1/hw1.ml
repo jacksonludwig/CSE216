@@ -12,8 +12,8 @@ let rec compress list =
   | [] -> []
   | hd::[] -> hd::[]
   | hd::next::tl ->
-    if hd = next then compress2 (next::tl)
-    else hd::compress2 (next::tl)
+    if hd = next then compress (next::tl)
+    else hd::compress (next::tl)
 
 (* Question 3 *)
 let remove_if list pred =
