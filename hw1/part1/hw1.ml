@@ -34,3 +34,24 @@ let rec slice list first last =
     | hd::tl ->
       if first <> 0 then slice tl (first - 1) (last - 1)
       else hd::slice tl first (last - 1)
+
+
+(* Question 5 *)
+(* Iterate through the list. For each item compare to every other item in the list
+ * using the given function. Whenever the function returns true, add that
+ * item to the same equivalence class as the current item will be put into *)
+let rec compare fn item list =
+  match list with
+  | [] -> []
+  | hd::tl ->
+    if fn item hd then hd::compare fn item tl
+    else compare fn item tl
+
+let rec equivs fn list =
+  match list with
+  | [] -> []
+  | hd::tl ->
+    (compare fn hd list)::equivs fn tl
+
+let x = [1;2;3;4;5;6]
+let x = equivs (fun x y -> x mod 2 = y mod 2) x
