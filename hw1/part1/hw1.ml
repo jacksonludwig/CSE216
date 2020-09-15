@@ -93,3 +93,13 @@ let rec pairwisefilter cmp lst =
 
 
 (* Question 9 *)
+(* creates a polynomial of the form ax + bx + c *)
+(* where each of a,b,c is a tuple with a coeff and an expo *)
+
+(* let rec make_tuples =
+ *   match tuples with
+ *   | [] -> []
+ *   | (hd1,hd2)::tl ->
+ *
+ *
+ * let rec polynomial tuples = *)
