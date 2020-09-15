@@ -73,4 +73,3 @@ let rec goldbachhelper start num_2 =
 let goldbachpair num =
   goldbachhelper num 2
 
-let x = goldbachpair 28
