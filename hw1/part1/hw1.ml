@@ -73,3 +73,15 @@ let rec goldbachhelper start num_2 =
 let goldbachpair num =
   goldbachhelper num 2
 
+
+(* Question 7 *)
+let rec equiv_on f g lst =
+  match lst with
+  | [] -> true
+  | hd::tl ->
+    if f hd = g hd then equiv_on f g tl
+    else false
+
+let f i = i * i
+let g i = 3 * i
+let x = equiv_on f g [1;2;3]
