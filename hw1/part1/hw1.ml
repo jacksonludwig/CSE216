@@ -82,6 +82,14 @@ let rec equiv_on f g lst =
     if f hd = g hd then equiv_on f g tl
     else false
 
-let f i = i * i
-let g i = 3 * i
-let x = equiv_on f g [1;2;3]
+
+(* Question 8 *)
+let rec pairwisefilter cmp lst =
+  match lst with
+  | [] -> []
+  | hd::[] -> hd::[]
+  | hd::next::tl ->
+    (cmp hd next)::pairwisefilter cmp tl
+
+
+(* Question 9 *)
