@@ -37,9 +37,6 @@ let rec slice list first last =
 
 
 (* Question 5 *)
-(* Iterate through the list. For each item compare to every other item in the list
- * using the given function. Whenever the function returns true, add that
- * item to the same equivalence class as the current item will be put into *)
 let rec compare fn item list =
   match list with
   | [] -> []
