@@ -58,3 +58,6 @@ let equivs fn list =
 
 let x = [1;2;3;4;5;6;7;8]
 let x = equivs (fun x y -> x mod 2 = y mod 2) x
+
+
+(* Question 6 *)
