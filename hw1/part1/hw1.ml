@@ -47,11 +47,17 @@ let rec compare fn item list =
     if fn item hd then hd::compare fn item tl
     else compare fn item tl
 
-let rec equivs fn list =
-  match list with
-  | [] -> []
-  | hd::tl ->
-    (compare fn hd list)::equivs fn tl
+let rec helper fn list count =
+  if count < 1 then [] else
+    match list with
+    | [] -> []
+    | hd::tl ->
+      let compared = compare fn hd list in
+      compared::helper fn tl (count - List.length compared)
 
-let x = [1;2;3;4;5;6]
+let equivs fn list =
+  let size = List.length list in
+  helper fn list size
+
+let x = [1;2;3;4;5;6;7;8]
 let x = equivs (fun x y -> x mod 2 = y mod 2) x
