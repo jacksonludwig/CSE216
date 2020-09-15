@@ -58,3 +58,22 @@ let equivs fn list =
 
 
 (* Question 6 *)
+let rec prime_helper num divisor =
+  match num with
+  | 1 -> true
+  | _ -> (num mod divisor <> 0) && prime_helper num (divisor - 1)
+
+let is_prime num =
+  match num with
+  | 0 -> false
+  | 1 -> false
+  | _ -> prime_helper num (num - 1)
+
+let rec goldbachhelper start num_2 =
+  if is_prime start && is_prime (start - num_2) then (start, start - num_2)
+  else goldbachhelper start (num_2 - 1)
+
+let goldbachpair num =
+  goldbachhelper num 2
+
+let x = goldbachpair 28
