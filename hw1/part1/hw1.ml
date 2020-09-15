@@ -56,8 +56,5 @@ let equivs fn list =
   let size = List.length list in
   helper fn list size
 
-let x = [1;2;3;4;5;6;7;8]
-let x = equivs (fun x y -> x mod 2 = y mod 2) x
-
 
 (* Question 6 *)
