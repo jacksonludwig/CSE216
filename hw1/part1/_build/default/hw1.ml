@@ -7,16 +7,71 @@ let rec float_pow (x:float) (n:int) =
 
 
 (* Question 2 *)
-let list_reverse list =
-  List.fold_left(fun acc x -> x :: acc) [] list
+let rec compress list =
+  match list with
+  | [] -> []
+  | hd::[] -> hd::[]
+  | hd::next::tl ->
+    if hd = next then compress (next::tl)
+    else hd::compress (next::tl)
 
-let prepend_if_same acc x =
-  match acc with
-  | [] -> [x]
-  | hd::_ -> if x = hd then acc else x::acc
 
-let compress list =
-  list_reverse (List.fold_left(fun acc x -> prepend_if_same acc x) [] list)
+(* Question 3 *)
+let rec remove_if list pred =
+  match list with
+  | [] -> []
+  | hd::tl ->
+    if pred hd then remove_if tl pred
+    else hd::remove_if tl pred
 
-let x = [1; 2; 2; 3; 4; 5; 5; 5; 6; 2; 5; 1; 7]
-let x = compress x
+
+(* Question 4 *)
+let rec slice list first last =
+  if last = 0 then []
+  else
+    match list with
+    | [] -> []
+    | hd::tl ->
+      if first <> 0 then slice tl (first - 1) (last - 1)
+      else hd::slice tl first (last - 1)
+
+
+(* Question 5 *)
+let rec compare fn item list =
+  match list with
+  | [] -> []
+  | hd::tl ->
+    if fn item hd then hd::compare fn item tl
+    else compare fn item tl
+
+let rec helper fn list count =
+  if count < 1 then [] else
+    match list with
+    | [] -> []
+    | hd::tl ->
+      let compared = compare fn hd list in
+      compared::helper fn tl (count - List.length compared)
+
+let equivs fn list =
+  let size = List.length list in
+  helper fn list size
+
+
+(* Question 6 *)
+let rec prime_helper num divisor =
+  match num with
+  | 1 -> true
+  | _ -> (num mod divisor <> 0) && prime_helper num (divisor - 1)
+
+let is_prime num =
+  match num with
+  | 0 -> false
+  | 1 -> false
+  | _ -> prime_helper num (num - 1)
+
+let rec goldbachhelper start num_2 =
+  if is_prime start && is_prime (start - num_2) then (start, start - num_2)
+  else goldbachhelper start (num_2 - 1)
+
+let goldbachpair num =
+  goldbachhelper num 2
