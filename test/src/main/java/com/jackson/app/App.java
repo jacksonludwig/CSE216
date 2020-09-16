@@ -9,10 +9,12 @@ public class App {
         System.out.println("Hello World!");
         doSomething("hey");
         System.out.println(testMethod());
-        String[] strings = {"hi"};
+        String[] strings = { "hi" };
         Object[] objects = strings;
         objects[0] = 5;
         System.out.println("hello");
+        Thing thing = new Thing("hey");
+        System.out.println(thing);
     }
 
     private static void doSomething(String thing) {

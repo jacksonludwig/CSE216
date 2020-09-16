@@ -96,10 +96,16 @@ let rec pairwisefilter cmp lst =
 (* creates a polynomial of the form ax + bx + c *)
 (* where each of a,b,c is a tuple with a coeff and an expo *)
 
-(* let rec make_tuples =
- *   match tuples with
- *   | [] -> []
- *   | (hd1,hd2)::tl ->
- *
- *
- * let rec polynomial tuples = *)
+let apply_to_both f1 f2 =
+  fun x -> f1 x + f2 x
+
+let rec polynomial tuples =
+  match tuples with
+  | [] -> fun _ -> 0
+  | [(hd1,hd2)] ->
+    fun x -> hd1 * (pow x hd2)
+  | (hd1,hd2)::tl ->
+    apply_to_both (fun x -> hd1 * (pow x hd2)) (polynomial tl)
+
+let f = polynomial [3,3;-2,1;5,0]
+let x = f 2
