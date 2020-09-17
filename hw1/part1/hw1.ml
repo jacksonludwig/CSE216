@@ -106,3 +106,14 @@ let rec polynomial tuples =
 
 
 (* Question 10 *)
+let rec my_map func list =
+  match list with
+  | [] -> []
+  | hd::tl ->
+    (func hd)::(my_map func tl)
+
+let rec powerset list =
+  match list with
+  | [] -> [[]]
+  | hd::tl ->
+    powerset tl @ my_map (fun itl -> hd :: itl) (powerset tl)
