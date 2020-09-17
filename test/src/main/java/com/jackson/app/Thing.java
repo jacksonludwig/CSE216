@@ -2,9 +2,19 @@ package com.jackson.app;
 
 public class Thing {
     private String name;
+    private String id;
 
-    public Thing(String name) {
+    public Thing(String name, String id) {
         this.name = name;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
