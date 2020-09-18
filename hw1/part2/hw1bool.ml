@@ -22,4 +22,3 @@ let truth_table lit_1 lit_2 expr =
    (false, true, calc_bool lit_1 false lit_2 true expr);
    (false, false, calc_bool lit_1 false lit_2 false expr)]
 
-let x = truth_table "a" "b" (And(Lit("a"), Lit("b")))
