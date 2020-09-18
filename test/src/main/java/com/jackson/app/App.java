@@ -16,6 +16,7 @@ public class App {
         Thing thing = new Thing("hey", "37849658");
         System.out.println(thing);
         System.out.println("App.main()");
+        System.out.println();
     }
 
     private static void doSomething(String thing) {
