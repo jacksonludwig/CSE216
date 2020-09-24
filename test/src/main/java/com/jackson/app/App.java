@@ -1,5 +1,8 @@
 package com.jackson.app;
 
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+
 /**
  * Hello world!
  *
@@ -16,7 +19,6 @@ public class App {
         Thing thing = new Thing("hey", "37849658");
         System.out.println(thing);
         System.out.println("App.main()");
-        System.out.println();
     }
 
     private static void doSomething(String thing) {
@@ -25,5 +27,10 @@ public class App {
 
     private static int testMethod() {
         return 123;
+    }
+
+    @Override
+    public String toString() {
+        return "App []";
     }
 }

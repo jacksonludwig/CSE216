@@ -1,12 +1,12 @@
 (* Question 2.2 *)
-type expr =
-  | Const of int
+type 'a expr =
+  | Const of 'a
   | Var of string
-  | Plus of args
-  | Mult of args
-  | Minus of args
-  | Div of args
-and args = {arg1:expr; arg2:expr}
+  | Plus of 'a args
+  | Mult of 'a args
+  | Minus of 'a args
+  | Div of 'a args
+and 'a args = {arg1: 'a expr; arg2: 'a expr}
 
 
 (* Question 2.3 *)
