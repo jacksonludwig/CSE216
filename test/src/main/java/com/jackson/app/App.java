@@ -1,8 +1,5 @@
 package com.jackson.app;
 
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-
 /**
  * Hello world!
  *
@@ -18,10 +15,12 @@ public class App {
         System.out.println("hello");
         Thing thing = new Thing("hey", "37849658");
         System.out.println(thing);
-        System.out.println("App.main()");
     }
 
     private static void doSomething(String thing) {
+        for (int i = 0; i < 10; i++) {
+            System.out.println(i);
+        }
         System.out.println(thing);
     }
 
@@ -33,4 +32,5 @@ public class App {
     public String toString() {
         return "App []";
     }
+
 }

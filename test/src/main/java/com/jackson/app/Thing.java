@@ -26,6 +26,14 @@ public class Thing {
         return name;
     }
 
+    public int getTen() {
+        return 10;
+    }
+
+    private String getHey() {
+        return "hey";
+    }
+
     public void setName(String name) {
         this.name = name;
     }
