@@ -1,13 +1,11 @@
 package com.jackson.app;
 
+import java.util.ArrayList;
+
 public class Thing {
     private String name;
     private String id;
-
-    public Thing(String name, String id) {
-        this.name = name;
-        this.id = id;
-    }
+    private ArrayList<String> stuff;
 
     public String getId() {
         return id;
@@ -15,11 +13,6 @@ public class Thing {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "Thing [name=" + name + "]";
     }
 
     public String getName() {
@@ -30,12 +23,20 @@ public class Thing {
         return 10;
     }
 
-    private String getHey() {
-        return "hey";
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ArrayList<String> getStuff() {
+        return stuff;
+    }
+
+    public void setStuff(ArrayList<String> stuff) {
+        this.stuff = stuff;
+    }
+
+    public ArrayList<Long> values() {
+        return null;
     }
 
 }
