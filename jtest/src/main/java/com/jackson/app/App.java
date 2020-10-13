@@ -6,31 +6,20 @@ package com.jackson.app;
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("hey");
-        System.out.println("test");
         for (int i = 0; i < 10; i++) {
-            System.out.println("test3");
+            System.out.println(i);
         }
     }
 
-    public class Inner {
-        private int num;
+    public class A<B> {
+        private final B b;
 
-        public Inner(int num) {
-            this.setNum(num);
+        public A(B b) {
+            this.b = b;
         }
 
-        public int getNum() {
-            return num;
-        }
-
-        public void setNum(int num) {
-            this.num = num;
-        }
-
-        @Override
-        public String toString() {
-            return "Inner [num=" + num + "]";
+        public B getValue() {
+            return this.b;
         }
     }
 }

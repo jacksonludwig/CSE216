@@ -117,3 +117,37 @@ let rec powerset list =
   | [] -> [[]]
   | hd::tl ->
     powerset tl @ my_map (fun itl -> hd :: itl) (powerset tl)
+
+
+(* EXTRA *)
+let rec list_print list =
+match list with
+| [] -> ()
+| hd::tl ->
+print_string hd;
+list_print(tl)
+
+
+(* type 'a binary_tree =
+ *   | Empty
+ *   | Node of 'a * 'a binary_tree * 'a binary_tree
+ *
+ * let rec is_mirror tree1 tree2 =
+ *   match tree1, tree2 with
+ *   | Empty, Empty -> true
+ *   | Empty, _ -> false
+ *   | _, Empty -> false
+ *   | Node(val1, left1, right1), Node(val2, left2, right2) ->
+ *     (val1 = val2 ) && (is_mirror(left1, right2)) && (is_mirror(right1, left2)) *)
+
+(* let reverse my_list =
+ *   let rec rev_helper acc list =
+ *     match list with
+ *     | [] -> acc
+ *     | h::t -> rev_helper (h::acc) t in
+ *   let reversed = fun list -> rev_helper [] list in
+ *   match my_list, reversed with
+ *   | [], [] -> true
+ *   | hd1::tl1, hd2::tl2 ->
+ *     if hd1 = hd2 then rev_helper(tl1, tl2) else false *)
+

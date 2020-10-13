@@ -1,0 +1,9 @@
+com/jackson/model/Positionable.class
+com/jackson/model/Quadrilateral.class
+com/jackson/model/TwoDShape.class
+com/jackson/model/TwoDPoint.class
+com/jackson/model/ThreeDShape.class
+com/jackson/model/SymmetricTwoDShape.class
+com/jackson/model/Rectangle.class
+com/jackson/model/Point.class
+com/jackson/model/Snappable.class

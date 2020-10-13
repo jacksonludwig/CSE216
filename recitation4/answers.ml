@@ -32,3 +32,4 @@ let rec nodes_and_leaves tr =
     let (left_op, left_values) = nodes_and_leaves l in
     let (right_op, right_values) = nodes_and_leaves r in
     (op :: left_op @ right_op, left_values @ right_values)
+
