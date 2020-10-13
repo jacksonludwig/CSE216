@@ -29,6 +29,16 @@ public class Circle implements Positionable, SymmetricTwoDShape {
     @Override
     public void setPosition(List<? extends Point> points) {
         // TODO
+
+        // part 1a below
+
+        // Throw error if they aren't all TwoDPoints
+        for (Object point : points) {
+            if (!(point instanceof TwoDPoint))
+                throw new IllegalArgumentException("The list must consist only of TwoDPoint types");
+        }
+
+        this.center = (TwoDPoint) points.get(0);
     }
 
     @Override

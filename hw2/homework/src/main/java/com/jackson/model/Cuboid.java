@@ -25,7 +25,11 @@ public class Cuboid implements ThreeDShape {
 
     @Override
     public double volume() {
-        return 0; // TODO
+        // TODO
+
+        // part 1b below
+        // int length =
+        return 0;
     }
 
     @Override
