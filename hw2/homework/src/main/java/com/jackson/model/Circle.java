@@ -34,7 +34,7 @@ public class Circle implements Positionable, SymmetricTwoDShape {
 
         // Throw error if they aren't all TwoDPoints
         for (Object point : points) {
-            if (!(point instanceof TwoDPoint))
+            if (!point.getClass().equals(TwoDPoint.class))
                 throw new IllegalArgumentException("The list must consist only of TwoDPoint types");
         }
 
