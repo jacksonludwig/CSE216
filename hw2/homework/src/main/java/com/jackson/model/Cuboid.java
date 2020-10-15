@@ -37,7 +37,18 @@ public class Cuboid implements ThreeDShape {
 
     @Override
     public ThreeDPoint center() {
-        return null; // TODO
+        // To get center of cuboid, add all X and divide by 8 to get center X. Repeat
+        // for Y and Z.
+        double totalX = 0;
+        double totalY = 0;
+        double totalZ = 0;
+        for (ThreeDPoint point : vertices) {
+            double[] coords = point.coordinates();
+            totalX += coords[0];
+            totalY += coords[1];
+            totalZ += coords[2];
+        }
+        return new ThreeDPoint(totalX / 8, totalY / 8, totalZ / 8); // was todo
     }
 
 }

@@ -6,7 +6,7 @@ package com.jackson.model;
  * <code>z</code> values).
  */
 public class ThreeDPoint implements Point {
-    private double x, y, z; // added by me
+    private final double x, y, z; // added by me
 
     public ThreeDPoint(double x, double y, double z) {
         this.x = x; // was todo, added by me

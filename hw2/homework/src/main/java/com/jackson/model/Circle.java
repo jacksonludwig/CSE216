@@ -28,7 +28,7 @@ public class Circle implements Positionable, SymmetricTwoDShape {
      */
     @Override
     public void setPosition(List<? extends Point> points) {
-        // TODO
+        // was todo
 
         // part 1a below
 
