@@ -31,7 +31,14 @@ public class Quadrilateral implements Positionable, TwoDShape {
      */
     @Override
     public void setPosition(List<? extends Point> points) {
-        // TODO
+        // was todo
+        if (points.size() != 4)
+            throw new IllegalStateException("The input list must have exactly 4 items");
+
+        int count = 0;
+        for (Object point : points) {
+            this.vertices[count++] = (TwoDPoint) point;
+        }
     }
 
     @Override
