@@ -2,7 +2,7 @@ package com.jackson.model;
 
 import java.util.List;
 
-// TODO : a missing interface method must be implemented in this class to make it compile. This must be in terms of volume().
+// was todo: implement compareTo
 public class Cuboid implements ThreeDShape {
 
     private final ThreeDPoint[] vertices = new ThreeDPoint[8];
@@ -32,6 +32,7 @@ public class Cuboid implements ThreeDShape {
         double length = vertices[0].coordinates()[0] - vertices[1].coordinates()[0];
         double height = vertices[1].coordinates()[1] - vertices[2].coordinates()[1];
         double width = vertices[4].coordinates()[2] - vertices[3].coordinates()[2];
+
         return length * width * height;
     }
 
@@ -49,6 +50,11 @@ public class Cuboid implements ThreeDShape {
             totalZ += coords[2];
         }
         return new ThreeDPoint(totalX / 8, totalY / 8, totalZ / 8); // was todo
+    }
+
+    @Override
+    public int compareTo(ThreeDShape shape) {
+        return (int) (this.volume() - shape.volume());
     }
 
 }

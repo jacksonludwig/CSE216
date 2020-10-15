@@ -1,5 +1,6 @@
 package com.jackson.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,9 +9,12 @@ import java.util.List;
  * <code>x</code> and <code>y</code> values.
  */
 public class TwoDPoint implements Point {
+    private double x, y;
 
     public TwoDPoint(double x, double y) {
-        // TODO
+        // was todo
+        this.x = x;
+        this.y = y;
     }
 
     /**
@@ -18,7 +22,7 @@ public class TwoDPoint implements Point {
      */
     @Override
     public double[] coordinates() {
-        return null; // TODO
+        return new double[] { x, y }; // was todo
     }
 
     /**
@@ -33,6 +37,15 @@ public class TwoDPoint implements Point {
      *                                  doubles.
      */
     public static List<TwoDPoint> ofDoubles(double... coordinates) throws IllegalArgumentException {
-        return null; // TODO
+        if (coordinates.length % 2 != 0)
+            throw new IllegalArgumentException("The input array must contain an even number of doubles");
+
+        List<TwoDPoint> points = new ArrayList<>();
+        for (int i = 0; i < coordinates.length; i = i + 2) {
+            TwoDPoint point = new TwoDPoint(coordinates[i], coordinates[i + 1]);
+            points.add(point);
+        }
+
+        return points; // was todo
     }
 }
