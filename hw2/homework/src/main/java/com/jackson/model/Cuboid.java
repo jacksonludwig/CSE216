@@ -25,11 +25,14 @@ public class Cuboid implements ThreeDShape {
 
     @Override
     public double volume() {
-        // TODO
+        // was todo
 
         // part 1b below
-        // int length =
-        return 0;
+        // V = L * W * H
+        double length = vertices[1].coordinates()[0] - vertices[0].coordinates()[0];
+        double height = vertices[1].coordinates()[1] - vertices[2].coordinates()[1];
+        double width = vertices[3].coordinates()[2] - vertices[4].coordinates()[2];
+        return length * width * height;
     }
 
     @Override

@@ -6,9 +6,12 @@ package com.jackson.model;
  * <code>z</code> values).
  */
 public class ThreeDPoint implements Point {
+    private double x, y, z; // added by me
 
     public ThreeDPoint(double x, double y, double z) {
-        // TODO
+        this.x = x; // was todo, added by me
+        this.y = y;
+        this.z = z;
     }
 
     /**
@@ -16,6 +19,6 @@ public class ThreeDPoint implements Point {
      */
     @Override
     public double[] coordinates() {
-        return null; // TODO
+        return new double[] { x, y, z }; // was todo, added by me
     }
 }
