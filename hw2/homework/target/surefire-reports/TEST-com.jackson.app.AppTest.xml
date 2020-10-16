@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.jackson.app.AppTest" time="0.017" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.jackson.app.AppTest" time="0.023" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="14"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-14-openjdk/lib"/>
-    <property name="sun.java.command" value="/home/jackson/Unmanaged/git_repos/cse216/hw2/homework/target/surefire/surefirebooter13349928054603744613.jar /home/jackson/Unmanaged/git_repos/cse216/hw2/homework/target/surefire 2020-10-16T18-16-09_496-jvmRun1 surefire5618892086035203142tmp surefire_010485214227422764387tmp"/>
+    <property name="sun.java.command" value="/home/jackson/Unmanaged/git_repos/cse216/hw2/homework/target/surefire/surefirebooter7663988928373096630.jar /home/jackson/Unmanaged/git_repos/cse216/hw2/homework/target/surefire 2020-10-16T18-36-00_984-jvmRun1 surefire3174611134086418318tmp surefire_0188967611031570702tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/jackson/Unmanaged/git_repos/cse216/hw2/homework/target/test-classes:/home/jackson/Unmanaged/git_repos/cse216/hw2/homework/target/classes:/home/jackson/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/jackson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/jackson/Unmanaged/git_repos/cse216/hw2/homework/target/surefire/surefirebooter13349928054603744613.jar"/>
+    <property name="surefire.real.class.path" value="/home/jackson/Unmanaged/git_repos/cse216/hw2/homework/target/surefire/surefirebooter7663988928373096630.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="14.0.2+12"/>
     <property name="user.name" value="jackson"/>
@@ -50,6 +50,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="58.0"/>
   </properties>
-  <testcase name="testEquals" classname="com.jackson.app.AppTest" time="0.001"/>
-  <testcase name="testVolume" classname="com.jackson.app.AppTest" time="0"/>
+  <testcase name="testRectMember" classname="com.jackson.app.AppTest" time="0.002"/>
+  <testcase name="testRectArea" classname="com.jackson.app.AppTest" time="0"/>
+  <testcase name="testVolume" classname="com.jackson.app.AppTest" time="0.001"/>
 </testsuite>
