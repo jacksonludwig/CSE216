@@ -1,12 +1,13 @@
 package com.jackson.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 
 public class Square extends Rectangle implements Snappable {
 
-    // TODO: this constructor must NOT be changed. Instead, resolve the error by
+    // was todo: this constructor must NOT be changed. Instead, resolve the error by
     // adding code elsewhere.
     public Square(List<TwoDPoint> vertices) {
         super(vertices);
@@ -38,6 +39,29 @@ public class Square extends Rectangle implements Snappable {
      */
     @Override
     public Quadrilateral snap() {
-        // TODO
+        // was todo
+        ArrayList<TwoDPoint> points = new ArrayList<>();
+
+        for (TwoDPoint point : this.getPosition()) {
+            double unsnappedX = point.getX();
+            double unsnappedY = point.getY();
+            points.add(new TwoDPoint((int) Math.round(unsnappedX), (int) Math.round(unsnappedY)));
+        }
+
+        int sameCount = 0;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (i != j) {
+                    if (points.get(i).coordinates()[0] == points.get(j).coordinates()[0]
+                            && points.get(i).coordinates()[1] == points.get(j).coordinates()[1])
+                        sameCount++;
+                }
+            }
+        }
+
+        if (sameCount != 4)
+            return new Square(this.getPosition());
+
+        return new Quadrilateral(points);
     }
 }
