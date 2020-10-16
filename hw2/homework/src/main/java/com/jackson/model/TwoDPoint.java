@@ -9,7 +9,7 @@ import java.util.List;
  * <code>x</code> and <code>y</code> values.
  */
 public class TwoDPoint implements Point {
-    private double x, y;
+    private final double x, y;
 
     public TwoDPoint(double x, double y) {
         // was todo
@@ -47,5 +47,13 @@ public class TwoDPoint implements Point {
         }
 
         return points; // was todo
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
     }
 }

@@ -21,4 +21,16 @@ public class ThreeDPoint implements Point {
     public double[] coordinates() {
         return new double[] { x, y, z }; // was todo, added by me
     }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getZ() {
+        return z;
+    }
 }
