@@ -23,7 +23,29 @@ public class Rectangle extends Quadrilateral implements SymmetricTwoDShape {
 
     @Override
     public boolean isMember(List<? extends Point> vertices) {
-        return false; // TODO
+        // was todo
+
+        // make sure it only has 4 sides
+        if (vertices.size() != 4)
+            return false;
+
+        // make sure the points are all unique
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (i != j) {
+                    if (vertices.get(i).coordinates()[0] == vertices.get(j).coordinates()[0]
+                            && vertices.get(i).coordinates()[1] == vertices.get(j).coordinates()[1])
+                        return false;
+                }
+            }
+        }
+
+        // make sure there are two sets of equal sides
+        double[] sides = getSideLengths();
+        if (sides[0] != sides[2] || sides[1] != sides[3])
+            return false;
+
+        return true;
     }
 
     @Override

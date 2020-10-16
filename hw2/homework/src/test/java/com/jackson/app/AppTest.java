@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import com.jackson.model.Cuboid;
 import com.jackson.model.ThreeDPoint;
+import com.jackson.model.TwoDPoint;
 
 import org.junit.Test;
 
@@ -33,5 +34,11 @@ public class AppTest {
         points2.add(new ThreeDPoint(0, 0, 2));
         Cuboid c2 = new Cuboid(points2);
         assertTrue(c.volume() < c2.volume());
+    }
+
+    @Test
+    public void testEquals() {
+        TwoDPoint p1 = new TwoDPoint(1.2, 2.3);
+        assertTrue(p1 != p1);
     }
 }
