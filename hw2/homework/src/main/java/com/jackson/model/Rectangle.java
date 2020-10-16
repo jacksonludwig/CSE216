@@ -3,6 +3,9 @@ package com.jackson.model;
 import java.util.List;
 
 public class Rectangle extends Quadrilateral implements SymmetricTwoDShape {
+    public Rectangle(List<TwoDPoint> vertices) {
+        super(vertices);
+    }
 
     /**
      * The center of a rectangle is calculated to be the point of intersection of
