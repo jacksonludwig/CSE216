@@ -29,9 +29,9 @@ public class Cuboid implements ThreeDShape {
 
         // part 1b below
         // V = L * W * H
-        double length = vertices[0].coordinates()[0] - vertices[1].coordinates()[0];
-        double height = vertices[1].coordinates()[1] - vertices[2].coordinates()[1];
-        double width = vertices[4].coordinates()[2] - vertices[3].coordinates()[2];
+        double length = Math.abs(vertices[0].coordinates()[0] - vertices[1].coordinates()[0]);
+        double height = Math.abs(vertices[1].coordinates()[1] - vertices[2].coordinates()[1]);
+        double width = Math.abs(vertices[4].coordinates()[2] - vertices[3].coordinates()[2]);
 
         return length * width * height;
     }

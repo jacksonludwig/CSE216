@@ -14,8 +14,10 @@ public class Rectangle extends Quadrilateral implements SymmetricTwoDShape {
     public Point center() {
         // was todo
         List<TwoDPoint> points = this.getPosition();
+
         TwoDPoint topLeft = points.get(1);
         TwoDPoint bottomRight = points.get(3);
+
         return new TwoDPoint((topLeft.getX() + bottomRight.getX()) / 2, ((topLeft.getY() + bottomRight.getY()) / 2));
     }
 
@@ -26,6 +28,16 @@ public class Rectangle extends Quadrilateral implements SymmetricTwoDShape {
 
     @Override
     public double area() {
-        return 0d; // TODO
+        // was todo
+        List<TwoDPoint> points = this.getPosition();
+
+        TwoDPoint topLeft = points.get(1);
+        TwoDPoint topRight = points.get(0);
+        double length = Math.abs(topRight.getX() - topLeft.getX());
+
+        TwoDPoint bottomLeft = points.get(2);
+        double width = Math.abs(topLeft.getY() - bottomLeft.getY());
+
+        return length * width;
     }
 }

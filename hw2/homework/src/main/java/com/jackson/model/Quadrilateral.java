@@ -53,10 +53,10 @@ public class Quadrilateral implements Positionable, TwoDShape {
      *         to be in that same order.
      */
     protected double[] getSideLengths() {
-        double side1 = this.vertices[0].coordinates()[0] - this.vertices[1].coordinates()[0];
-        double side2 = this.vertices[1].coordinates()[1] - this.vertices[2].coordinates()[1];
-        double side3 = this.vertices[3].coordinates()[0] - this.vertices[2].coordinates()[0];
-        double side4 = this.vertices[0].coordinates()[1] - this.vertices[3].coordinates()[1];
+        double side1 = Math.abs(this.vertices[0].coordinates()[0] - this.vertices[1].coordinates()[0]);
+        double side2 = Math.abs(this.vertices[1].coordinates()[1] - this.vertices[2].coordinates()[1]);
+        double side3 = Math.abs(this.vertices[3].coordinates()[0] - this.vertices[2].coordinates()[0]);
+        double side4 = Math.abs(this.vertices[0].coordinates()[1] - this.vertices[3].coordinates()[1]);
         return new double[] { side1, side2, side3, side4 }; // was todo
     }
 
