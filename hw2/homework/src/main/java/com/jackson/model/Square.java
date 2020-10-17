@@ -59,7 +59,7 @@ public class Square extends Rectangle implements Snappable {
             }
         }
 
-        if (sameCount != 4)
+        if (sameCount == 4)
             return new Square(this.getPosition());
 
         return new Quadrilateral(points);
