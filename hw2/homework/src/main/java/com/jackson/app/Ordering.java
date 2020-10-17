@@ -1,6 +1,19 @@
-package com.jackson.model;
+package com.jackson.app;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import com.jackson.model.Circle;
+import com.jackson.model.Cuboid;
+import com.jackson.model.Rectangle;
+import com.jackson.model.Sphere;
+import com.jackson.model.Square;
+import com.jackson.model.SymmetricTwoDShape;
+import com.jackson.model.ThreeDShape;
+import com.jackson.model.TwoDPoint;
+import com.jackson.model.TwoDShape;
 
 public class Ordering {
 
@@ -11,8 +24,15 @@ public class Ordering {
             double o1xlocation = 0;
             double o2xlocation = 0;
 
-            o1xlocation = ((Rectangle) o1).center().coordinates()[0];
-            o2xlocation = ((Rectangle) o2).center().coordinates()[0];
+            if (o1 instanceof Circle)
+                o1xlocation = ((Circle) o1).center().coordinates()[0];
+            else
+                o1xlocation = ((Rectangle) o1).center().coordinates()[0];
+
+            if (o2 instanceof Circle)
+                o2xlocation = ((Circle) o2).center().coordinates()[0];
+            else
+                o2xlocation = ((Rectangle) o2).center().coordinates()[0];
 
             return (int) (o1xlocation - o2xlocation);
         }
@@ -68,24 +88,24 @@ public class Ordering {
          */
 
         ArrayList<TwoDPoint> points = new ArrayList<>();
-        points.add(new TwoDPoint(1, 1));
-        points.add(new TwoDPoint(0, 1));
+        points.add(new TwoDPoint(10, 10));
+        points.add(new TwoDPoint(0, 10));
         points.add(new TwoDPoint(0, 0));
-        points.add(new TwoDPoint(1, 0));
+        points.add(new TwoDPoint(10, 0));
         Rectangle r = new Rectangle(points);
 
         ArrayList<TwoDPoint> points2 = new ArrayList<>();
-        points.add(new TwoDPoint(2, 2));
-        points.add(new TwoDPoint(0, 2));
-        points.add(new TwoDPoint(0, 0));
-        points.add(new TwoDPoint(2, 0));
+        points2.add(new TwoDPoint(2, 2));
+        points2.add(new TwoDPoint(0, 2));
+        points2.add(new TwoDPoint(0, 0));
+        points2.add(new TwoDPoint(2, 0));
         Square s = new Square(points2);
 
-        Circle c = new Circle(0d, 0d, 2d);
+        Circle c = new Circle(0d, 0d, 30000);
 
+        symmetricshapes.add(c);
         symmetricshapes.add(r);
         symmetricshapes.add(s);
-        symmetricshapes.add(c);
         /*
          * copy(symmetricshapes, shapes); // note-1 // shapes.add(new Quadrilateral(new
          * ArrayList<>()));
@@ -100,9 +120,10 @@ public class Ordering {
         Collections.sort(threedshapes);
         threedshapes.sort(new SurfaceAreaComparator());
 
-        for (Object o : symmetricshapes) {
-            System.out.println(o.getClass().getName());
-        }
+        // added by me to test sorting
+        // for (Object o : symmetricshapes) {
+        // System.out.println(o.getClass().getName());
+        // }
 
         /*
          * if your changes to copy() are correct, uncommenting the following block will

@@ -86,7 +86,7 @@
 	                <transformers>
 	                    <transformer implementation=
 	                      "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-	                        <mainClass>com.jackson.app.App</mainClass>
+	                        <mainClass>com.jackson.app.Ordering</mainClass>
 	                </transformer>
 	            </transformers>
 	        </configuration>
