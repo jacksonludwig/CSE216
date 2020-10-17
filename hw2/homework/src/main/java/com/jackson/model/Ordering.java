@@ -67,10 +67,26 @@ public class Ordering {
          * their smallest x-coordinate, area, volume, surface area, etc.
          */
 
+        ArrayList<TwoDPoint> points = new ArrayList<>();
+        points.add(new TwoDPoint(1, 1));
+        points.add(new TwoDPoint(0, 1));
+        points.add(new TwoDPoint(0, 0));
+        points.add(new TwoDPoint(1, 0));
+        Rectangle r = new Rectangle(points);
+
+        ArrayList<TwoDPoint> points2 = new ArrayList<>();
+        points.add(new TwoDPoint(2, 2));
+        points.add(new TwoDPoint(0, 2));
+        points.add(new TwoDPoint(0, 0));
+        points.add(new TwoDPoint(2, 0));
+        Square s = new Square(points2);
+
+        Circle c = new Circle(0d, 0d, 2d);
+
+        symmetricshapes.add(r);
+        symmetricshapes.add(s);
+        symmetricshapes.add(c);
         /*
-         * symmetricshapes.add(new Rectangle(...)); symmetricshapes.add(new
-         * Square(...)); symmetricshapes.add(new Circle(...));
-         * 
          * copy(symmetricshapes, shapes); // note-1 // shapes.add(new Quadrilateral(new
          * ArrayList<>()));
          */
@@ -83,6 +99,10 @@ public class Ordering {
         // sorting 3d shapes according to various criteria
         Collections.sort(threedshapes);
         threedshapes.sort(new SurfaceAreaComparator());
+
+        for (Object o : symmetricshapes) {
+            System.out.println(o.getClass().getName());
+        }
 
         /*
          * if your changes to copy() are correct, uncommenting the following block will
