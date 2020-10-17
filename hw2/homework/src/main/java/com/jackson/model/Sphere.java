@@ -36,9 +36,4 @@ public class Sphere implements ThreeDShape {
     public void setRadius(double radius) {
         this.radius = radius;
     }
-
-    public ThreeDPoint getCenter() {
-        return center;
-    }
-
 }
