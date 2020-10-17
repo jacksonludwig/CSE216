@@ -25,6 +25,10 @@ public class Sphere implements ThreeDShape {
         return (4 / 3) * Math.PI * Math.pow(radius, 3);
     }
 
+    public double surfaceArea() {
+        return 4 * Math.PI * (radius * radius);
+    }
+
     public void setCenter(ThreeDPoint center) {
         this.center = center;
     }

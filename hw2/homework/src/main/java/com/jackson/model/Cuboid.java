@@ -57,4 +57,12 @@ public class Cuboid implements ThreeDShape {
         return (int) (this.volume() - shape.volume());
     }
 
+    public double surfaceArea() {
+        double length = Math.abs(vertices[0].coordinates()[0] - vertices[1].coordinates()[0]);
+        double height = Math.abs(vertices[1].coordinates()[1] - vertices[2].coordinates()[1]);
+        double width = Math.abs(vertices[4].coordinates()[2] - vertices[3].coordinates()[2]);
+
+        return (2 * length * width) + (2 * length * height) + (2 * height * width);
+    }
+
 }

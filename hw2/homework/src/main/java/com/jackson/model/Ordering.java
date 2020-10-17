@@ -19,9 +19,24 @@ public class Ordering {
     }
 
     static class SurfaceAreaComparator implements Comparator<ThreeDShape> {
+        // was todo
+
         @Override
         public int compare(ThreeDShape o1, ThreeDShape o2) {
-            return 0; // TODO
+            double o1SurfaceArea = 0;
+            double o2SurfaceArea = 0;
+
+            if (o1 instanceof Cuboid)
+                o1SurfaceArea = ((Cuboid) o1).surfaceArea();
+            else
+                o1SurfaceArea = ((Sphere) o1).surfaceArea();
+
+            if (o2 instanceof Cuboid)
+                o2SurfaceArea = ((Cuboid) o2).surfaceArea();
+            else
+                o2SurfaceArea = ((Sphere) o2).surfaceArea();
+
+            return (int) (o1SurfaceArea - o2SurfaceArea);
         }
     }
 
