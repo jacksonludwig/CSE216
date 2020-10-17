@@ -7,14 +7,23 @@ public class Ordering {
     static class XLocationComparator implements Comparator<TwoDShape> {
         @Override
         public int compare(TwoDShape o1, TwoDShape o2) {
-            return 0; // TODO
+            // was todo
+            double o1xlocation = 0;
+            double o2xlocation = 0;
+
+            o1xlocation = ((Rectangle) o1).center().coordinates()[0];
+            o2xlocation = ((Rectangle) o2).center().coordinates()[0];
+
+            return (int) (o1xlocation - o2xlocation);
         }
     }
 
     static class AreaComparator implements Comparator<SymmetricTwoDShape> {
         @Override
         public int compare(SymmetricTwoDShape o1, SymmetricTwoDShape o2) {
-            return 0; // TODO
+            // was todo
+
+            return (int) (o1.area() - o2.area());
         }
     }
 
