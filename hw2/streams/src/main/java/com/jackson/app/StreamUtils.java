@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-/**
- * @param strings: the input collection of <code>String</code>s.
- * @return a collection of those <code>String</code>s in the input collection
- *         that start with a capital letter.
- */
 public class StreamUtils {
+    /**
+     * @param strings: the input collection of <code>String</code>s.
+     * @return a collection of those <code>String</code>s in the input collection
+     *         that start with a capital letter.
+     */
     public static Collection<String> capitalized(Collection<String> strings) {
         return strings.stream().filter(s -> Character.isUpperCase(s.charAt(0))).collect(Collectors.toList());
     }
