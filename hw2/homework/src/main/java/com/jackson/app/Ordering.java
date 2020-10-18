@@ -27,13 +27,17 @@ public class Ordering {
 
             if (o1 instanceof Circle)
                 o1xlocation = ((Circle) o1).center().coordinates()[0];
+            else if (o1 instanceof Rectangle)
+                o1xlocation = ((Rectangle) o1).getSmallestXCoord();
             else
-                o1xlocation = ((Rectangle) o1).center().coordinates()[0];
+                o1xlocation = ((Quadrilateral) o1).getSmallestXCoord();
 
             if (o2 instanceof Circle)
                 o2xlocation = ((Circle) o2).center().coordinates()[0];
+            else if (o2 instanceof Rectangle)
+                o2xlocation = ((Rectangle) o2).getSmallestXCoord();
             else
-                o2xlocation = ((Rectangle) o2).center().coordinates()[0];
+                o2xlocation = ((Quadrilateral) o2).getSmallestXCoord();
 
             return (int) (o1xlocation - o2xlocation);
         }

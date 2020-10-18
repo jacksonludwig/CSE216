@@ -60,6 +60,21 @@ public class Quadrilateral implements Positionable, TwoDShape {
         return new double[] { side1, side2, side3, side4 }; // was todo
     }
 
+    // added by me
+    /**
+     * Get the smallest x-value in the list of quadrilateral vertices.
+     */
+    public double getSmallestXCoord() {
+        double smallest = vertices[0].getX();
+
+        for (TwoDPoint p : vertices) {
+            if (p.getX() < smallest)
+                smallest = p.getX();
+        }
+
+        return smallest;
+    }
+
     @Override
     public int numSides() {
         return 4;

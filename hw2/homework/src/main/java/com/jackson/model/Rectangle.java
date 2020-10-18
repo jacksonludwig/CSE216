@@ -65,4 +65,20 @@ public class Rectangle extends Quadrilateral implements SymmetricTwoDShape {
 
         return length * width;
     }
+
+    // added by me
+    /**
+     * Get the smallest x-value in the list of rectangle vertices.
+     */
+    public double getSmallestXCoord() {
+        List<TwoDPoint> vertices = this.getPosition();
+        double smallest = vertices.get(0).getX();
+
+        for (TwoDPoint p : vertices) {
+            if (p.getX() < smallest)
+                smallest = p.getX();
+        }
+
+        return smallest;
+    }
 }
