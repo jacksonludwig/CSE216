@@ -79,7 +79,7 @@ public class Cuboid implements ThreeDShape {
         points.add(new ThreeDPoint(randLength, randWidth, 0));
         points.add(new ThreeDPoint(0, randWidth, 0));
 
-        points.add(new ThreeDPoint(0, 0, 5));
+        points.add(new ThreeDPoint(0, 0, randHeight));
         points.add(new ThreeDPoint(randLength, 0, randHeight));
         points.add(new ThreeDPoint(randLength, randWidth, randHeight));
         points.add(new ThreeDPoint(0, randWidth, randHeight));
