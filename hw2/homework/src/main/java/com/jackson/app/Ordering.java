@@ -1,9 +1,13 @@
 package com.jackson.app;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.jackson.model.Circle;
 import com.jackson.model.Cuboid;
@@ -77,7 +81,7 @@ public class Ordering {
     // Was todo
     // correct it so that it can work
     // properly with generics.
-    static <T> void copy(List<? extends T> source, List<T> destination) {
+    static <T> void copy(Collection<? extends T> source, Collection<T> destination) {
         destination.addAll(source);
     }
 
@@ -137,12 +141,12 @@ public class Ordering {
          * with 'note-2' and 'note-3'.
          */
 
-        /*
-         * List<Number> numbers = new ArrayList<>(); List<Double> doubles = new
-         * ArrayList<>(); Set<Square> squares = new HashSet<>(); Set<Quadrilateral>
-         * quads = new LinkedHashSet<>();
-         * 
-         * copy(doubles, numbers); // note-2 // copy(squares, quads); // note-3 //
-         */
+        List<Number> numbers = new ArrayList<>();
+        List<Double> doubles = new ArrayList<>();
+        Set<Square> squares = new HashSet<>();
+        Set<Quadrilateral> quads = new LinkedHashSet<>();
+
+        copy(doubles, numbers); // note-2 //
+        copy(squares, quads); // note-3 //
     }
 }
