@@ -1,5 +1,7 @@
 package com.jackson.model;
 
+import java.util.Random;
+
 public class Sphere implements ThreeDShape {
 
     private ThreeDPoint center;
@@ -25,8 +27,22 @@ public class Sphere implements ThreeDShape {
         return (4 / 3) * Math.PI * Math.pow(radius, 3);
     }
 
+    // added by me
     public double surfaceArea() {
         return 4 * Math.PI * (radius * radius);
+    }
+
+    // added by me
+    private static double getRandomDoubleInRange() {
+        double min = -100;
+        double max = 100.0;
+        return min + (max - min) * new Random().nextDouble();
+    }
+
+    // was todo
+    public static Sphere random() {
+        return new Sphere(getRandomDoubleInRange(), getRandomDoubleInRange(), getRandomDoubleInRange(),
+                getRandomDoubleInRange());
     }
 
     public void setCenter(ThreeDPoint center) {
