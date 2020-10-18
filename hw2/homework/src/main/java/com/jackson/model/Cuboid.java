@@ -1,6 +1,8 @@
 package com.jackson.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 // was todo: implement compareTo
 public class Cuboid implements ThreeDShape {
@@ -55,6 +57,34 @@ public class Cuboid implements ThreeDShape {
     @Override
     public int compareTo(ThreeDShape shape) {
         return (int) (this.volume() - shape.volume());
+    }
+
+    // added by me
+    private static double getRandomDoubleInRange() {
+        double min = -100;
+        double max = 100.0;
+        return min + (max - min) * new Random().nextDouble();
+    }
+
+    // was todo
+    public static Cuboid random() {
+        List<ThreeDPoint> points = new ArrayList<>();
+
+        double randLength = getRandomDoubleInRange();
+        double randWidth = getRandomDoubleInRange();
+        double randHeight = getRandomDoubleInRange();
+
+        points.add(new ThreeDPoint(0, 0, 0));
+        points.add(new ThreeDPoint(randLength, 0, 0));
+        points.add(new ThreeDPoint(randLength, randWidth, 0));
+        points.add(new ThreeDPoint(0, randWidth, 0));
+
+        points.add(new ThreeDPoint(0, 0, 5));
+        points.add(new ThreeDPoint(randLength, 0, randHeight));
+        points.add(new ThreeDPoint(randLength, randWidth, randHeight));
+        points.add(new ThreeDPoint(0, randWidth, randHeight));
+
+        return new Cuboid(points);
     }
 
     public double surfaceArea() {
