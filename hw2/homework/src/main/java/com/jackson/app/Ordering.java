@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.jackson.model.Circle;
 import com.jackson.model.Cuboid;
+import com.jackson.model.Quadrilateral;
 import com.jackson.model.Rectangle;
 import com.jackson.model.Sphere;
 import com.jackson.model.Square;
@@ -69,9 +70,10 @@ public class Ordering {
         }
     }
 
-    // TODO: there's a lot wrong with this method. correct it so that it can work
+    // Was todo
+    // correct it so that it can work
     // properly with generics.
-    static void copy(List<TwoDShape> source, List<TwoDShape> destination) {
+    static <T> void copy(List<? extends T> source, List<T> destination) {
         destination.addAll(source);
     }
 
@@ -106,10 +108,9 @@ public class Ordering {
         symmetricshapes.add(c);
         symmetricshapes.add(r);
         symmetricshapes.add(s);
-        /*
-         * copy(symmetricshapes, shapes); // note-1 // shapes.add(new Quadrilateral(new
-         * ArrayList<>()));
-         */
+
+        copy(symmetricshapes, shapes); // note-1 //
+        shapes.add(new Quadrilateral(points2));
 
         // sorting 2d shapes according to various criteria
         shapes.sort(new XLocationComparator());
