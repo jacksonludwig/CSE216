@@ -30,14 +30,14 @@ public class Ordering {
             double o2xlocation = 0;
 
             if (o1 instanceof Circle)
-                o1xlocation = ((Circle) o1).center().coordinates()[0];
+                o1xlocation = ((Circle) o1).center().coordinates()[0] - ((Circle) o2).getRadius();
             else if (o1 instanceof Rectangle)
                 o1xlocation = ((Rectangle) o1).getSmallestXCoord();
             else
                 o1xlocation = ((Quadrilateral) o1).getSmallestXCoord();
 
             if (o2 instanceof Circle)
-                o2xlocation = ((Circle) o2).center().coordinates()[0];
+                o2xlocation = ((Circle) o2).center().coordinates()[0] - ((Circle) o2).getRadius();
             else if (o2 instanceof Rectangle)
                 o2xlocation = ((Rectangle) o2).getSmallestXCoord();
             else
