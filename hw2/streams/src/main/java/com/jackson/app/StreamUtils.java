@@ -56,8 +56,8 @@ public class StreamUtils {
      *         broken based on <code>from_start</code>.
      */
     public static <T extends Comparable<T>> T least(Collection<T> items, boolean from_start) {
-        // items.stream().reduce();
-
-        return null;
+        return items.stream().filter(Objects::nonNull)
+            .reduce(from_start ? (i1, i2) -> i1.compareTo(i2) <= 0 ? i1 : i2
+                    : (i1, i2) -> i1.compareTo(i2) < 0 ? i1 : i2).orElse(null);
     }
 }
