@@ -30,6 +30,18 @@ public class StreamUtils {
      *         where ties are broken based on <code>from_start</code>.
      */
     public static String longest(Collection<String> strings, boolean from_start) {
-        return strings.stream().map(s -> s.length()).max(Integer::compareTo).get();
+        return strings.stream().reduce("", (currentMax, element) -> {
+                if (currentMax.length() == element.length()) {
+                   if (from_start)
+                       return currentMax;
+                   else
+                       return element;
+                }
+
+                if(currentMax.length() > element.length())
+                    return currentMax;
+                else
+                    return element;
+        });
     }
 }
