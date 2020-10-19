@@ -1,6 +1,7 @@
 package com.jackson.app;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class StreamUtils {
@@ -29,8 +30,10 @@ public class StreamUtils {
      *         where ties are broken based on <code>from_start</code>.
      */
     public static String longest(Collection<String> strings, boolean from_start) {
-        return strings.stream().reduce(from_start ? (s1, s2) -> s1.length() >= s2.length() ? s1 : s2
-                : (s1, s2) -> s1.length() > s2.length() ? s1 : s2).orElse(null);
+        return strings.stream().filter(Objects::nonNull)
+                .reduce(from_start ? (s1, s2) -> s1.length() >= s2.length() ? s1 : s2
+                        : (s1, s2) -> s1.length() > s2.length() ? s1 : s2)
+                .orElse(null);
     }
 
     /**
