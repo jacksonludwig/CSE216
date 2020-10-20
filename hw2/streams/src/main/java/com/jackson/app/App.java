@@ -16,5 +16,7 @@ public class App {
         map.put(2, "this is the third thing");
 
         System.out.println(StreamUtils.flatten(map));
+
+        System.out.println(HigherOrderUtils.add.apply(5.5, 2.0));
     }
 }
