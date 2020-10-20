@@ -127,7 +127,6 @@ public class HigherOrderUtils {
 
     public static class FunctionComposition<T, U, V> {
         public BiFunction<Function<T, U>, Function<U, V>, Function<T, V>>
-            // TODO
-            composition = (arg0, arg1) -> null;
+            composition = (f1, f2) -> f1.andThen(f2);
     }
 }
