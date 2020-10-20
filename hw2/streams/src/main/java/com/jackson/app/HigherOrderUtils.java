@@ -102,8 +102,23 @@ public class HigherOrderUtils {
     */
     public static <T> T zip(List<T> args,
                             List<NamedBiFunction<T, T, T>> bifunctions) {
+        if (args.size() != bifunctions.size() + 1) {
+            System.out.println(
+                "Incorrect number of bifunctions or arguments: returning null");
+            return null;
+        }
+
         for (int i = 1; i < args.size(); i++) {
-            args.set(i, bifunctions.get(i - 1).apply(args.get(i - 1), args.get(i)));
+            T a1 = args.get(i - 1);
+            T a2 = args.get(i);
+            NamedBiFunction<T, T, T> b = bifunctions.get(i - 1);
+
+            if (a1 == null || a2 == null || b == null) {
+                System.out.println("Null items found: returning null");
+                return null;
+            }
+
+            args.set(i, b.apply(a1, a2));
         }
 
         return args.get(args.size() - 1);
