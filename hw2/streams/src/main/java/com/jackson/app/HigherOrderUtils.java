@@ -101,5 +101,11 @@ public class HigherOrderUtils {
     result of all the bifunctions being applied in sequence.
     */
     public static <T> T zip(List<T> args,
-                            List<NamedBiFunction<T, T, T>> bifunctions) {}
+                            List<NamedBiFunction<T, T, T>> bifunctions) {
+        for (int i = 1; i < args.size(); i++) {
+            args.set(i, bifunctions.get(i - 1).apply(args.get(i - 1), args.get(i)));
+        }
+
+        return args.get(args.size() - 1);
+    }
 }
