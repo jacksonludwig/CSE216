@@ -1,5 +1,8 @@
 com/jackson/app/App.class
+com/jackson/app/HigherOrderUtils$3.class
 com/jackson/app/HigherOrderUtils.class
 com/jackson/app/StreamUtils.class
 com/jackson/app/HigherOrderUtils$1.class
 com/jackson/app/HigherOrderUtils$NamedBiFunction.class
+com/jackson/app/HigherOrderUtils$4.class
+com/jackson/app/HigherOrderUtils$2.class
