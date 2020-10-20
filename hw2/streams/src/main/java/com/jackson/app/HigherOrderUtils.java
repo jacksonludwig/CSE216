@@ -2,6 +2,7 @@ package com.jackson.app;
 
 import java.util.List;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 
 public class HigherOrderUtils {
     interface NamedBiFunction<T, U, R> extends BiFunction<T, U, R> {
@@ -122,5 +123,11 @@ public class HigherOrderUtils {
         }
 
         return args.get(args.size() - 1);
+    }
+
+    public static class FunctionComposition<T, U, V> {
+        public BiFunction<Function<T, U>, Function<U, V>, Function<T, V>>
+            // TODO
+            composition = (arg0, arg1) -> null;
     }
 }
