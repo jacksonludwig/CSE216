@@ -17,6 +17,6 @@ public class App {
 
         System.out.println(StreamUtils.flatten(map));
 
-        System.out.println(HigherOrderUtils.add.apply(5.5, 2.0));
+        System.out.println(HigherOrderUtils.divide.apply(5.5, 0.1));
     }
 }

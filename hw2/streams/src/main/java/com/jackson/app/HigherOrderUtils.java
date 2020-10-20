@@ -50,7 +50,7 @@ public class HigherOrderUtils {
         new NamedBiFunction<Double, Double, Double>() {
             @Override
             public Double apply(Double x, Double y) {
-                if (y == 0)
+                if (y == 0d)
                     throw new ArithmeticException("Cannot divide by zero");
                 return x / y;
             }
