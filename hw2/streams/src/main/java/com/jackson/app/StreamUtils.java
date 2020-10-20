@@ -1,6 +1,8 @@
 package com.jackson.app;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -68,5 +70,21 @@ public class StreamUtils {
                                  -> i1.compareTo(i2) <= 0 ? i1 : i2
                            : (i1, i2) -> i1.compareTo(i2) < 0 ? i1 : i2)
         .orElse(null);
+  }
+
+  /**
+   * Flattens a map to a stream of <code>String</code>s, where each element in
+   * the list is formatted as "key -> value".
+   *
+   * @param aMap the specified input map.
+   * @param <K> the type parameter of keys in <code>aMap</code>.
+   * @param <V> the type parameter of values in <code>aMap</code>.
+   * @return the flattened list representation of <code>aMap</code>.
+   */
+  public static <K, V> List<String> flatten(Map<K, V> aMap) {
+    return aMap.entrySet()
+        .stream()
+        .map(i -> i.getKey().toString() + " -> " + i.getValue().toString())
+        .collect(Collectors.toList());
   }
 }
