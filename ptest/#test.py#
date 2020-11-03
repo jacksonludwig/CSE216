@@ -4,7 +4,6 @@ def take_name(num):
 
 print("hey")
 print("bye")
-print("oi")
 
 
 for i in range(0, 10):
