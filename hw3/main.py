@@ -20,5 +20,6 @@ def main():
 
     q = Quadrilateral(0, 1, 1, 1, 1, 0, 0, 0)
     print(q.smallest_x())
+    print(q.side_lengths())
 
 main()
