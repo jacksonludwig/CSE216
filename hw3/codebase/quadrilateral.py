@@ -5,10 +5,13 @@ class Quadrilateral:
 
     def __init__(self, *floats):
         # this if was added because only 8 floats make 4 points
-        if len(floats) != 8:
+        if len(floats) > 1:
             raise ValueError(
-                "8 values are required to make a Quadrilateral of 4 points")
-        points = TwoDPoint.from_coordinates(list(floats))
+                "Only one list is required to make a shape")
+        if len(floats[0]) != 8:
+            raise ValueError("Only 8 floats can make a shape")
+
+        points = TwoDPoint.from_coordinates(list(floats[0]))
         self.__vertices = tuple(points[0:4])  # changed from 0:3
 
     @property
@@ -27,4 +30,4 @@ class Quadrilateral:
     def smallest_x(self):
         """Returns the x-coordinate of the vertex with the smallest x-value of the four vertices of this
         quadrilateral."""
-        return 0  # TODO
+        return min(map(lambda v: v.x, self.vertices))  # was TODO
