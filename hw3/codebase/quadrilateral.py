@@ -5,13 +5,11 @@ class Quadrilateral:
 
     def __init__(self, *floats):
         # this if was added because only 8 floats make 4 points
-        if len(floats) > 1:
+        if len(floats) != 8:
             raise ValueError(
-                "Only one list is required to make a shape")
-        if len(floats[0]) != 8:
-            raise ValueError("Only 8 floats can make a shape")
+                "Only 8 floats can make a shape")
 
-        points = TwoDPoint.from_coordinates(list(floats[0]))
+        points = TwoDPoint.from_coordinates(list(floats))
         self.__vertices = tuple(points[0:4])  # changed from 0:3
 
     @property

@@ -18,7 +18,7 @@ def main():
     li = [1, 2,3,4,5,6]
     print(li[0:3])
 
-    q = Quadrilateral([0, 1, 1, 1, 1, 0, 0, 0])
+    q = Quadrilateral(0, 1, 1, 1, 1, 0, 0, 0)
     print(q.smallest_x())
 
 main()
