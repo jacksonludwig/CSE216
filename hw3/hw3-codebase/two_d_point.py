@@ -27,11 +27,15 @@ class TwoDPoint:
     # TODO: add magic methods such that two TwoDPoint objects can be added and subtracted coordinate-wise just by using
     #  syntax of the form p + q or p - q
     def __add__(self, point):
+        if type(self) != type(point):
+            raise TypeError("Cannot add a point to any other type")
         x_added = self.x + point.x
         y_added = self.y + point.y
         return TwoDPoint(x_added, y_added)
 
     def __sub__(self, point):
+        if type(self) != type(point):
+            raise TypeError("Cannot subtract a point from any other type")
         x_dif = self.x - point.x
         y_dif = self.y - point.y
         return TwoDPoint(x_dif, y_dif)
