@@ -16,7 +16,12 @@ class TwoDPoint:
         return self.__y
 
     def __eq__(self, other: object) -> bool:
-        return False  # TODO
+        # was TODO
+        if type(self) != type(other):
+            raise TypeError("Cannot compare a point to any other type")
+        if self.x != other.x or self.y != other.y:
+            return False
+        return True
 
     def __ne__(self, other: object) -> bool:
         return not self.__eq__(other)
@@ -24,7 +29,7 @@ class TwoDPoint:
     def __str__(self) -> str:
         return '(%g, %g)' % (self.__x, self.__y)
 
-    # TODO: add magic methods such that two TwoDPoint objects can be added and subtracted coordinate-wise just by using
+    # was TODO: add magic methods such that two TwoDPoint objects can be added and subtracted coordinate-wise just by using
     #  syntax of the form p + q or p - q
     def __add__(self, point):
         if type(self) != type(point):
