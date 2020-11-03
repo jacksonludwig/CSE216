@@ -18,7 +18,7 @@ class TwoDPoint:
     def __eq__(self, other: object) -> bool:
         # was TODO
         if type(self) != type(other):
-            raise TypeError("Cannot compare a point to any other type")
+            return False
         if self.x != other.x or self.y != other.y:
             return False
         return True
