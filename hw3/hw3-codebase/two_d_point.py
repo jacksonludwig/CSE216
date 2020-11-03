@@ -29,6 +29,7 @@ class TwoDPoint:
     def __add__(self, point: TwoDPoint):
         x_added = self.x + point.x
         y_added = self.y + point.y
+        return TwoDPoint(x_added, y_added)
 
     @staticmethod
     def from_coordinates(coordinates: List[float]):
