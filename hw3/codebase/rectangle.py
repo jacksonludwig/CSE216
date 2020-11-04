@@ -11,7 +11,12 @@ class Rectangle(Quadrilateral):
 
     def __is_member(self):
         """Returns True if the given coordinates form a valid rectangle, and False otherwise."""
-        return False  # TODO
+        lengths = self.side_lengths()
+        if lengths[0] != lengths[2]:
+            return False
+        if lengths[1] != lengths[3]:
+            return False
+        return True  # was TODO
 
     def center(self):
         """Returns the center of this rectangle, calculated to be the point of intersection of its diagonals."""

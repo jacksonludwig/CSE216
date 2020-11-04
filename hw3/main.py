@@ -1,5 +1,6 @@
 from codebase.two_d_point import TwoDPoint
 from codebase.quadrilateral import Quadrilateral
+from codebase.rectangle import Rectangle
 
 def main():
     points = TwoDPoint.from_coordinates([2, 2, 3.0, 3.1, 2.3, 1.2])
@@ -21,5 +22,6 @@ def main():
     q = Quadrilateral(0, 1, 1, 1, 1, 0, 0, 0)
     print(q.smallest_x())
     print(q.side_lengths())
+    r = Rectangle(0, 1, 1, 1, 1, 0, 0, 0)
 
 main()
