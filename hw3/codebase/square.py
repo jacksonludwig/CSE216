@@ -43,9 +43,9 @@ class Square(Rectangle):
         general quadrilateral, hence the return type. The only exception is when the square is positioned in a way where
         this approximation will lead it to vanish into a single point. In that case, a call to snap() will not modify
         this square in any way."""
-        verts = map(self.round_point, self.vertices)
+        verts = list(map(self.round_point, self.vertices))
 
         if verts[0] == verts[1] == verts[2] == verts[3]:
-            return self.from_verts(self.verts)
+            return self.from_verts(self.vertices, 's')
 
-        return self.from_verts(verts)  # was TODO
+        return self.from_verts(verts, 'q')  # was TODO

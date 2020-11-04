@@ -30,9 +30,12 @@ def main():
 
     print(Square.round_point(p3))
 
-    s = Square(0, 1, 1, 1, 1, 0, 0, 0)
-    s2 = Square.from_verts(s.vertices)
+    s = Square(0, .6, .6, .6, .6, 0, 0, 0)
+    s2 = Square.from_verts(s.vertices, 's')
     for i in range(0, 4):
         print(s.vertices[i] == s2.vertices[i])
+
+    for i in range(0, 4):
+        print(s2.snap().vertices[i])
 
 main()
