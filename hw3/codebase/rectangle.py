@@ -28,9 +28,13 @@ class Rectangle(Quadrilateral):
 
     def center(self):
         """Returns the center of this rectangle, calculated to be the point of intersection of its diagonals."""
-        return TwoDPoint(0, 0)  # TODO
+        verts = self.vertices
+        center_x = (verts[0].x + verts[2].x) / 2
+        center_y = (verts[0].y + verts[2].y) / 2
+        return TwoDPoint(center_x, center_y)  # was TODO
 
     def area(self):
         """Returns the area of this rectangle. The implementation invokes the side_lengths() method from the superclass,
         and computes the product of this rectangle's length and width."""
-        return 0  # TODO
+        side_lengths = self.side_lengths()
+        return side_lengths[0] * side_lengths[1]  # was TODO

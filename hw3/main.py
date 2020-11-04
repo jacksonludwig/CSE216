@@ -24,4 +24,7 @@ def main():
     print(q.side_lengths())
     r = Rectangle(0, 1, 1, 1, 1, 0, 0, 0)
 
+    print("area: " + str(r.area()))
+    print("center: " + str(r.center()))
+
 main()
