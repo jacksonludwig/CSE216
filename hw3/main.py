@@ -32,10 +32,7 @@ def main():
 
     s = Square(0, .6, .6, .6, .6, 0, 0, 0)
     s2 = Square.from_verts(s.vertices, 's')
-    for i in range(0, 4):
-        print(s.vertices[i] == s2.vertices[i])
+    print(s == s2.snap())
 
-    for i in range(0, 4):
-        print(s2.snap().vertices[i])
 
 main()

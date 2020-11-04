@@ -29,3 +29,12 @@ class Quadrilateral:
         """Returns the x-coordinate of the vertex with the smallest x-value of the four vertices of this
         quadrilateral."""
         return min(map(lambda v: v.x, self.vertices))  # was TODO
+
+    def __eq__(self, shape): # implemented by me
+        if type(self) != type(shape):
+            return False
+        for i in range(0, 4):
+            if self.vertices[i] != shape.vertices[i]:
+                return False
+        return True
+
