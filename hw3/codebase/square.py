@@ -23,17 +23,24 @@ class Square(Rectangle):
         return lengths[0] == lengths[1] == lengths[2] == lengths[3]
 
     @staticmethod
-    # Added by me as a helper, to make a copy of a square without a new constructor
-    def from_verts(points, shape):
+    def __verts_to_floats(points): # helper added by me
         raw_values = []
         for p in points:
             raw_values.append(p.x)
             raw_values.append(p.y)
+        return raw_values
 
-        if shape == 'q':
-            return Quadrilateral(*tuple(raw_values))
-        elif shape == 's':
-            return Square(*tuple(raw_values))
+    @staticmethod
+    # Added by me as a helper, to make a copy of a quad without a new constructor
+    def __from_verts_quad(points):
+        raw_values = Square.__verts_to_floats(points)
+        return Quadrilateral(*tuple(raw_values))
+
+    @staticmethod
+    # Added by me as a helper, to make a copy of a square without a new constructor
+    def __from_verts_square(points):
+        raw_values = Square.__verts_to_floats(points)
+        return Square(*tuple(raw_values))
 
     @staticmethod
     def round_point(point):  # Added by me as a helper
@@ -48,6 +55,6 @@ class Square(Rectangle):
         verts = list(map(self.round_point, self.vertices))
 
         if verts[0] == verts[1] == verts[2] == verts[3]:
-            return self.from_verts(self.vertices, 's')
+            return Square.__from_verts_quad(self.vertices)
 
-        return self.from_verts(verts, 'q')  # was TODO
+        return Square.__from_verts_square(verts)  # was TODO

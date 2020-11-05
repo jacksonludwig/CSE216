@@ -31,8 +31,8 @@ def main():
 
     print(Square.round_point(p3))
 
-    s = Square(0, .6, .6, .6, .6, 0, 0, 0)
-    s2 = Square.from_verts(s.vertices, 's')
+    s = Square(0, 1, 1, 1, 1, 0, 0, 0)
+    s2 = Square(0, .6, .6, .6, .6, 0, 0, 0)
     print(s == s2.snap())
 
 
