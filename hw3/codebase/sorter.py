@@ -3,6 +3,7 @@ from .quadrilateral import Quadrilateral
 
 
 class ShapeSorter:
+    @staticmethod
     def __xComparator(s):
         return s.smallest_x()
 
