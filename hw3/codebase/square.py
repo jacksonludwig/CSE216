@@ -8,9 +8,10 @@ class Square(Rectangle):
     def __init__(self, *floats):
         super().__init__(*floats)
         if not self.__is_member():
-            raise TypeError("A square cannot be formed by the given coordinates.")
+            raise TypeError(
+                "A square cannot be formed by the given coordinates.")
 
-    def __is_member(self): # added by me to fix error
+    def __is_member(self):  # added by me to fix error
         verts = self.vertices
         for v in range(0, 4):
             for v2 in range(0, 4):
@@ -22,7 +23,8 @@ class Square(Rectangle):
         return lengths[0] == lengths[1] == lengths[2] == lengths[3]
 
     @staticmethod
-    def from_verts(points, shape): # Added by me as a helper, to make a copy of a square without a new constructor
+    # Added by me as a helper, to make a copy of a square without a new constructor
+    def from_verts(points, shape):
         raw_values = []
         for p in points:
             raw_values.append(p.x)
@@ -34,7 +36,7 @@ class Square(Rectangle):
             return Square(*tuple(raw_values))
 
     @staticmethod
-    def round_point(point): # Added by me as a helper
+    def round_point(point):  # Added by me as a helper
         return TwoDPoint(round(point.x), round(point.y))
 
     def snap(self):

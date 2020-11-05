@@ -1,6 +1,6 @@
 # TODO finish after finishing magic methods to compare shapes
 from .quadrilateral import Quadrilateral
-from copy import deepcopy
+
 
 class ShapeSorter:
     def __xComparator(s):
@@ -8,7 +8,7 @@ class ShapeSorter:
 
     @staticmethod
     def sort(*shapes: Quadrilateral):
-        shapes_copy = list(deepcopy(shapes))
+        shapes_copy = list(shapes)
         if len(shapes) == 0:
             raise ValueError("Cannot sort an empty list of shapes")
 

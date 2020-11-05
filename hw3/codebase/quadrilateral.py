@@ -30,7 +30,7 @@ class Quadrilateral:
         quadrilateral."""
         return min(map(lambda v: v.x, self.vertices))  # was TODO
 
-    def __eq__(self, shape): # implemented by me
+    def __eq__(self, shape):  # implemented by me
         if type(self) != type(shape):
             return False
         for i in range(0, 4):
@@ -38,7 +38,7 @@ class Quadrilateral:
                 return False
         return True
 
-    def __str__(self): # implemented by me
+    def __str__(self):  # implemented by me
         verts_str = str(self.vertices[0])
         for v in self.vertices[1:]:
             verts_str += '; '
