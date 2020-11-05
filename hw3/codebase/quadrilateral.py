@@ -38,3 +38,9 @@ class Quadrilateral:
                 return False
         return True
 
+    def __str__(self): # implemented by me
+        verts_str = str(self.vertices[0])
+        for v in self.vertices[1:]:
+            verts_str += '; '
+            verts_str += str(v)
+        return self.__class__.__name__ + ": " + verts_str

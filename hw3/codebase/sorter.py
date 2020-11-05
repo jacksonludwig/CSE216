@@ -1,11 +1,16 @@
-from quadrilateral import Quadrilateral
+# TODO finish after finishing magic methods to compare shapes
+from .quadrilateral import Quadrilateral
+from copy import deepcopy
 
-# TODO after finishing magic methods to compare shapes
 class ShapeSorter:
+    def __xComparator(s):
+        return s.smallest_x()
+
     @staticmethod
-    def sort(*shapes):
+    def sort(*shapes: Quadrilateral):
+        shapes_copy = list(deepcopy(shapes))
         if len(shapes) == 0:
             raise ValueError("Cannot sort an empty list of shapes")
-        if len(shapes) == 1:
-            return shapes[0]
 
+        shapes_copy.sort(key=ShapeSorter.__xComparator)
+        return shapes_copy
