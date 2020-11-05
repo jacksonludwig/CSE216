@@ -15,7 +15,7 @@ class TwoDPoint:
     def y(self):
         return self.__y
 
-    def __eq__(self, other: object) -> bool:
+    def __eq__(self, other) -> bool:
         # was TODO
         if type(self) != type(other):
             return False
