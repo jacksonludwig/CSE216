@@ -20,9 +20,9 @@ class Quadrilateral:
         """Returns a tuple of four floats, each denoting the length of a side of this quadrilateral. The value must be
         ordered clockwise, starting from the top left corner."""
         side1 = abs(self.vertices[1].x - self.vertices[0].x)
-        side2 = abs(self.vertices[1].y - self.vertices[2].y)
-        side3 = abs(self.vertices[2].x - self.vertices[3].x)
-        side4 = abs(self.vertices[0].y - self.vertices[3].y)
+        side2 = abs(self.vertices[0].y - self.vertices[3].y)
+        side3 = abs(self.vertices[3].x - self.vertices[2].x)
+        side4 = abs(self.vertices[2].y - self.vertices[1].y)
         return side1, side2, side3, side4  # was TODO
 
     def smallest_x(self):
