@@ -23,3 +23,10 @@ class TestTwoDPoint(TestCase):
         point_3 = TwoDPoint(4, 4)
         self.assertEqual(point_1 + point_2, point_3)
         self.assertNotEqual(point_1 + point_3, point_2)
+
+    def test___sub__(self):
+        point_1 = TwoDPoint(2, 2)
+        point_2 = TwoDPoint(2, 2)
+        point_3 = TwoDPoint(0, 0)
+        self.assertEqual(point_1 - point_2, point_3)
+        self.assertNotEqual(point_1 - point_2, point_1)
