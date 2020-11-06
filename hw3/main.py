@@ -1,8 +1,8 @@
-from project.two_d_point import TwoDPoint
-from project.quadrilateral import Quadrilateral
-from project.rectangle import Rectangle
-from project.square import Square
-from project.sorter import ShapeSorter
+from package.project.two_d_point import TwoDPoint
+from package.project.quadrilateral import Quadrilateral
+from package.project.rectangle import Rectangle
+from package.project.square import Square
+from package.project.sorter import ShapeSorter
 
 # import unittest
 
