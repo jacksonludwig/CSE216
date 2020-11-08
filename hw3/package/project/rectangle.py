@@ -17,11 +17,20 @@ class Rectangle(Quadrilateral):
                     if verts[v] == verts[v2]:
                         return False
 
+        if (
+            verts[0].y != verts[1].y
+            or verts[0].x != verts[3].x
+            or verts[1].x != verts[2].x
+            or verts[2].y != verts[3].y
+        ):
+            return False
+
         lengths = self.side_lengths()
         if lengths[0] != lengths[2]:
             return False
         if lengths[1] != lengths[3]:
             return False
+
         return True  # was TODO
 
     def center(self):

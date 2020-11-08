@@ -17,6 +17,14 @@ class Square(Rectangle):
                     if verts[v] == verts[v2]:
                         return False
 
+        if (
+            verts[0].y != verts[1].y
+            or verts[0].x != verts[3].x
+            or verts[1].x != verts[2].x
+            or verts[2].y != verts[3].y
+        ):
+            return False
+
         lengths = self.side_lengths()
         return lengths[0] == lengths[1] == lengths[2] == lengths[3]
 
