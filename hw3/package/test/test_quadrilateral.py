@@ -7,7 +7,10 @@ class TestQuadrilateral(TestCase):
     def test_side_lengths(self):
         q = Quadrilateral(0, 1, 1, 1, 1, 0, 0, 0)  # was TODO
         self.assertEqual((1, 1, 1, 1), q.side_lengths())
-        self.assertNotEqual((-1, -1, -1, -1), q.side_lengths())
+        q2 = Quadrilateral(6, 3, 2, 3, 2, 1, 6, 1)
+        self.assertEqual((4, 2, 4, 2), q2.side_lengths())
+        q3 = Quadrilateral(3, 6, 2, 3, 2, 1, 6, 1)
+        self.assertNotEqual((4, 2, 4, 2), q3.side_lengths())
 
     def test_smallest_x(self):
         q = Quadrilateral(0, 1, 1, 1, 1, 0, 0, 0)  # was TODO
