@@ -3,12 +3,10 @@ from .two_d_point import TwoDPoint
 
 
 class Rectangle(Quadrilateral):
-
     def __init__(self, *floats):
         super().__init__(*floats)
         if not self.__is_member():
-            raise TypeError(
-                "A rectangle cannot be formed by the given coordinates.")
+            raise TypeError("A rectangle cannot be formed by the given coordinates.")
 
     def __is_member(self):
         """Returns True if the given coordinates form a valid rectangle, and False otherwise."""

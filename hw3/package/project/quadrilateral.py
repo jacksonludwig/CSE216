@@ -2,12 +2,10 @@ from .two_d_point import TwoDPoint
 
 
 class Quadrilateral:
-
     def __init__(self, *floats):
         # this if was added because only 8 floats make 4 points
         if len(floats) != 8:
-            raise ValueError(
-                "Only 8 floats can make a shape")
+            raise ValueError("Only 8 floats can make a shape")
 
         points = TwoDPoint.from_coordinates(list(floats))
         self.__vertices = tuple(points[0:4])  # changed from 0:3
@@ -41,6 +39,6 @@ class Quadrilateral:
     def __str__(self):  # implemented by me
         verts_str = str(self.vertices[0])
         for v in self.vertices[1:]:
-            verts_str += '; '
+            verts_str += "; "
             verts_str += str(v)
         return self.__class__.__name__ + ": " + verts_str

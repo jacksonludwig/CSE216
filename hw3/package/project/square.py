@@ -4,12 +4,10 @@ from .two_d_point import TwoDPoint
 
 
 class Square(Rectangle):
-
     def __init__(self, *floats):
         super().__init__(*floats)
         if not self.__is_member():
-            raise TypeError(
-                "A square cannot be formed by the given coordinates.")
+            raise TypeError("A square cannot be formed by the given coordinates.")
 
     def __is_member(self):  # added by me to fix error
         verts = self.vertices
@@ -23,7 +21,7 @@ class Square(Rectangle):
         return lengths[0] == lengths[1] == lengths[2] == lengths[3]
 
     @staticmethod
-    def __verts_to_floats(points): # helper added by me
+    def __verts_to_floats(points):  # helper added by me
         raw_values = []
         for p in points:
             raw_values.append(p.x)
@@ -52,9 +50,9 @@ class Square(Rectangle):
         general quadrilateral, hence the return type. The only exception is when the square is positioned in a way where
         this approximation will lead it to vanish into a single point. In that case, a call to snap() will not modify
         this square in any way."""
-        verts = list(map(self.round_point, self.vertices))
+        verts_round = list(map(self.round_point, self.vertices))
 
-        if verts[0] == verts[1] == verts[2] == verts[3]:
+        if verts_round[0] == verts_round[1] == verts_round[2] == verts_round[3]:
             return Square.__from_verts_quad(self.vertices)
 
-        return Square.__from_verts_square(verts)  # was TODO
+        return Square.__from_verts_square(verts_round)  # was TODO

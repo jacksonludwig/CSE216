@@ -1,4 +1,3 @@
-# TODO finish after finishing magic methods to compare shapes
 from .quadrilateral import Quadrilateral
 
 
