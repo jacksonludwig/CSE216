@@ -2,7 +2,6 @@ from typing import List
 
 
 class TwoDPoint:
-
     def __init__(self, x, y) -> None:
         self.__x = x
         self.__y = y
@@ -27,7 +26,7 @@ class TwoDPoint:
         return not self.__eq__(other)
 
     def __str__(self) -> str:
-        return '(%g, %g)' % (self.__x, self.__y)
+        return "(%g, %g)" % (self.__x, self.__y)
 
     # was TODO: add magic methods such that two TwoDPoint objects can be added and subtracted coordinate-wise just by using
     #  syntax of the form p + q or p - q
@@ -48,8 +47,7 @@ class TwoDPoint:
     @staticmethod
     def from_coordinates(coordinates: List[float]):
         if len(coordinates) % 2 != 0:
-            raise Exception(
-                "Odd number of floats given to build a list of 2-d points")
+            raise Exception("Odd number of floats given to build a list of 2-d points")
         points = []
         it = iter(coordinates)
         for x in it:
