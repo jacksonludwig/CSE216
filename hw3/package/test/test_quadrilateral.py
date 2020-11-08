@@ -1,6 +1,7 @@
-from package.project.two_d_point import TwoDPoint
 from unittest import TestCase
-from ..project.quadrilateral import Quadrilateral
+
+from package.project.quadrilateral import Quadrilateral
+from package.project.two_d_point import TwoDPoint
 
 
 class TestQuadrilateral(TestCase):

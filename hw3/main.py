@@ -1,8 +1,8 @@
-from package.project.two_d_point import TwoDPoint
 from package.project.quadrilateral import Quadrilateral
 from package.project.rectangle import Rectangle
-from package.project.square import Square
 from package.project.sorter import ShapeSorter
+from package.project.square import Square
+from package.project.two_d_point import TwoDPoint
 
 # import unittest
 
@@ -40,7 +40,8 @@ def main():
     s2 = Square(0, .6, .6, .6, .6, 0, 0, 0)
     print(s == s2.snap())
 
-    shapes = [s, r, q]
+    q3 = Rectangle(6, 3, 2, 3, 2, 1, 6, 1)
+    shapes = [s, q3, r, q]
     for s in shapes:
         print(s)
     print()
