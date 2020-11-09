@@ -64,3 +64,18 @@ class Square(Rectangle):
             return Square.__from_verts_quad(self.vertices)
 
         return Square.__from_verts_square(verts_round)  # was TODO
+
+    def __eq__(self, shape):  # implemented by me
+        if type(self) != type(shape):
+            return False
+        for i in range(0, 4):
+            if self.vertices[i] != shape.vertices[i]:
+                return False
+        return True
+
+    def __str__(self):  # implemented by me
+        verts_str = str(self.vertices[0])
+        for v in self.vertices[1:]:
+            verts_str += "; "
+            verts_str += str(v)
+        return self.__class__.__name__ + ": " + verts_str + ", All sides equal length"
