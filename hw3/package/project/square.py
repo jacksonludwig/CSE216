@@ -1,6 +1,7 @@
 from .rectangle import Rectangle
 from .quadrilateral import Quadrilateral
 from .two_d_point import TwoDPoint
+import math
 
 
 class Square(Rectangle):
@@ -49,8 +50,12 @@ class Square(Rectangle):
         return Square(*tuple(raw_values))
 
     @staticmethod
+    def my_round(num): # Added by me as helper
+        return math.floor(num + 0.5)
+
+    @staticmethod
     def round_point(point):  # Added by me as a helper
-        return TwoDPoint(round(point.x), round(point.y))
+        return TwoDPoint(Square.my_round(point.x), Square.my_round(point.y))
 
     def snap(self):
         """Snaps the sides of the square such that each corner (x,y) is modified to be a corner (x',y') where x' is the
