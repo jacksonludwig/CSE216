@@ -48,6 +48,6 @@ def main():
     for s in ShapeSorter.sort(*tuple(shapes)):
         print(s)
 
-    print(Square.round_point(TwoDPoint(-1.5, -2.5)))
+    print(Square.round_point(TwoDPoint(-1.5, 1.4)))
 
 main()

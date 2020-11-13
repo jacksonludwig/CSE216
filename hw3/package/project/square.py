@@ -51,7 +51,10 @@ class Square(Rectangle):
 
     @staticmethod
     def my_round(num): # Added by me as helper
-        return math.floor(num + 0.5)
+        if num < 0 and num % 1 >= .6:
+            return math.ceil(num - 0.5)
+        else:
+            return math.floor(num + 0.5)
 
     @staticmethod
     def round_point(point):  # Added by me as a helper
