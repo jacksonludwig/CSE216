@@ -42,3 +42,5 @@ class TestQuadrilateral(TestCase):
     def test___str__(self):
         q = Quadrilateral(0, 1, 1, 1, 1, 0, 0, 0)
         self.assertEqual("Quadrilateral: (0, 1); (1, 1); (1, 0); (0, 0)", str(q))
+        q2 = Quadrilateral(0, 1, 1, 1, 1, 0, 1, 0)
+        self.assertNotEqual("Quadrilateral: (0, 1); (1, 1); (1, 0); (0, 0)", str(q2))
