@@ -1,0 +1,78 @@
+
+
+NVIM v0.5.0-846-g569e5c86b
+Build type: RelWithDebInfo
+LuaJIT 2.0.5
+Compilation: /usr/bin/cc -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1 -O2 -g -Og -g -Wall -Wextra -pedantic -Wno-unused-parameter -Wstrict-prototypes -std=gnu99 -Wshadow -Wconversion -Wmissing-prototypes -Wimplicit-fallthrough -Wvla -fstack-protector-strong -fno-common -fdiagnostics-color=auto -DINCLUDE_GENERATED_DECLARATIONS -D_GNU_SOURCE -DNVIM_MSGPACK_HAS_FLOAT32 -DNVIM_UNIBI_HAS_VAR_FROM -DMIN_LOG_LEVEL=3 -I/home/jackson/.cache/yay/neovim-git/src/build/config -I/home/jackson/.cache/yay/neovim-git/src/neovim-git/src -I/usr/include -I/home/jackson/.cache/yay/neovim-git/src/build/src/nvim/auto -I/home/jackson/.cache/yay/neovim-git/src/build/include
+Compiled by jackson
+
+Features: +acl +iconv +tui
+See ":help feature-compile"
+
+   system vimrc file: "$VIM/sysinit.vim"
+  fall-back for $VIM: "/usr/share/nvim"
+
+Run :checkhealth for more info
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/home/jackson/.config/nvim/plugged/coc.nvim/autoload)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+sourcing "/home/jackson/.config/nvim/plugged/coc.nvim/autoload/coc.vim"
+finished sourcing /home/jackson/.config/nvim/plugged/coc.nvim/autoload/coc.vim
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/tmp/nvimro0bQs/coc.nvim-30290)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+sourcing "/tmp/nvimro0bQs/coc.nvim-30290/coc-30290.vim"
+finished sourcing /tmp/nvimro0bQs/coc.nvim-30290/coc-30290.vim
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/home/jackson/.config/nvim/plugged/coc.nvim/autoload/coc)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+sourcing "/home/jackson/.config/nvim/plugged/coc.nvim/autoload/coc/highlight.vim"
+finished sourcing /home/jackson/.config/nvim/plugged/coc.nvim/autoload/coc/highlight.vim
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/home/jackson/.config/nvim/plugged/ultisnips/autoload)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+line 0: sourcing "/home/jackson/.config/nvim/plugged/ultisnips/autoload/UltiSnips.vim"
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/usr/share/nvim/runtime/autoload)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+line 14: sourcing "/usr/share/nvim/runtime/autoload/provider.vim"
+finished sourcing /usr/share/nvim/runtime/autoload/provider.vim
+continuing in function provider#python3#Call[9]..remote#host#Require[10]..provider#pythonx#Require
+finished sourcing /home/jackson/.config/nvim/plugged/ultisnips/autoload/UltiSnips.vim
+continuing in TextChangedI Autocommands for "*"
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/home/jackson/.config/nvim/plugged/coc.nvim/autoload/coc)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+line 1: sourcing "/home/jackson/.config/nvim/plugged/coc.nvim/autoload/coc/prompt.vim"
+finished sourcing /home/jackson/.config/nvim/plugged/coc.nvim/autoload/coc/prompt.vim
+continuing in function coc#float#create_cursor_float[4]..<SNR>65_is_blocking
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/home/jackson/.config/nvim/plugged/coc.nvim/autoload/coc)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+line 12: sourcing "/home/jackson/.config/nvim/plugged/coc.nvim/autoload/coc/helper.vim"
+finished sourcing /home/jackson/.config/nvim/plugged/coc.nvim/autoload/coc/helper.vim
+continuing in function coc#float#create_cursor_float[19]..coc#float#get_config_cursor
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+
+E37: No write since last change
+E162: No write since last change for buffer "main.py"
+
+Writing ShaDa file "/home/jackson/.local/share/nvim/shada/main.shada"
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/home/jackson/.config/kitty)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/home/jackson/Unmanaged/git_repos/pomAdjust)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/home/jackson/Unmanaged/git_repos/arch-dots/nvim)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/home/jackson/Unmanaged/git_repos/arch-dots/nvim)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/home/jackson/Unmanaged/git_repos/arch-dots/nvim)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
+chdir(/home/jackson)
+chdir(/home/jackson/Unmanaged/git_repos/cse216/hw3)
