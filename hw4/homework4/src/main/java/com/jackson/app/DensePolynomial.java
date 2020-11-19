@@ -10,11 +10,15 @@ public class DensePolynomial implements Polynomial {
      * */
     @Override
     public int degree() {
-        // TODO account of zero coefficients and finish doc
         if (values.length == 0)
             throw new IllegalArgumentException(
                 "A polynomial must have at least one value in order to record it's degree");
-        return values.length - 1;
+
+        for (int i = values.length - 1; i != 0; i--)
+            if (values[i] != 0)
+                return i;
+
+        return 0;
     }
 
     @Override
