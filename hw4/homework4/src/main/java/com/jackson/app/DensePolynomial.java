@@ -24,6 +24,9 @@ public class DensePolynomial implements Polynomial {
     @Override
     public int getCoefficient(int d) {
         // TODO Auto-generated method stub
+        if(values.length >= d) {
+            return values[d];
+        }
         return 0;
     }
 

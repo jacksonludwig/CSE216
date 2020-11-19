@@ -5,5 +5,6 @@ public class App {
         int[] v = {-5, 2, 0, 4};
         DensePolynomial p = new DensePolynomial(v);
         System.out.println(p.degree());
+        System.out.println(p.getCoefficient(0));
     }
 }
