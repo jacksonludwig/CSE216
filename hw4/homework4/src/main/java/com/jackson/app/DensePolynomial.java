@@ -23,8 +23,7 @@ public class DensePolynomial implements Polynomial {
 
     @Override
     public int getCoefficient(int d) {
-        // TODO Auto-generated method stub
-        if(values.length >= d) {
+        if(values.length - 1 >= d) {
             return values[d];
         }
         return 0;
