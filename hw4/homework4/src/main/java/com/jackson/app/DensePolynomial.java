@@ -1,10 +1,20 @@
 package com.jackson.app;
 
 public class DensePolynomial implements Polynomial {
+    private int[] values;
+
+    public DensePolynomial(int[] values) { this.values = values; }
+
+    /**
+     * Throws an IllegalArgumentException if the length of the array is zero.
+     * */
     @Override
     public int degree() {
-        // TODO Auto-generated method stub
-        return 0;
+        // TODO account of zero coefficients and finish doc
+        if (values.length == 0)
+            throw new IllegalArgumentException(
+                "A polynomial must have at least one value in order to record it's degree");
+        return values.length - 1;
     }
 
     @Override
