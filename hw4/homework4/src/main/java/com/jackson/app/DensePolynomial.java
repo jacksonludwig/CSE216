@@ -23,7 +23,7 @@ public class DensePolynomial implements Polynomial {
 
     @Override
     public int getCoefficient(int d) {
-        if(values.length - 1 >= d) {
+        if (values.length - 1 >= d) {
             return values[d];
         }
         return 0;
@@ -38,6 +38,8 @@ public class DensePolynomial implements Polynomial {
     @Override
     public Polynomial add(Polynomial q) {
         // TODO Auto-generated method stub
+        Polynomial smallest = this.degree() < q.degree() ? this : q;
+
         return null;
     }
 
