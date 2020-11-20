@@ -23,6 +23,7 @@ public class DensePolynomial implements Polynomial {
 
     @Override
     public int getCoefficient(int d) {
+        // TODO handle negative, 0
         if (values.length - 1 >= d) {
             return values[d];
         }
