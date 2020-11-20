@@ -1,5 +1,8 @@
 package com.jackson.app;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DensePolynomial implements Polynomial {
     private int[] values;
 
@@ -22,7 +25,8 @@ public class DensePolynomial implements Polynomial {
     }
 
     /**
-     * @throws IllegalArgumentException the inputted degree to access is less than zero.
+     * @throws IllegalArgumentException the inputted degree to access is less
+     *     than zero.
      * */
     @Override
     public int getCoefficient(int d) {
@@ -43,9 +47,20 @@ public class DensePolynomial implements Polynomial {
         return false;
     }
 
+    private SparsePolynomial toMapPolynomial() {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < values.length; i++) {
+            map.put(i, values[i]);
+        }
+        return new SparsePolynomial(map);
+    }
+
     @Override
     public Polynomial add(Polynomial q) {
         // TODO Auto-generated method stub
+        // Note that this must be able to add two Polys of map or array backend,
+        // but only map allows negatives. Therefore, things must be
+        // intelligently converted.
         Polynomial smallest = this.degree() < q.degree() ? this : q;
 
         return null;
