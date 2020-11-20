@@ -21,12 +21,20 @@ public class DensePolynomial implements Polynomial {
         return 0;
     }
 
+    /**
+     * @throws IllegalArgumentException the inputted degree to access is less than zero.
+     * */
     @Override
     public int getCoefficient(int d) {
         // TODO handle negative, 0
+        if (d < 0)
+            throw new IllegalArgumentException(
+                "Polynomials must only have zero or positive exponents");
+
         if (values.length - 1 >= d) {
             return values[d];
         }
+
         return 0;
     }
 
