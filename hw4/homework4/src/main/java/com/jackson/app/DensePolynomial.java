@@ -47,8 +47,8 @@ public class DensePolynomial implements Polynomial {
         return false;
     }
 
-    // added by me to for use in arithmetic methods
-    private SparsePolynomial toMapPolynomial() {
+    // TODO use in arithmetic methods
+    private SparsePolynomial toSparsePolynomial() {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < values.length; i++) {
             map.put(i, values[i]);
