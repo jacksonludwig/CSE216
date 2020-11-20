@@ -26,7 +26,6 @@ public class DensePolynomial implements Polynomial {
      * */
     @Override
     public int getCoefficient(int d) {
-        // TODO handle negative, 0
         if (d < 0)
             throw new IllegalArgumentException(
                 "Polynomials must only have zero or positive exponents");
