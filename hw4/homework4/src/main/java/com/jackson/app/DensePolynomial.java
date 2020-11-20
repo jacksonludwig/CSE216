@@ -6,7 +6,7 @@ public class DensePolynomial implements Polynomial {
     public DensePolynomial(int[] values) { this.values = values; }
 
     /**
-     * Throws an IllegalArgumentException if the length of the array is zero.
+     * @throws IllegalArgumentException if the length of the array is zero.
      * */
     @Override
     public int degree() {
