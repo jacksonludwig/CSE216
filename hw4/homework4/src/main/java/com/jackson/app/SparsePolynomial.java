@@ -6,7 +6,7 @@ public class SparsePolynomial {
     private Map<Integer, Integer> values;
 
     public SparsePolynomial(Map<Integer, Integer> values) {
-        values = this.values;
+        this.values = values;
     }
 
     public Map<Integer, Integer> getValues() { return values; }

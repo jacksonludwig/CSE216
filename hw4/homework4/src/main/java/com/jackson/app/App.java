@@ -10,5 +10,7 @@ public class App {
         DensePolynomial p2 = new DensePolynomial(v2);
         System.out.println(p2.degree());
         System.out.println(p2.getCoefficient(0));
+        // SparsePolynomial s = p.toMapPolynomial();
+        // System.out.println(s.getValues());
     }
 }
