@@ -8,6 +8,8 @@ public class DensePolynomial implements Polynomial {
 
     public DensePolynomial(int[] values) { this.values = values; }
 
+    public DensePolynomial(int size) { this.values = new int[size]; }
+
     /**
      * @throws IllegalArgumentException if the length of the array is zero.
      * */
@@ -62,9 +64,16 @@ public class DensePolynomial implements Polynomial {
         // Note that this must be able to add two Polys of map or array backend,
         // but only map allows negatives. Therefore, things must be
         // intelligently converted.
-        Polynomial smallest = this.degree() < q.degree() ? this : q;
 
-        return null;
+        Polynomial smallest = this.degree() <= q.degree() ? this : q;
+        Polynomial largest = this.degree() > q.degree() ? this : q;
+        int[] addedValues = new int[largest.degree() + 1];
+
+        for (int i = largest.degree(); i != -1; i--) {
+            addedValues[i] = largest.getCoefficient(i) + smallest.getCoefficient(i);
+        }
+
+        return new DensePolynomial(addedValues);
     }
 
     @Override
