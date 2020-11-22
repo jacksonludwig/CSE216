@@ -34,7 +34,7 @@ public class DensePolynomial implements Polynomial {
     public int getCoefficient(int d) {
         if (d < 0)
             throw new IllegalArgumentException(
-                "Polynomials must only have zero or positive exponents");
+                "Dense polynomials must only have zero or positive exponents");
 
         if (values.length - 1 >= d) {
             return values[d];
