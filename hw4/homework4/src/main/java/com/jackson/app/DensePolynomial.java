@@ -10,6 +10,16 @@ public class DensePolynomial implements Polynomial {
 
     public DensePolynomial(int size) { this.values = new int[size]; }
 
+    // TODO finish
+    public DensePolynomial(String poly) {
+        
+    }
+
+    // TODO finish
+    private int[] tokenizeEquation(String poly) {
+
+    }
+
     /**
      * @throws IllegalArgumentException if the length of the array is zero.
      * */
@@ -58,15 +68,10 @@ public class DensePolynomial implements Polynomial {
         return new SparsePolynomial(map);
     }
 
-    @Override
-    public Polynomial add(Polynomial q) {
-        // TODO Auto-generated method stub
-        // Note that this must be able to add two Polys of map or array backend,
-        // but only map allows negatives. Therefore, things must be
-        // intelligently converted.
-
-        Polynomial smallest = this.degree() <= q.degree() ? this : q;
-        Polynomial largest = this.degree() > q.degree() ? this : q;
+    // This adds two dense polys only
+    private DensePolynomial addDense(DensePolynomial p, DensePolynomial p2) {
+        Polynomial smallest = p.degree() <= p2.degree() ? p : p2;
+        Polynomial largest = p.degree() > p2.degree() ? p : p2;
         int[] addedValues = new int[largest.degree() + 1];
 
         for (int i = largest.degree(); i != -1; i--) {
@@ -74,6 +79,19 @@ public class DensePolynomial implements Polynomial {
         }
 
         return new DensePolynomial(addedValues);
+    }
+
+    @Override
+    public Polynomial add(Polynomial q) {
+        // TODO finish second part
+
+        // first, check if the other one is dense and add them that way.
+        if (q.getClass() == this.getClass())
+            return addDense(this, (DensePolynomial) q);
+        else {
+            SparsePolynomial s = this.toSparsePolynomial();
+            return s.add(q);
+        }
     }
 
     @Override
