@@ -11,13 +11,33 @@ public class DensePolynomial implements Polynomial {
     public DensePolynomial(int size) { this.values = new int[size]; }
 
     // TODO finish
-    public DensePolynomial(String poly) {
-        
-    }
+    public DensePolynomial(String poly) {}
 
-    // TODO finish
-    private int[] tokenizeEquation(String poly) {
+    // TODO finish, make private
+    public int[] tokenizeEquation(String poly) {
+        String[] p = poly.replaceAll("\\s", "").split("[+]");
 
+        int highestDegree = Integer.parseInt(p[0].substring(p[0].indexOf('^') + 1));
+        int[] tokenized = new int[highestDegree + 1];
+
+        for(int i = 0; i < p.length; i++) {
+            int xLoc = p[i].indexOf('x');
+            int carrot_loc = p[i].indexOf('^');
+            String coeff;
+            String degree;
+            if (xLoc != -1) {
+                coeff = p[i].substring(0, xLoc);
+                if (carrot_loc != -1)
+                    degree = p[i].substring(carrot_loc + 1);
+                else
+                    degree = "1";
+            } else {
+                coeff = p[i];
+                degree = "0";
+            }
+            tokenized[Integer.parseInt(degree)] = Integer.parseInt(coeff);
+        }
+        return tokenized;
     }
 
     /**
@@ -75,7 +95,8 @@ public class DensePolynomial implements Polynomial {
         int[] addedValues = new int[largest.degree() + 1];
 
         for (int i = largest.degree(); i != -1; i--) {
-            addedValues[i] = largest.getCoefficient(i) + smallest.getCoefficient(i);
+            addedValues[i] =
+                largest.getCoefficient(i) + smallest.getCoefficient(i);
         }
 
         return new DensePolynomial(addedValues);
@@ -87,7 +108,7 @@ public class DensePolynomial implements Polynomial {
 
         // first, check if the other one is dense and add them that way.
         if (q.getClass() == this.getClass())
-            return addDense(this, (DensePolynomial) q);
+            return addDense(this, (DensePolynomial)q);
         else {
             SparsePolynomial s = this.toSparsePolynomial();
             return s.add(q);
