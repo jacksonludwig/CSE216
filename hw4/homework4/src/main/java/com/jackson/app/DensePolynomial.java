@@ -11,10 +11,12 @@ public class DensePolynomial implements Polynomial {
     public DensePolynomial(int size) { this.values = new int[size]; }
 
     // TODO finish
-    public DensePolynomial(String poly) {}
+    public DensePolynomial(String poly) {
+        this.values = tokenizeEquation(poly);
+    }
 
-    // TODO finish, make private
-    public int[] tokenizeEquation(String poly) {
+    // TODO finish (exceptions?)
+    private int[] tokenizeEquation(String poly) {
         String[] p = poly.replaceAll("\\s", "").split("[+]");
 
         int highestDegree = Integer.parseInt(p[0].substring(p[0].indexOf('^') + 1));
@@ -27,6 +29,8 @@ public class DensePolynomial implements Polynomial {
             String degree;
             if (xLoc != -1) {
                 coeff = p[i].substring(0, xLoc);
+                if (coeff.equals(""))
+                    coeff = "1";
                 if (carrot_loc != -1)
                     degree = p[i].substring(carrot_loc + 1);
                 else
@@ -137,5 +141,13 @@ public class DensePolynomial implements Polynomial {
     public boolean wellFormed() {
         // TODO Auto-generated method stub
         return false;
+    }
+
+    public int[] getValues() {
+        return values;
+    }
+
+    public void setValues(int[] values) {
+        this.values = values;
     }
 }

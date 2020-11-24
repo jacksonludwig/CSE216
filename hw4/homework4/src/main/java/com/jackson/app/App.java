@@ -16,9 +16,11 @@ public class App {
         // System.out.println("----");
         // System.out.println(p.getCoefficient(0));
         // System.out.println(p.add(p2).getCoefficient(0));
-        int[] test = p.tokenizeEquation("3x^4 + 5x^2 + -2x + -5");
-        for(int i = 0; i < test.length; i++) {
-            System.out.println(test[i]);
+        int[] test = new DensePolynomial("1x^4 + 5x^2 + -2x + -5").getValues();
+        int[] test2 = {-5, -2, 5, 0, 1};
+        for (int i = 0; i < 5; i++) {
+            System.out.println("test: " + test[i]);
+            System.out.println("test2: " + test2[i]);
         }
     }
 }
