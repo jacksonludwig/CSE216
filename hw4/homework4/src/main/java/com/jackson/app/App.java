@@ -1,5 +1,8 @@
 package com.jackson.app;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 public class App {
     public static void main(String[] args) {
         int[] v = {1, 1, 3, 4};
@@ -28,5 +31,12 @@ public class App {
         // }
         // System.out.println();
         // System.out.println(p);
+        Map<Integer, Integer> m = new TreeMap<>();
+        m.put(2500, 1);
+        m.put(433, -2);
+        m.put(0, -1);
+        m.put(2501, 1);
+        Polynomial sp = new SparsePolynomial(m);
+        System.out.println(sp.degree());
     }
 }

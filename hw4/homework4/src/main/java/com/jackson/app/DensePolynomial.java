@@ -71,6 +71,7 @@ public class DensePolynomial implements Polynomial {
             }
         }
 
+        // Remove extra plus at the end if there's no 0-degree coeff
         for (int i = poly.length() - 1; i != -1; i--) {
             if (Character.isDigit(poly.charAt(i)) ||
                 Character.isLetter(poly.charAt(i)))

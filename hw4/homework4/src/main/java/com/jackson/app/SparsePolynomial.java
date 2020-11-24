@@ -1,5 +1,6 @@
 package com.jackson.app;
 
+import java.util.Collections;
 import java.util.Map;
 
 public class SparsePolynomial implements Polynomial {
@@ -18,7 +19,7 @@ public class SparsePolynomial implements Polynomial {
 	@Override
 	public int degree() {
 		// TODO Auto-generated method stub
-		return 0;
+        return Collections.max(this.values.keySet());
 	}
 
 	@Override
