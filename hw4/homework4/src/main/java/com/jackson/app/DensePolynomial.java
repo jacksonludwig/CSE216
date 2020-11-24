@@ -56,14 +56,14 @@ public class DensePolynomial implements Polynomial {
                     poly += coeff;
                     break;
                 case 1:
-            if (coeff.equals("1")) 
-                coeff = "";
+                    if (coeff.equals("1"))
+                        coeff = "";
                     poly += coeff + "x";
                     poly += " + ";
                     break;
                 default:
-            if (coeff.equals("1")) 
-                coeff = "";
+                    if (coeff.equals("1"))
+                        coeff = "";
                     poly += coeff + "x^" + i;
                     poly += " + ";
                     break;
@@ -72,7 +72,8 @@ public class DensePolynomial implements Polynomial {
         }
 
         for (int i = poly.length() - 1; i != -1; i--) {
-            if (Character.isDigit(poly.charAt(i)) || Character.isLetter(poly.charAt(i)))
+            if (Character.isDigit(poly.charAt(i)) ||
+                Character.isLetter(poly.charAt(i)))
                 break;
             if (poly.charAt(i) == '+')
                 poly = poly.substring(0, i);

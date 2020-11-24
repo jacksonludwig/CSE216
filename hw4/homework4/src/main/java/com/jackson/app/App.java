@@ -5,8 +5,6 @@ public class App {
         int[] v = {1, 1, 3, 4};
         DensePolynomial p = new DensePolynomial(v);
         DensePolynomial p2 = new DensePolynomial("4x^3 + 3x^2 + x + 1");
-        System.out.println(p);
-        System.out.println(p2);
         // System.out.println(p.degree());
         // System.out.println(p.getCoefficient(1));
         // int[] v2 = { 1 };
