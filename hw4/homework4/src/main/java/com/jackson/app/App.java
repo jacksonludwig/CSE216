@@ -2,8 +2,11 @@ package com.jackson.app;
 
 public class App {
     public static void main(String[] args) {
-        int[] v = {-5, 2, 0, 4};
+        int[] v = {1, 1, 3, 4};
         DensePolynomial p = new DensePolynomial(v);
+        DensePolynomial p2 = new DensePolynomial("4x^3 + 3x^2 + x + 1");
+        System.out.println(p);
+        System.out.println(p2);
         // System.out.println(p.degree());
         // System.out.println(p.getCoefficient(1));
         // int[] v2 = { 1 };
@@ -16,11 +19,16 @@ public class App {
         // System.out.println("----");
         // System.out.println(p.getCoefficient(0));
         // System.out.println(p.add(p2).getCoefficient(0));
-        int[] test = new DensePolynomial("1x^4 + 5x^2 + -2x + -5").getValues();
-        int[] test2 = {-5, -2, 5, 0, 1};
-        for (int i = 0; i < 5; i++) {
-            System.out.println("test: " + test[i]);
-            System.out.println("test2: " + test2[i]);
-        }
+        // int[] test = new DensePolynomial("x^4 + 5x^2 + -2x + -5").getValues();
+        // int[] test2 = {-5, -2, 5, 0, 1};
+        // for (int i = 0; i < 5; i++) {
+        //     System.out.print(test[i] + " ");
+        // }
+        // System.out.println();
+        // for (int i = 0; i < 5; i++) {
+        //     System.out.print(test2[i] + " ");
+        // }
+        // System.out.println();
+        // System.out.println(p);
     }
 }

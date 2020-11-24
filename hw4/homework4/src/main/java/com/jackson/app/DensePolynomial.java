@@ -19,10 +19,11 @@ public class DensePolynomial implements Polynomial {
     private int[] tokenizeEquation(String poly) {
         String[] p = poly.replaceAll("\\s", "").split("[+]");
 
-        int highestDegree = Integer.parseInt(p[0].substring(p[0].indexOf('^') + 1));
+        int highestDegree =
+            Integer.parseInt(p[0].substring(p[0].indexOf('^') + 1));
         int[] tokenized = new int[highestDegree + 1];
 
-        for(int i = 0; i < p.length; i++) {
+        for (int i = 0; i < p.length; i++) {
             int xLoc = p[i].indexOf('x');
             int carrot_loc = p[i].indexOf('^');
             String coeff;
@@ -42,6 +43,42 @@ public class DensePolynomial implements Polynomial {
             tokenized[Integer.parseInt(degree)] = Integer.parseInt(coeff);
         }
         return tokenized;
+    }
+
+    @Override
+    public String toString() {
+        String poly = "";
+        for (int i = this.values.length - 1; i != -1; i--) {
+            String coeff = String.valueOf(this.values[i]);
+            if (!coeff.equals("0")) {
+                switch (i) {
+                case 0:
+                    poly += coeff;
+                    break;
+                case 1:
+            if (coeff.equals("1")) 
+                coeff = "";
+                    poly += coeff + "x";
+                    poly += " + ";
+                    break;
+                default:
+            if (coeff.equals("1")) 
+                coeff = "";
+                    poly += coeff + "x^" + i;
+                    poly += " + ";
+                    break;
+                }
+            }
+        }
+
+        for (int i = poly.length() - 1; i != -1; i--) {
+            if (Character.isDigit(poly.charAt(i)) || Character.isLetter(poly.charAt(i)))
+                break;
+            if (poly.charAt(i) == '+')
+                poly = poly.substring(0, i);
+        }
+
+        return poly.trim();
     }
 
     /**
@@ -143,11 +180,7 @@ public class DensePolynomial implements Polynomial {
         return false;
     }
 
-    public int[] getValues() {
-        return values;
-    }
+    public int[] getValues() { return values; }
 
-    public void setValues(int[] values) {
-        this.values = values;
-    }
+    public void setValues(int[] values) { this.values = values; }
 }
