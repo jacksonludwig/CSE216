@@ -1,5 +1,6 @@
 package com.jackson.app;
 
+import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -31,12 +32,13 @@ public class App {
         // }
         // System.out.println();
         // System.out.println(p);
-        Map<Integer, Integer> m = new TreeMap<>();
-        m.put(2500, 1);
-        m.put(433, -2);
-        m.put(0, -1);
-        m.put(2501, 1);
+        Map<Integer, Integer> m = new TreeMap<>(Collections.reverseOrder());
+        m.put(0, -5);
+        m.put(1, -2);
+        m.put(2, 5);
+        m.put(3, 0);
+        m.put(4, 1);
         Polynomial sp = new SparsePolynomial(m);
-        System.out.println(sp.degree());
+        System.out.println(sp);
     }
 }
