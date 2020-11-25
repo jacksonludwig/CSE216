@@ -1,7 +1,8 @@
 package com.jackson.app;
 
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class DensePolynomial implements Polynomial {
     private int[] values;
@@ -124,7 +125,7 @@ public class DensePolynomial implements Polynomial {
 
     // TODO use in arithmetic methods
     private SparsePolynomial toSparsePolynomial() {
-        Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new TreeMap<>(Collections.reverseOrder());
         for (int i = 0; i < values.length; i++) {
             map.put(i, values[i]);
         }

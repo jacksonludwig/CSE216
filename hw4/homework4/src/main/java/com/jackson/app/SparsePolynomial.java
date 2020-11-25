@@ -21,6 +21,15 @@ public class SparsePolynomial implements Polynomial {
         this.values = values;
     }
 
+    // TODO use in arithmetic methods
+    private SparsePolynomial toSparsePolynomial(DensePolynomial p) {
+        Map<Integer, Integer> map = new TreeMap<>(Collections.reverseOrder());
+        for (int i = 0; i < p.getValues().length; i++) {
+            map.put(i, p.getValues()[i]);
+        }
+        return new SparsePolynomial(map);
+    }
+
     // TODO finish
     private Map<Integer, Integer> tokenizeEquation(String poly) {
         String[] p = poly.replaceAll("\\s", "").split("[+]");
