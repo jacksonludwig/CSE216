@@ -45,6 +45,8 @@ public class SparsePolynomial implements Polynomial {
                 coeff = p[i].substring(0, xLoc);
                 if (coeff.equals(""))
                     coeff = "1";
+                if (coeff.equals("-"))
+                    coeff = "-1";
                 if (carrot_loc != -1)
                     degree = p[i].substring(carrot_loc + 1);
                 else
@@ -72,12 +74,16 @@ public class SparsePolynomial implements Polynomial {
                 case 1:
                     if (coeff.equals("1"))
                         coeff = "";
+                    if (coeff.equals("-1"))
+                        coeff = "-";
                     poly += coeff + "x";
                     poly += " + ";
                     break;
                 default:
                     if (coeff.equals("1"))
                         coeff = "";
+                    if (coeff.equals("-1"))
+                        coeff = "-";
                     poly += coeff + "x^" + expo;
                     poly += " + ";
                     break;
@@ -156,26 +162,6 @@ public class SparsePolynomial implements Polynomial {
         return new SparsePolynomial(added);
     }
 
-    // Helper
-    private Polynomial addSparseAndDense(SparsePolynomial s,
-                                         DensePolynomial d) {
-        Map<Integer, Integer> added = new TreeMap<>(Collections.reverseOrder());
-        for (int i = 0; i < d.getValues().length; i++) {
-            added.put(i, d.getValues()[i]);
-        }
-
-        for (Map.Entry<Integer, Integer> entry : s.getValues().entrySet()) {
-            int expo = entry.getKey();
-            int coeff = entry.getValue();
-            if (added.get(expo) != null)
-                added.put(expo, coeff + added.get(expo));
-            else
-                added.put(expo, coeff);
-        }
-
-        return new SparsePolynomial(added);
-    }
-
     @Override
     public Polynomial add(Polynomial q) {
         // TODO Auto-generated method stub
@@ -183,7 +169,7 @@ public class SparsePolynomial implements Polynomial {
             return addSparse(this, (SparsePolynomial)q);
         }
 
-        return addSparseAndDense(this, (DensePolynomial)q);
+        return addSparse(this, toSparsePolynomial((DensePolynomial)q));
     }
 
     @Override
@@ -192,13 +178,46 @@ public class SparsePolynomial implements Polynomial {
         return null;
     }
 
-    @Override
-    public Polynomial subtract(Polynomial q) {
-        // TODO Auto-generated method stub
+    // Helper
+    private Polynomial subSparse(SparsePolynomial p1, SparsePolynomial p2) {
+        Map<Integer, Integer> m1 = p1.getValues();
+        Map<Integer, Integer> m2 = p2.getValues();
+
+        Map<Integer, Integer> added = new TreeMap<>(Collections.reverseOrder());
+        for (Map.Entry<Integer, Integer> entry : m2.entrySet()) {
+            int expo = entry.getKey();
+            int coeff = entry.getValue();
+            added.put(expo, coeff);
+        }
+        for (Map.Entry<Integer, Integer> entry : m1.entrySet()) {
+            int expo = entry.getKey();
+            int coeff = entry.getValue();
+            if (added.get(expo) != null)
+                added.put(expo,
+                          coeff - added.get(expo));
+            else
+                added.put(expo, -1 * coeff);
+        }
+        return new SparsePolynomial(added);
+	}
+
+    // Helper
+    private Polynomial subSparseAndDense(SparsePolynomial p, DensePolynomial d) {
         return null;
     }
 
     @Override
+    public Polynomial subtract(Polynomial q) {
+        // TODO Auto-generated method stub
+        if (this.getClass() == q.getClass()) {
+            return subSparse(this, (SparsePolynomial)q);
+        }
+
+        return subSparseAndDense(this, (DensePolynomial)q);
+    }
+
+
+	@Override
     public Polynomial minus() {
         // TODO Auto-generated method stub
         return null;
