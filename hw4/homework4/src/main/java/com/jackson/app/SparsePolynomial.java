@@ -151,19 +151,16 @@ public class SparsePolynomial implements Polynomial {
 
     // Helper
     private Polynomial addSparse(SparsePolynomial p1, SparsePolynomial p2) {
-        Map<Integer, Integer> smallest =
-            p1.getValues().size() <= p2.getValues().size() ? p1.getValues()
-                                                           : p2.getValues();
-        Map<Integer, Integer> largest =
-            p1.getValues().size() > p2.getValues().size() ? p1.getValues()
-                                                          : p2.getValues();
+        Map<Integer, Integer> m1 = p1.getValues();
+        Map<Integer, Integer> m2 = p2.getValues();
+
         Map<Integer, Integer> added = new TreeMap<>(Collections.reverseOrder());
-        for (Map.Entry<Integer, Integer> entry : largest.entrySet()) {
+        for (Map.Entry<Integer, Integer> entry : m2.entrySet()) {
             int largestExpo = entry.getKey();
             int largestCoeff = entry.getValue();
             added.put(largestExpo, largestCoeff);
         }
-        for (Map.Entry<Integer, Integer> entry : smallest.entrySet()) {
+        for (Map.Entry<Integer, Integer> entry : m1.entrySet()) {
             int smallestExpo = entry.getKey();
             int smallestCoeff = entry.getValue();
             if (added.get(smallestExpo) != null)
