@@ -1,7 +1,9 @@
 package com.jackson.app;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.TreeMap;
 
 public class SparsePolynomial implements Polynomial {
@@ -21,13 +23,24 @@ public class SparsePolynomial implements Polynomial {
         this.values = values;
     }
 
+    // sort by reverse exponent, AND account for negatives
+    // private Comparator<Integer> generateComparator() {
+    //     Comparator<Integer> c = new Comparator<Integer>() {
+    //         @Override
+    //         public int compare(Integer arg0, Integer arg1) {
+    //             return Integer.compare(Math.abs(arg0), Math.abs(arg1));
+    //         }
+    //     };
+    //     return c;
+    // }
+
     // TODO use in arithmetic methods
     private SparsePolynomial toSparsePolynomial(DensePolynomial p) {
-        Map<Integer, Integer> map = new TreeMap<>(Collections.reverseOrder());
+        Map<Integer, Integer> m = new TreeMap<>(Collections.reverseOrder());
         for (int i = 0; i < p.getValues().length; i++) {
-            map.put(i, p.getValues()[i]);
+            m.put(i, p.getValues()[i]);
         }
-        return new SparsePolynomial(map);
+        return new SparsePolynomial(m);
     }
 
     // TODO finish
@@ -70,6 +83,7 @@ public class SparsePolynomial implements Polynomial {
                 switch (expo) {
                 case 0:
                     poly += coeff;
+                    poly += " + ";
                     break;
                 case 1:
                     if (coeff.equals("1"))
@@ -114,8 +128,7 @@ public class SparsePolynomial implements Polynomial {
             if (first) {
                 highestKey = expo;
                 first = false;
-            }
-            else if (coeff != 0 && expo > highestKey)
+            } else if (coeff != 0 && expo > highestKey)
                 highestKey = expo;
         }
         return highestKey;
@@ -193,13 +206,12 @@ public class SparsePolynomial implements Polynomial {
             int expo = entry.getKey();
             int coeff = entry.getValue();
             if (added.get(expo) != null)
-                added.put(expo,
-                          coeff - added.get(expo));
+                added.put(expo, coeff - added.get(expo));
             else
                 added.put(expo, -1 * coeff);
         }
         return new SparsePolynomial(added);
-	}
+    }
 
     @Override
     public Polynomial subtract(Polynomial q) {
@@ -211,8 +223,7 @@ public class SparsePolynomial implements Polynomial {
         return subSparse(this, toSparsePolynomial((DensePolynomial)q));
     }
 
-
-	@Override
+    @Override
     public Polynomial minus() {
         // TODO Auto-generated method stub
         return null;
