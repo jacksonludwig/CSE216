@@ -39,11 +39,15 @@ public class App {
         m.put(3, 0);
         m.put(4, 1);
         Polynomial sp = new SparsePolynomial(m);
-        Polynomial sp2 = new SparsePolynomial("-x^10");
-        Polynomial sp3 = new SparsePolynomial("x^-10 + x^9");
-        System.out.println(((SparsePolynomial) sp3).getValues().get(10));
+        Polynomial sp2 = new SparsePolynomial("x^3 + 2x^2 + 5");
+        Polynomial sp3 = new SparsePolynomial("3x^2 + 2");
         System.out.println(sp2);
         System.out.println(sp3);
-        System.out.println(sp2.add(sp3));
+        System.out.println(sp2.multiply(sp3));
+
+        sp3 = new SparsePolynomial("3x^2");
+        System.out.println(sp2);
+        System.out.println(sp3);
+        System.out.println(sp2.multiply(sp3));
     }
 }

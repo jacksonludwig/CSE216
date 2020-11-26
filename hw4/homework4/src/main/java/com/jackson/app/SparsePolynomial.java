@@ -1,5 +1,6 @@
 package com.jackson.app;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Map;
@@ -182,10 +183,39 @@ public class SparsePolynomial implements Polynomial {
         return addSparse(this, toSparsePolynomial((DensePolynomial)q));
     }
 
+    // Helper
+    private Polynomial multSparse(SparsePolynomial p1, SparsePolynomial p2) {
+        Map<Integer, Integer> m1 = p1.getValues();
+        Map<Integer, Integer> m2 = p2.getValues();
+
+        ArrayList<Polynomial> list = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry : m1.entrySet()) {
+            Map<Integer, Integer> added = new TreeMap<>(Collections.reverseOrder());
+            int expo = entry.getKey();
+            int coeff = entry.getValue();
+            for (Map.Entry<Integer, Integer> entry2 : m2.entrySet()) {
+                int expo2 = entry2.getKey();
+                int coeff2 = entry2.getValue();
+                added.put(expo + expo2, coeff * coeff2);
+            }
+            list.add(new SparsePolynomial(added));
+        }
+        Polynomial sum = list.get(0);
+        for (int i = 1; i < list.size(); i++) {
+            sum = sum.add(list.get(i));
+        }
+        System.out.println(list);
+        return sum;
+    }
+
     @Override
     public Polynomial multiply(Polynomial q) {
         // TODO Auto-generated method stub
-        return null;
+        if (this.getClass() == q.getClass()) {
+            return multSparse(this, (SparsePolynomial)q);
+        }
+
+        return multSparse(this, toSparsePolynomial((DensePolynomial)q));
     }
 
     // Helper
