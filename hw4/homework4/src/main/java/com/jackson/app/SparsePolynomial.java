@@ -100,11 +100,16 @@ public class SparsePolynomial implements Polynomial {
     @Override
     public int degree() {
         // TODO Auto-generated method stub
+        boolean first = true;
         int highestKey = 0;
         for (Map.Entry<Integer, Integer> e : this.values.entrySet()) {
             int expo = e.getKey();
             int coeff = e.getValue();
-            if (coeff != 0 && expo > highestKey)
+            if (first) {
+                highestKey = expo;
+                first = false;
+            }
+            else if (coeff != 0 && expo > highestKey)
                 highestKey = expo;
         }
         return highestKey;
