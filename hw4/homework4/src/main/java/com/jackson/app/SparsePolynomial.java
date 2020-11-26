@@ -201,11 +201,6 @@ public class SparsePolynomial implements Polynomial {
         return new SparsePolynomial(added);
 	}
 
-    // Helper
-    private Polynomial subSparseAndDense(SparsePolynomial p, DensePolynomial d) {
-        return null;
-    }
-
     @Override
     public Polynomial subtract(Polynomial q) {
         // TODO Auto-generated method stub
@@ -213,7 +208,7 @@ public class SparsePolynomial implements Polynomial {
             return subSparse(this, (SparsePolynomial)q);
         }
 
-        return subSparseAndDense(this, (DensePolynomial)q);
+        return subSparse(this, toSparsePolynomial((DensePolynomial)q));
     }
 
 
