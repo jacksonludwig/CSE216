@@ -39,6 +39,9 @@ public class App {
         m.put(3, 0);
         m.put(4, 1);
         Polynomial sp = new SparsePolynomial(m);
+        Polynomial sp2 = new SparsePolynomial("x^10");
+        System.out.println(sp2);
         System.out.println(sp);
+        System.out.println(sp2.add(sp));
     }
 }

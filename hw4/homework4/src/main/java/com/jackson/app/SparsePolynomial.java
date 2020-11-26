@@ -125,10 +125,60 @@ public class SparsePolynomial implements Polynomial {
         return false;
     }
 
+    // Helper
+    private Polynomial addSparse(SparsePolynomial p1, SparsePolynomial p2) {
+        Map<Integer, Integer> smallest =
+            p1.getValues().size() <= p2.getValues().size() ? p1.getValues()
+                                                           : p2.getValues();
+        Map<Integer, Integer> largest =
+            p1.getValues().size() > p2.getValues().size() ? p1.getValues()
+                                                          : p2.getValues();
+        Map<Integer, Integer> added = new TreeMap<>(Collections.reverseOrder());
+        for (Map.Entry<Integer, Integer> entry : largest.entrySet()) {
+            int largestExpo = entry.getKey();
+            int largestCoeff = entry.getValue();
+            added.put(largestExpo, largestCoeff);
+        }
+        for (Map.Entry<Integer, Integer> entry : smallest.entrySet()) {
+            int smallestExpo = entry.getKey();
+            int smallestCoeff = entry.getValue();
+            if (added.get(smallestExpo) != null)
+                added.put(smallestExpo,
+                          smallestCoeff + added.get(smallestExpo));
+            else
+                added.put(smallestExpo, smallestCoeff);
+        }
+        return new SparsePolynomial(added);
+    }
+
+    // Helper
+    private Polynomial addSparseAndDense(SparsePolynomial s,
+                                         DensePolynomial d) {
+        Map<Integer, Integer> added = new TreeMap<>(Collections.reverseOrder());
+        for (int i = 0; i < d.getValues().length; i++) {
+            added.put(i, d.getValues()[i]);
+        }
+
+        for (Map.Entry<Integer, Integer> entry : s.getValues().entrySet()) {
+            int expo = entry.getKey();
+            int coeff = entry.getValue();
+            if (added.get(expo) != null)
+                added.put(expo, coeff + added.get(expo));
+            else
+                added.put(expo, coeff);
+        }
+
+        return new SparsePolynomial(added);
+    }
+
     @Override
     public Polynomial add(Polynomial q) {
         // TODO Auto-generated method stub
-        return null;
+        if (this.getClass() == q.getClass()) {
+            return addSparse(this, (SparsePolynomial)q);
+        }
+
+        return addSparseAndDense(this, (DensePolynomial)q);
     }
 
     @Override
