@@ -190,7 +190,8 @@ public class SparsePolynomial implements Polynomial {
 
         ArrayList<Polynomial> list = new ArrayList<>();
         for (Map.Entry<Integer, Integer> entry : m1.entrySet()) {
-            Map<Integer, Integer> added = new TreeMap<>(Collections.reverseOrder());
+            Map<Integer, Integer> added =
+                new TreeMap<>(Collections.reverseOrder());
             int expo = entry.getKey();
             int coeff = entry.getValue();
             for (Map.Entry<Integer, Integer> entry2 : m2.entrySet()) {
