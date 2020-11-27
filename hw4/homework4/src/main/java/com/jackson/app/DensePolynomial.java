@@ -81,8 +81,11 @@ public class DensePolynomial implements Polynomial {
     }
 
     /**
+     * Returns the degree of the polynomial.
+     * @return the largest exponent with a non-zero coefficient.  If all terms
+     *     have zero exponents, it returns 0.
      * @throws IllegalArgumentException if the length of the array is zero.
-     * */
+     */
     @Override
     public int degree() {
         if (values.length == 0)
@@ -97,9 +100,14 @@ public class DensePolynomial implements Polynomial {
     }
 
     /**
+     * Returns the coefficient corresponding to the given exponent.  Returns 0
+     * if there is no term with that exponent in the polynomial.
+     *
+     * @param d the exponent whose coefficient is returned.
+     * @return the coefficient of the term of whose exponent is d.
      * @throws IllegalArgumentException the inputted degree to access is less
      *     than zero.
-     * */
+     */
     @Override
     public int getCoefficient(int d) {
         if (d < 0)
@@ -113,6 +121,9 @@ public class DensePolynomial implements Polynomial {
         return 0;
     }
 
+    /**
+     * @return true if the polynomial represents the zero constant
+     */
     @Override
     public boolean isZero() {
         // TODO Auto-generated method stub
@@ -141,30 +152,72 @@ public class DensePolynomial implements Polynomial {
     //     return new DensePolynomial(addedValues);
     // }
 
+    /**
+     * Returns a polynomial by adding the parameter to the current instance.
+     * Neither the current instance nor the parameter are modified.
+     *
+     * @param q the non-null polynomial to add to <code>this</code>
+     * @return <code>this + </code>q
+     * @throws NullPointerException if q is null
+     */
     @Override
     public Polynomial add(Polynomial q) {
         // TODO finish second part
+        if (q == null)
+            throw new NullPointerException("cannot add null polynomials");
         return this.toSparsePolynomial().add(q);
     }
 
+    /**
+     * Returns a polynomial by multiplying the parameter with the current
+     * instance.  Neither the current instance nor the parameter are modified.
+     *
+     * @param q the polynomial to multiply with <code>this</code>
+     * @return <code>this * </code>q
+     * @throws NullPointerException if q is null
+     */
     @Override
     public Polynomial multiply(Polynomial q) {
         // TODO Auto-generated method stub
+        if (q == null)
+            throw new NullPointerException("cannot multiply null polynomials");
         return this.toSparsePolynomial().multiply(q);
     }
 
+    /**
+     * Returns a  polynomial by subtracting the parameter from the current
+     * instance. Neither the current instance nor the parameter are modified.
+     *
+     * @param q the non-null polynomial to subtract from <code>this</code>
+     * @return <code>this - </code>q
+     * @throws NullPointerException if q is null
+     */
     @Override
     public Polynomial subtract(Polynomial q) {
         // TODO Auto-generated method stub
+        if (q == null)
+            throw new NullPointerException("cannot subtract null polynomials");
         return this.toSparsePolynomial().subtract(q);
     }
 
+    /**
+     * Returns a polynomial by negating the current instance. The current
+     * instance is not modified.
+     *
+     * @return -this
+     */
     @Override
     public Polynomial minus() {
         // TODO Auto-generated method stub
         return this.toSparsePolynomial().minus();
     }
 
+    /**
+     * Checks if the class invariant holds for the current instance.
+     *
+     * @return {@literal true} if the class invariant holds, and {@literal
+     *     false} otherwise.
+     */
     @Override
     public boolean wellFormed() {
         // TODO Auto-generated method stub

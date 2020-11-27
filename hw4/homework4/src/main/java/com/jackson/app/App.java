@@ -38,7 +38,7 @@ public class App {
         System.out.println(sp2);
         System.out.println(sp3);
         System.out.println(sp2.multiply(sp3));
-        System.out.println(new SparsePolynomial("0").isZero());
+        System.out.println(new SparsePolynomial("0x").isZero());
 
         System.out.println(p2);
         System.out.println(sp3);
