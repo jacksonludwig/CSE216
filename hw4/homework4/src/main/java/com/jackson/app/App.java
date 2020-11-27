@@ -38,7 +38,6 @@ public class App {
         m.put(2, 5);
         m.put(3, 0);
         m.put(4, 1);
-        Polynomial sp = new SparsePolynomial(m);
         Polynomial sp2 = new SparsePolynomial("x^3 + 2x^2 + 5");
         Polynomial sp3 = new SparsePolynomial("3x^2 + 2");
         System.out.println(sp2);

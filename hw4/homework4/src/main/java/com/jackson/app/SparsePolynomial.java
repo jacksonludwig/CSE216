@@ -10,7 +10,7 @@ import java.util.TreeMap;
 public class SparsePolynomial implements Polynomial {
     private Map<Integer, Integer> values;
 
-    public SparsePolynomial(Map<Integer, Integer> values) {
+    private SparsePolynomial(Map<Integer, Integer> values) {
         this.values = values;
     }
 
@@ -254,7 +254,13 @@ public class SparsePolynomial implements Polynomial {
     @Override
     public Polynomial minus() {
         // TODO Auto-generated method stub
-        return null;
+        Map<Integer, Integer> minus = new TreeMap<>(Collections.reverseOrder());
+        for (Map.Entry<Integer, Integer> entry : this.values.entrySet()) {
+            int expo = entry.getKey();
+            int coeff = entry.getValue();
+            minus.put(expo, -1 * coeff);
+        }
+        return new SparsePolynomial(minus);
     }
 
     @Override
