@@ -1,9 +1,5 @@
 package com.jackson.app;
 
-import java.util.Collections;
-import java.util.Map;
-import java.util.TreeMap;
-
 public class DensePolynomial implements Polynomial {
     private int[] values;
 
@@ -120,7 +116,10 @@ public class DensePolynomial implements Polynomial {
     @Override
     public boolean isZero() {
         // TODO Auto-generated method stub
-        return false;
+        for (int coeff : this.values)
+            if (coeff != 0)
+                return false;
+        return true;
     }
 
     // TODO use in arithmetic methods
@@ -129,48 +128,41 @@ public class DensePolynomial implements Polynomial {
     }
 
     // This adds two dense polys only
-    private DensePolynomial addDense(DensePolynomial p, DensePolynomial p2) {
-        Polynomial smallest = p.degree() <= p2.degree() ? p : p2;
-        Polynomial largest = p.degree() > p2.degree() ? p : p2;
-        int[] addedValues = new int[largest.degree() + 1];
+    // private DensePolynomial addDense(DensePolynomial p, DensePolynomial p2) {
+    //     Polynomial smallest = p.degree() <= p2.degree() ? p : p2;
+    //     Polynomial largest = p.degree() > p2.degree() ? p : p2;
+    //     int[] addedValues = new int[largest.degree() + 1];
 
-        for (int i = largest.degree(); i != -1; i--) {
-            addedValues[i] =
-                largest.getCoefficient(i) + smallest.getCoefficient(i);
-        }
+    //     for (int i = largest.degree(); i != -1; i--) {
+    //         addedValues[i] =
+    //             largest.getCoefficient(i) + smallest.getCoefficient(i);
+    //     }
 
-        return new DensePolynomial(addedValues);
-    }
+    //     return new DensePolynomial(addedValues);
+    // }
 
     @Override
     public Polynomial add(Polynomial q) {
         // TODO finish second part
-
-        // first, check if the other one is dense and add them that way.
-        if (q.getClass() == this.getClass())
-            return addDense(this, (DensePolynomial)q);
-        else {
-            SparsePolynomial s = this.toSparsePolynomial();
-            return s.add(q);
-        }
+        return this.toSparsePolynomial().add(q);
     }
 
     @Override
     public Polynomial multiply(Polynomial q) {
         // TODO Auto-generated method stub
-        return null;
+        return this.toSparsePolynomial().multiply(q);
     }
 
     @Override
     public Polynomial subtract(Polynomial q) {
         // TODO Auto-generated method stub
-        return null;
+        return this.toSparsePolynomial().subtract(q);
     }
 
     @Override
     public Polynomial minus() {
         // TODO Auto-generated method stub
-        return null;
+        return this.toSparsePolynomial().minus();
     }
 
     @Override

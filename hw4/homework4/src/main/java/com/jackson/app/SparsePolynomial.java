@@ -2,9 +2,7 @@ package com.jackson.app;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.TreeMap;
 
 public class SparsePolynomial implements Polynomial {
@@ -37,11 +35,7 @@ public class SparsePolynomial implements Polynomial {
 
     // TODO use in arithmetic methods
     private SparsePolynomial toSparsePolynomial(DensePolynomial p) {
-        Map<Integer, Integer> m = new TreeMap<>(Collections.reverseOrder());
-        for (int i = 0; i < p.getValues().length; i++) {
-            m.put(i, p.getValues()[i]);
-        }
-        return new SparsePolynomial(m);
+        return new SparsePolynomial(p.toString());
     }
 
     // TODO finish

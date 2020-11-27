@@ -1,9 +1,5 @@
 package com.jackson.app;
 
-import java.util.Collections;
-import java.util.Map;
-import java.util.TreeMap;
-
 public class App {
     public static void main(String[] args) {
         int[] v = {1, 1, 3, 4};
@@ -43,5 +39,9 @@ public class App {
         System.out.println(sp3);
         System.out.println(sp2.multiply(sp3));
         System.out.println(new SparsePolynomial("0").isZero());
+
+        System.out.println(p2);
+        System.out.println(sp3);
+        System.out.println(p2.add(sp3));
     }
 }
