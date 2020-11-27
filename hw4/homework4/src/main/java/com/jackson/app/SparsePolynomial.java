@@ -77,6 +77,15 @@ public class SparsePolynomial implements Polynomial {
     @Override
     public String toString() {
         String poly = "";
+
+        boolean allZero = true;
+        for (Map.Entry<Integer, Integer> entry : this.values.entrySet()) {
+            if (entry.getValue() != 0)
+                allZero = false;
+        }
+        if (allZero)
+            return "0";
+
         for (Map.Entry<Integer, Integer> entry : this.values.entrySet()) {
             int expo = entry.getKey();
             String coeff = String.valueOf(entry.getValue());
@@ -147,7 +156,11 @@ public class SparsePolynomial implements Polynomial {
     @Override
     public boolean isZero() {
         // TODO Auto-generated method stub
-        return false;
+        for (Map.Entry<Integer, Integer> e : this.values.entrySet()) {
+            if (e.getValue() != 0)
+                return false;
+        }
+        return true;
     }
 
     // Helper

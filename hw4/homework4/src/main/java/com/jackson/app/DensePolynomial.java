@@ -125,11 +125,7 @@ public class DensePolynomial implements Polynomial {
 
     // TODO use in arithmetic methods
     private SparsePolynomial toSparsePolynomial() {
-        Map<Integer, Integer> map = new TreeMap<>(Collections.reverseOrder());
-        for (int i = 0; i < values.length; i++) {
-            map.put(i, values[i]);
-        }
-        return new SparsePolynomial(map);
+        return new SparsePolynomial(this.toString());
     }
 
     // This adds two dense polys only

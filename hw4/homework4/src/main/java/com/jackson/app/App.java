@@ -32,12 +32,6 @@ public class App {
         // }
         // System.out.println();
         // System.out.println(p);
-        Map<Integer, Integer> m = new TreeMap<>(Collections.reverseOrder());
-        m.put(0, -5);
-        m.put(1, -2);
-        m.put(2, 5);
-        m.put(3, 0);
-        m.put(4, 1);
         Polynomial sp2 = new SparsePolynomial("x^3 + 2x^2 + 5");
         Polynomial sp3 = new SparsePolynomial("3x^2 + 2");
         System.out.println(sp2);
@@ -48,5 +42,6 @@ public class App {
         System.out.println(sp2);
         System.out.println(sp3);
         System.out.println(sp2.multiply(sp3));
+        System.out.println(new SparsePolynomial("0").isZero());
     }
 }
