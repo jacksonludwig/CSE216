@@ -238,7 +238,6 @@ public class SparsePolynomial implements Polynomial {
         for (int i = 1; i < list.size(); i++) {
             sum = sum.add(list.get(i));
         }
-        System.out.println(list);
         return sum;
     }
 

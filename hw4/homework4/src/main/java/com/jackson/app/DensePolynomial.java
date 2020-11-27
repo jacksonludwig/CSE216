@@ -16,8 +16,13 @@ public class DensePolynomial implements Polynomial {
     private int[] tokenizeEquation(String poly) {
         String[] p = poly.replaceAll("\\s", "").split("[+]");
 
-        int highestDegree =
-            Integer.parseInt(p[0].substring(p[0].indexOf('^') + 1));
+        int highestDegree = 0;
+        try {
+            highestDegree =
+                Integer.parseInt(p[0].substring(p[0].indexOf('^') + 1));
+        } catch (NumberFormatException e) {
+            highestDegree = 1;
+        }
         int[] tokenized = new int[highestDegree + 1];
 
         for (int i = 0; i < p.length; i++) {
@@ -45,6 +50,15 @@ public class DensePolynomial implements Polynomial {
     @Override
     public String toString() {
         String poly = "";
+
+        boolean allZero = true;
+        for (int coeff : this.values) {
+            if (coeff != 0)
+                allZero = false;
+        }
+        if (allZero)
+            return "0";
+
         for (int i = this.values.length - 1; i != -1; i--) {
             String coeff = String.valueOf(this.values[i]);
             if (!coeff.equals("0")) {
@@ -84,14 +98,9 @@ public class DensePolynomial implements Polynomial {
      * Returns the degree of the polynomial.
      * @return the largest exponent with a non-zero coefficient.  If all terms
      *     have zero exponents, it returns 0.
-     * @throws IllegalArgumentException if the length of the array is zero.
      */
     @Override
     public int degree() {
-        if (values.length == 0)
-            throw new IllegalArgumentException(
-                "A polynomial must have at least one value in order to record it's degree");
-
         for (int i = values.length - 1; i != 0; i--)
             if (values[i] != 0)
                 return i;
