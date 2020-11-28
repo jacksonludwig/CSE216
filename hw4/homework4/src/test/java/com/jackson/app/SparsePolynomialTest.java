@@ -21,6 +21,7 @@ public class SparsePolynomialTest {
     Polynomial s7;
     Polynomial s8;
     Polynomial s9;
+    Polynomial s10;
 
     @BeforeAll
     public void setup() {
@@ -34,6 +35,7 @@ public class SparsePolynomialTest {
         s7 = new SparsePolynomial("5x + 3");
         s8 = new SparsePolynomial("2x");
         s9 = new SparsePolynomial("10x^2 + 6x");
+        s10 = new SparsePolynomial("-10x^2 + -6x");
     }
 
     @Test
@@ -84,5 +86,12 @@ public class SparsePolynomialTest {
         assertEquals(s5, s6.subtract(s6));
         assertEquals(s3, s4.subtract(s3));
         assertNotEquals(s3.subtract(s4), s4.subtract(s3));
+    }
+
+    @Test
+    public void testMinus() {
+        assertEquals(s10, s9.minus());
+        assertEquals(s9.minus(), s10);
+        assertNotEquals(s8, s8.minus());
     }
 }

@@ -104,5 +104,6 @@ public class DensePolynomialTest {
     public void testMinus() {
         assertNotEquals(d4, d5);
         assertEquals(d4.minus(), d5);
+        assertEquals(d5, d4.minus());
     }
 }
