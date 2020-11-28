@@ -16,6 +16,7 @@ public class DensePolynomialTest {
     Polynomial d2;
     Polynomial d3;
     Polynomial d4;
+    Polynomial d5;
     Polynomial s1;
     Polynomial s2;
 
@@ -25,6 +26,7 @@ public class DensePolynomialTest {
         d2 = new DensePolynomial("2x^3 + 5x^2 + x + 20");
         d3 = new DensePolynomial("0");
         d4 = new DensePolynomial("4x + 2");
+        d5 = new DensePolynomial("-4x + -2");
         s1 = new SparsePolynomial("-6x^2 + 3x + -1");
         s2 = new SparsePolynomial("8x + 4");
     }
@@ -72,5 +74,27 @@ public class DensePolynomialTest {
         assertEquals(d1, d1);
         assertEquals(d1, d4);
         assertEquals(s2, d4.add(d4));
+    }
+
+    @Test
+    public void testMultiply() {
+        assertNotEquals(d1, d1.multiply(d1));
+        assertEquals(d1, d1);
+        assertEquals(d1, d4);
+        assertNotEquals(s2, d4.multiply(d4));
+    }
+
+    @Test
+    public void testSubtract() {
+        assertNotEquals(d1, d1.subtract(d1));
+        assertEquals(d1, d1);
+        assertEquals(d1, d4);
+        assertNotEquals(s2, d4.subtract(d4));
+    }
+
+    @Test
+    public void testMinus() {
+        assertNotEquals(d4, d5);
+        assertEquals(d4.minus(), d5);
     }
 }
