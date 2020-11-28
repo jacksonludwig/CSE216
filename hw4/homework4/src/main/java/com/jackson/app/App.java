@@ -2,8 +2,6 @@ package com.jackson.app;
 
 public class App {
     public static void main(String[] args) {
-        int[] v = {1, 1, 3, 4};
-        DensePolynomial p = new DensePolynomial(v);
         DensePolynomial p2 = new DensePolynomial("4x^3 + 3x^2 + x + 1");
         // System.out.println(p.degree());
         // System.out.println(p.getCoefficient(1));
@@ -44,6 +42,6 @@ public class App {
         System.out.println(sp3);
         System.out.println(p2.add(sp3));
 
-        System.out.println(new DensePolynomial("0x").add(new DensePolynomial("2x + 3")));
+        System.out.println(new DensePolynomial("x").add(new DensePolynomial("2x + 3")));
     }
 }

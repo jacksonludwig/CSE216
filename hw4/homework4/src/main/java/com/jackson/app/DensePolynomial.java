@@ -3,10 +3,6 @@ package com.jackson.app;
 public class DensePolynomial implements Polynomial {
     private int[] values;
 
-    public DensePolynomial(int[] values) { this.values = values; }
-
-    public DensePolynomial(int size) { this.values = new int[size]; }
-
     // TODO finish
     public DensePolynomial(String poly) {
         this.values = tokenizeEquation(poly);

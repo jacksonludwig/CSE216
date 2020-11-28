@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class DensePolynomialTest {
+public class SparsePolynomialTest {
     Polynomial d1;
     Polynomial s1;
 
