@@ -15,14 +15,18 @@ public class DensePolynomialTest {
     Polynomial d1;
     Polynomial d2;
     Polynomial d3;
+    Polynomial d4;
     Polynomial s1;
+    Polynomial s2;
 
     @BeforeAll
     public void setup() {
         d1 = new DensePolynomial("4x + 2");
         d2 = new DensePolynomial("2x^3 + 5x^2 + x + 20");
         d3 = new DensePolynomial("0");
+        d4 = new DensePolynomial("4x + 2");
         s1 = new SparsePolynomial("-6x^2 + 3x + -1");
+        s2 = new SparsePolynomial("8x + 4");
     }
 
     @Test
@@ -44,7 +48,8 @@ public class DensePolynomialTest {
         assertEquals(4, d1.getCoefficient(1));
         assertEquals(2, d2.getCoefficient(3));
         assertEquals(20, d2.getCoefficient(0));
-        assertThrows(IllegalArgumentException.class, () -> d2.getCoefficient(-1));
+        assertThrows(IllegalArgumentException.class,
+                     () -> d2.getCoefficient(-1));
     }
 
     @Test
@@ -52,5 +57,20 @@ public class DensePolynomialTest {
         assertTrue(d3.isZero());
         assertFalse(d1.isZero());
         assertFalse(d2.isZero());
+    }
+
+    @Test
+    public void testEquals() {
+        assertNotEquals(d1, d2);
+        assertNotEquals(d1, d3);
+        assertEquals(d1, d4);
+    }
+
+    @Test
+    public void testAdd() {
+        assertNotEquals(d1, d1.add(d1));
+        assertEquals(d1, d1);
+        assertEquals(d1, d4);
+        assertEquals(s2, d4.add(d4));
     }
 }
