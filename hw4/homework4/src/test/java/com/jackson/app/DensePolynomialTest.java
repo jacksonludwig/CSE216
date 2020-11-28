@@ -19,6 +19,7 @@ public class DensePolynomialTest {
     Polynomial d5;
     Polynomial s1;
     Polynomial s2;
+    Polynomial s3;
 
     @BeforeAll
     public void setup() {
@@ -29,6 +30,7 @@ public class DensePolynomialTest {
         d5 = new DensePolynomial("-4x + -2");
         s1 = new SparsePolynomial("-6x^2 + 3x + -1");
         s2 = new SparsePolynomial("8x + 4");
+        s3 = new SparsePolynomial("2x^-2");
     }
 
     @Test
@@ -74,6 +76,8 @@ public class DensePolynomialTest {
         assertEquals(d1, d1);
         assertEquals(d1, d4);
         assertEquals(s2, d4.add(d4));
+        assertThrows(IllegalArgumentException.class,
+                     () -> d1.add(s3));
     }
 
     @Test
@@ -82,6 +86,8 @@ public class DensePolynomialTest {
         assertEquals(d1, d1);
         assertEquals(d1, d4);
         assertNotEquals(s2, d4.multiply(d4));
+        assertThrows(IllegalArgumentException.class,
+                     () -> d1.multiply(s3));
     }
 
     @Test
@@ -90,6 +96,8 @@ public class DensePolynomialTest {
         assertEquals(d1, d1);
         assertEquals(d1, d4);
         assertNotEquals(s2, d4.subtract(d4));
+        assertThrows(IllegalArgumentException.class,
+                     () -> d1.subtract(s3));
     }
 
     @Test
