@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.jackson.app.DensePolynomialTest" time="0" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.jackson.app.DensePolynomialTest" time="0.001" tests="9" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="14"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-14-openjdk/lib"/>
-    <property name="sun.java.command" value="/home/jackson/Unmanaged/git_repos/cse216/hw4/homework4/target/surefire/surefirebooter4917359509537587876.jar /home/jackson/Unmanaged/git_repos/cse216/hw4/homework4/target/surefire 2020-11-28T10-31-24_628-jvmRun1 surefire2430576738189388468tmp surefire_03916683927763840190tmp"/>
+    <property name="sun.java.command" value="/home/jackson/Unmanaged/git_repos/cse216/hw4/homework4/target/surefire/surefirebooter6200273823951947897.jar /home/jackson/Unmanaged/git_repos/cse216/hw4/homework4/target/surefire 2020-11-28T15-54-25_999-jvmRun1 surefire486191387245111724tmp surefire_03292531985336489754tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/jackson/Unmanaged/git_repos/cse216/hw4/homework4/target/test-classes:/home/jackson/Unmanaged/git_repos/cse216/hw4/homework4/target/classes:/home/jackson/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.4.0/junit-jupiter-engine-5.4.0.jar:/home/jackson/.m2/repository/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar:/home/jackson/.m2/repository/org/junit/platform/junit-platform-engine/1.4.0/junit-platform-engine-1.4.0.jar:/home/jackson/.m2/repository/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar:/home/jackson/.m2/repository/org/junit/platform/junit-platform-commons/1.4.0/junit-platform-commons-1.4.0.jar:/home/jackson/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.4.0/junit-jupiter-api-5.4.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/jackson/Unmanaged/git_repos/cse216/hw4/homework4/target/surefire/surefirebooter4917359509537587876.jar"/>
+    <property name="surefire.real.class.path" value="/home/jackson/Unmanaged/git_repos/cse216/hw4/homework4/target/surefire/surefirebooter6200273823951947897.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="14.0.2+12"/>
     <property name="user.name" value="jackson"/>
@@ -50,7 +50,13 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="58.0"/>
   </properties>
+  <testcase name="testAdd" classname="com.jackson.app.DensePolynomialTest" time="0"/>
+  <testcase name="testSubtract" classname="com.jackson.app.DensePolynomialTest" time="0.001"/>
+  <testcase name="testMinus" classname="com.jackson.app.DensePolynomialTest" time="0"/>
   <testcase name="testGetCoefficient" classname="com.jackson.app.DensePolynomialTest" time="0"/>
   <testcase name="testToString" classname="com.jackson.app.DensePolynomialTest" time="0"/>
   <testcase name="testDegree" classname="com.jackson.app.DensePolynomialTest" time="0"/>
+  <testcase name="testEquals" classname="com.jackson.app.DensePolynomialTest" time="0"/>
+  <testcase name="testMultiply" classname="com.jackson.app.DensePolynomialTest" time="0"/>
+  <testcase name="testIsZero" classname="com.jackson.app.DensePolynomialTest" time="0"/>
 </testsuite>

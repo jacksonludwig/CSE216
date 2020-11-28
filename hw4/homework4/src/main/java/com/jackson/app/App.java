@@ -2,7 +2,7 @@ package com.jackson.app;
 
 public class App {
     public static void main(String[] args) {
-        DensePolynomial p2 = new DensePolynomial("4x^3 + 3x^2 + x + 1");
+        // DensePolynomial p2 = new DensePolynomial("4x^3 + 3x^2 + x + 1");
         // System.out.println(p.degree());
         // System.out.println(p.getCoefficient(1));
         // int[] v2 = { 1 };
@@ -26,23 +26,24 @@ public class App {
         // }
         // System.out.println();
         // System.out.println(p);
-        Polynomial sp2 = new SparsePolynomial("x^3 + 2x^2 + 5");
-        Polynomial sp3 = new SparsePolynomial("3x^2 + 2");
-        System.out.println(sp2);
-        System.out.println(sp3);
-        System.out.println(sp2.multiply(sp3));
+        // Polynomial sp2 = new SparsePolynomial("x^3 + 2x^2 + 5");
+        // Polynomial sp3 = new SparsePolynomial("3x^2 + 2");
+        // System.out.println(sp2);
+        // System.out.println(sp3);
+        // System.out.println(sp2.multiply(sp3));
 
-        sp3 = new SparsePolynomial("3x^2");
-        System.out.println(sp2);
-        System.out.println(sp3);
-        System.out.println(sp2.multiply(sp3));
-        System.out.println(new SparsePolynomial("0x").isZero());
+        // sp3 = new SparsePolynomial("3x^2");
+        // System.out.println(sp2);
+        // System.out.println(sp3);
+        // System.out.println(sp2.multiply(sp3));
+        // System.out.println(new SparsePolynomial("0x").isZero());
 
-        System.out.println(p2);
-        System.out.println(sp3);
-        System.out.println(p2.add(sp3));
+        // System.out.println(p2);
+        // System.out.println(sp3);
+        // System.out.println(p2.add(sp3));
 
-        System.out.println(new DensePolynomial("x").add(new DensePolynomial("2x + 3")));
-        System.out.println(new DensePolynomial("2x + 20").getCoefficient(0));
+        // System.out.println(new DensePolynomial("x").add(new DensePolynomial("2x + 3")));
+        // System.out.println(new DensePolynomial("2x + 20").getCoefficient(0));
+        System.out.println(new SparsePolynomial("2x^-1").subtract(new SparsePolynomial("2x^-1")));
     }
 }
