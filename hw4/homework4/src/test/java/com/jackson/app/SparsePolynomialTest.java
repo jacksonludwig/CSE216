@@ -1,5 +1,7 @@
 package com.jackson.app;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -8,15 +10,40 @@ import org.junit.jupiter.api.TestInstance;
 public class SparsePolynomialTest {
     Polynomial d1;
     Polynomial s1;
+    Polynomial s2;
+    Polynomial s3;
+    Polynomial s4;
+    Polynomial s5;
+    Polynomial s6;
 
     @BeforeAll
     public void setup() {
         d1 = new DensePolynomial("4x + 2");
         s1 = new SparsePolynomial("-6x^2 + 3x + -1");
+        s2 = new SparsePolynomial("1 + 3x^-2");
+        s3 = new SparsePolynomial("5x + 3");
+        s4 = new SparsePolynomial("10x + 6");
+        s5 = new SparsePolynomial("0");
+        s6 = new SparsePolynomial("2x^-4");
     }
 
     @Test
-    public void shouldAnswerWithTrue() {
-        // assertAll();
+    public void testToString() {
+        assertEquals("-6x^2 + 3x + -1", s1.toString());
+        assertEquals("5x + 3", s3.toString());
+        assertEquals("0", s5.toString());
+    }
+
+    @Test
+    public void testDegree() {
+        assertEquals(0, s2.degree());
+        assertEquals(2, s1.degree());
+        assertEquals(-4, s6.degree());
+    }
+
+    @Test
+    public void testGetCoefficient() {
+        assertEquals(-6, s1.getCoefficient(2));
+        assertEquals(3, s2.getCoefficient(-2));
     }
 }
