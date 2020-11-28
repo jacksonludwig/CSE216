@@ -2,6 +2,7 @@ package com.jackson.app;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -17,6 +18,7 @@ public class SparsePolynomialTest {
     Polynomial s4;
     Polynomial s5;
     Polynomial s6;
+    Polynomial s7;
 
     @BeforeAll
     public void setup() {
@@ -27,6 +29,7 @@ public class SparsePolynomialTest {
         s4 = new SparsePolynomial("10x + 6");
         s5 = new SparsePolynomial("0");
         s6 = new SparsePolynomial("2x^-4");
+        s7 = new SparsePolynomial("5x + 3");
     }
 
     @Test
@@ -54,5 +57,13 @@ public class SparsePolynomialTest {
     public void testIsZero() {
         assertTrue(s5.isZero());
         assertFalse(s1.isZero());
+        assertFalse(s2.isZero());
+    }
+
+    @Test
+    public void testAdd() {
+        assertNotEquals(s1, s1.add(s1));
+        assertEquals(s4, s3.add(s7));
+        assertEquals(s4, s3.add(s3));
     }
 }
