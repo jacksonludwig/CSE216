@@ -1,6 +1,7 @@
 package com.jackson.app;
 
 import java.util.Arrays;
+import java.util.Map;
 
 public class DensePolynomial implements Polynomial {
     private int[] values;
@@ -172,6 +173,13 @@ public class DensePolynomial implements Polynomial {
         // TODO finish second part
         if (q == null)
             throw new NullPointerException("cannot add null polynomials");
+        if (this.getClass() != q.getClass()) {
+            Map<Integer, Integer> values = ((SparsePolynomial)q).getValues();
+            for (int k : values.keySet())
+                if (k < 0)
+                    throw new IllegalArgumentException(
+                        "Dense polynomials cannot be added to sparse polynomials with negative degrees");
+        }
         return this.toSparsePolynomial().add(q);
     }
 
@@ -188,6 +196,13 @@ public class DensePolynomial implements Polynomial {
         // TODO Auto-generated method stub
         if (q == null)
             throw new NullPointerException("cannot multiply null polynomials");
+        if (this.getClass() != q.getClass()) {
+            Map<Integer, Integer> values = ((SparsePolynomial)q).getValues();
+            for (int k : values.keySet())
+                if (k < 0)
+                    throw new IllegalArgumentException(
+                        "Dense polynomials cannot be multiplied by sparse polynomials with negative degrees");
+        }
         return this.toSparsePolynomial().multiply(q);
     }
 
@@ -204,6 +219,13 @@ public class DensePolynomial implements Polynomial {
         // TODO Auto-generated method stub
         if (q == null)
             throw new NullPointerException("cannot subtract null polynomials");
+        if (this.getClass() != q.getClass()) {
+            Map<Integer, Integer> values = ((SparsePolynomial)q).getValues();
+            for (int k : values.keySet())
+                if (k < 0)
+                    throw new IllegalArgumentException(
+                        "Dense polynomials cannot be subtracted with sparse polynomials with negative degrees");
+        }
         return this.toSparsePolynomial().subtract(q);
     }
 
