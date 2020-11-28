@@ -23,15 +23,15 @@ public class DensePolynomial implements Polynomial {
 
         for (int i = 0; i < p.length; i++) {
             int xLoc = p[i].indexOf('x');
-            int carrot_loc = p[i].indexOf('^');
+            int carrotLoc = p[i].indexOf('^');
             String coeff;
             String degree;
             if (xLoc != -1) {
                 coeff = p[i].substring(0, xLoc);
                 if (coeff.equals(""))
                     coeff = "1";
-                if (carrot_loc != -1)
-                    degree = p[i].substring(carrot_loc + 1);
+                if (carrotLoc != -1)
+                    degree = p[i].substring(carrotLoc + 1);
                 else
                     degree = "1";
             } else {

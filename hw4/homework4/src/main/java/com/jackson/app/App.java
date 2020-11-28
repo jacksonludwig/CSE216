@@ -43,5 +43,6 @@ public class App {
         System.out.println(p2.add(sp3));
 
         System.out.println(new DensePolynomial("x").add(new DensePolynomial("2x + 3")));
+        System.out.println(new DensePolynomial("2x + 20").getCoefficient(0));
     }
 }
