@@ -82,5 +82,7 @@ public class SparsePolynomialTest {
     public void testSubtract() {
         assertNotEquals(s1, s1.subtract(s1));
         assertEquals(s5, s6.subtract(s6));
+        assertEquals(s3, s4.subtract(s3));
+        assertNotEquals(s3.subtract(s4), s4.subtract(s3));
     }
 }
