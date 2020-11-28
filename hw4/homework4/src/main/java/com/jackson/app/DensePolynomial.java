@@ -1,5 +1,7 @@
 package com.jackson.app;
 
+import java.util.Arrays;
+
 public class DensePolynomial implements Polynomial {
     private int[] values;
 
@@ -232,4 +234,18 @@ public class DensePolynomial implements Polynomial {
     public int[] getValues() { return values; }
 
     public void setValues(int[] values) { this.values = values; }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        DensePolynomial other = (DensePolynomial)obj;
+        if (!Arrays.equals(values, other.values))
+            return false;
+        return true;
+    }
 }

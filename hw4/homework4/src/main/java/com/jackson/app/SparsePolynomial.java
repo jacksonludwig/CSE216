@@ -332,4 +332,21 @@ public class SparsePolynomial implements Polynomial {
         // TODO Auto-generated method stub
         return false;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        SparsePolynomial other = (SparsePolynomial)obj;
+        if (values == null) {
+            if (other.values != null)
+                return false;
+        } else if (!values.equals(other.values))
+            return false;
+        return true;
+    }
 }
