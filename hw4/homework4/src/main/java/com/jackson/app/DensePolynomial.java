@@ -176,7 +176,7 @@ public class DensePolynomial implements Polynomial {
         // TODO finish second part
         if (q == null)
             throw new NullPointerException("cannot add null polynomials");
-        if (this.getClass() != q.getClass()) {
+        if (q.getClass() == SparsePolynomial.class) {
             Map<Integer, Integer> values = ((SparsePolynomial)q).getValues();
             for (int k : values.keySet())
                 if (k < 0)
@@ -200,7 +200,7 @@ public class DensePolynomial implements Polynomial {
         // TODO Auto-generated method stub
         if (q == null)
             throw new NullPointerException("cannot multiply null polynomials");
-        if (this.getClass() != q.getClass()) {
+        if (q.getClass() == SparsePolynomial.class) {
             Map<Integer, Integer> values = ((SparsePolynomial)q).getValues();
             for (int k : values.keySet())
                 if (k < 0)
@@ -224,7 +224,7 @@ public class DensePolynomial implements Polynomial {
         // TODO Auto-generated method stub
         if (q == null)
             throw new NullPointerException("cannot subtract null polynomials");
-        if (this.getClass() != q.getClass()) {
+        if (q.getClass() == SparsePolynomial.class) {
             Map<Integer, Integer> values = ((SparsePolynomial)q).getValues();
             for (int k : values.keySet())
                 if (k < 0)

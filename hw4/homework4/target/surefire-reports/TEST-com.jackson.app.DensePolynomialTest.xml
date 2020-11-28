@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-14-openjdk/lib"/>
-    <property name="sun.java.command" value="/home/jackson/Unmanaged/git_repos/cse216/hw4/homework4/target/surefire/surefirebooter6200273823951947897.jar /home/jackson/Unmanaged/git_repos/cse216/hw4/homework4/target/surefire 2020-11-28T15-54-25_999-jvmRun1 surefire486191387245111724tmp surefire_03292531985336489754tmp"/>
+    <property name="sun.java.command" value="/home/jackson/Unmanaged/git_repos/cse216/hw4/homework4/target/surefire/surefirebooter8521786012139923219.jar /home/jackson/Unmanaged/git_repos/cse216/hw4/homework4/target/surefire 2020-11-28T18-24-49_417-jvmRun1 surefire11384500885990191878tmp surefire_012960360436519695290tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/jackson/Unmanaged/git_repos/cse216/hw4/homework4/target/test-classes:/home/jackson/Unmanaged/git_repos/cse216/hw4/homework4/target/classes:/home/jackson/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.4.0/junit-jupiter-engine-5.4.0.jar:/home/jackson/.m2/repository/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar:/home/jackson/.m2/repository/org/junit/platform/junit-platform-engine/1.4.0/junit-platform-engine-1.4.0.jar:/home/jackson/.m2/repository/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar:/home/jackson/.m2/repository/org/junit/platform/junit-platform-commons/1.4.0/junit-platform-commons-1.4.0.jar:/home/jackson/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.4.0/junit-jupiter-api-5.4.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/jackson/Unmanaged/git_repos/cse216/hw4/homework4/target/surefire/surefirebooter6200273823951947897.jar"/>
+    <property name="surefire.real.class.path" value="/home/jackson/Unmanaged/git_repos/cse216/hw4/homework4/target/surefire/surefirebooter8521786012139923219.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="14.0.2+12"/>
     <property name="user.name" value="jackson"/>
@@ -51,7 +51,7 @@
     <property name="java.class.version" value="58.0"/>
   </properties>
   <testcase name="testAdd" classname="com.jackson.app.DensePolynomialTest" time="0"/>
-  <testcase name="testSubtract" classname="com.jackson.app.DensePolynomialTest" time="0.001"/>
+  <testcase name="testSubtract" classname="com.jackson.app.DensePolynomialTest" time="0"/>
   <testcase name="testMinus" classname="com.jackson.app.DensePolynomialTest" time="0"/>
   <testcase name="testGetCoefficient" classname="com.jackson.app.DensePolynomialTest" time="0"/>
   <testcase name="testToString" classname="com.jackson.app.DensePolynomialTest" time="0"/>

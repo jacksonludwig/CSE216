@@ -75,5 +75,6 @@ public class SparsePolynomialTest {
     public void testMultiply() {
         assertNotEquals(s1, s1.multiply(s1));
         assertEquals(s9, s7.multiply(s8));
+        assertEquals(s5, s1.multiply(s5));
     }
 }
