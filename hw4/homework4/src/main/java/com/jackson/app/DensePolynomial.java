@@ -11,6 +11,8 @@ public class DensePolynomial implements Polynomial {
         this.values = tokenizeEquation(poly);
     }
 
+    private DensePolynomial(int[] arr) { this.values = arr; }
+
     // TODO finish (exceptions?)
     private int[] tokenizeEquation(String poly) {
         String[] p = poly.replaceAll("\\s", "").split("[+]");
@@ -167,6 +169,7 @@ public class DensePolynomial implements Polynomial {
      * @param q the non-null polynomial to add to <code>this</code>
      * @return <code>this + </code>q
      * @throws NullPointerException if q is null
+     * @throws IllegalArgumentException if q is a sparse polynomial with any negative exponents
      */
     @Override
     public Polynomial add(Polynomial q) {
@@ -190,6 +193,7 @@ public class DensePolynomial implements Polynomial {
      * @param q the polynomial to multiply with <code>this</code>
      * @return <code>this * </code>q
      * @throws NullPointerException if q is null
+     * @throws IllegalArgumentException if q is a sparse polynomial with any negative exponents
      */
     @Override
     public Polynomial multiply(Polynomial q) {
@@ -213,6 +217,7 @@ public class DensePolynomial implements Polynomial {
      * @param q the non-null polynomial to subtract from <code>this</code>
      * @return <code>this - </code>q
      * @throws NullPointerException if q is null
+     * @throws IllegalArgumentException if q is a sparse polynomial with any negative exponents
      */
     @Override
     public Polynomial subtract(Polynomial q) {
@@ -238,7 +243,10 @@ public class DensePolynomial implements Polynomial {
     @Override
     public Polynomial minus() {
         // TODO Auto-generated method stub
-        return this.toSparsePolynomial().minus();
+        int[] v = new int[this.values.length];
+        for (int i = 0; i < this.values.length; i++)
+            v[i] = -1 * values[i];
+        return new DensePolynomial(v);
     }
 
     /**
