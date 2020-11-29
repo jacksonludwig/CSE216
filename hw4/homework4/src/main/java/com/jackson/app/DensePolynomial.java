@@ -149,18 +149,18 @@ public class DensePolynomial implements Polynomial {
     }
 
     // This adds two dense polys only
-    // private DensePolynomial addDense(DensePolynomial p, DensePolynomial p2) {
-    //     Polynomial smallest = p.degree() <= p2.degree() ? p : p2;
-    //     Polynomial largest = p.degree() > p2.degree() ? p : p2;
-    //     int[] addedValues = new int[largest.degree() + 1];
+    private DensePolynomial addDense(DensePolynomial p, DensePolynomial p2) {
+        Polynomial smallest = p.degree() <= p2.degree() ? p : p2;
+        Polynomial largest = p.degree() > p2.degree() ? p : p2;
+        int[] addedValues = new int[largest.degree() + 1];
 
-    //     for (int i = largest.degree(); i != -1; i--) {
-    //         addedValues[i] =
-    //             largest.getCoefficient(i) + smallest.getCoefficient(i);
-    //     }
+        for (int i = largest.degree(); i != -1; i--) {
+            addedValues[i] =
+                largest.getCoefficient(i) + smallest.getCoefficient(i);
+        }
 
-    //     return new DensePolynomial(addedValues);
-    // }
+        return new DensePolynomial(addedValues);
+    }
 
     /**
      * Returns a polynomial by adding the parameter to the current instance.
@@ -169,7 +169,8 @@ public class DensePolynomial implements Polynomial {
      * @param q the non-null polynomial to add to <code>this</code>
      * @return <code>this + </code>q
      * @throws NullPointerException if q is null
-     * @throws IllegalArgumentException if q is a sparse polynomial with any negative exponents
+     * @throws IllegalArgumentException if q is a sparse polynomial with any
+     *     negative exponents
      */
     @Override
     public Polynomial add(Polynomial q) {
@@ -186,6 +187,37 @@ public class DensePolynomial implements Polynomial {
         return this.toSparsePolynomial().add(q);
     }
 
+    private DensePolynomial multiplyDense(DensePolynomial p,
+                                          DensePolynomial p2) {
+        Polynomial smallest = p.degree() <= p2.degree() ? p : p2; // 2x
+        Polynomial largest = p.degree() > p2.degree() ? p : p2;   // 4x + 2
+        int[] multipliedValues = new int[largest.degree() + 1];
+
+        for (int i = smallest.degree(); i != -1; i--) {
+            for (int j = largest.degree(); j != -1; j--) {
+                int newExpo;
+                int newCoeff = 0;
+                int largestCoeff = largest.getCoefficient(j);
+                int smallestCoeff = smallest.getCoefficient(i);
+
+                if (largestCoeff == 0 && smallestCoeff == 0) {
+                    newCoeff = 0;
+                } else {
+                    newCoeff = largestCoeff * smallestCoeff;
+                }
+
+                newExpo = i + j;
+                multipliedValues =
+                    (newExpo >= multipliedValues.length)
+                        ? Arrays.copyOf(multipliedValues, newExpo + 1)
+                        : multipliedValues;
+                multipliedValues[newExpo] = newCoeff;
+            }
+        }
+
+        return new DensePolynomial(multipliedValues);
+    }
+
     /**
      * Returns a polynomial by multiplying the parameter with the current
      * instance.  Neither the current instance nor the parameter are modified.
@@ -193,7 +225,8 @@ public class DensePolynomial implements Polynomial {
      * @param q the polynomial to multiply with <code>this</code>
      * @return <code>this * </code>q
      * @throws NullPointerException if q is null
-     * @throws IllegalArgumentException if q is a sparse polynomial with any negative exponents
+     * @throws IllegalArgumentException if q is a sparse polynomial with any
+     *     negative exponents
      */
     @Override
     public Polynomial multiply(Polynomial q) {
@@ -206,8 +239,9 @@ public class DensePolynomial implements Polynomial {
                 if (k < 0)
                     throw new IllegalArgumentException(
                         "Dense polynomials cannot be multiplied by sparse polynomials with negative degrees");
+            return this.toSparsePolynomial().multiply(q);
         }
-        return this.toSparsePolynomial().multiply(q);
+        return multiplyDense(this, (DensePolynomial)q);
     }
 
     /**
@@ -217,7 +251,8 @@ public class DensePolynomial implements Polynomial {
      * @param q the non-null polynomial to subtract from <code>this</code>
      * @return <code>this - </code>q
      * @throws NullPointerException if q is null
-     * @throws IllegalArgumentException if q is a sparse polynomial with any negative exponents
+     * @throws IllegalArgumentException if q is a sparse polynomial with any
+     *     negative exponents
      */
     @Override
     public Polynomial subtract(Polynomial q) {
@@ -258,8 +293,8 @@ public class DensePolynomial implements Polynomial {
     @Override
     public boolean wellFormed() {
         // TODO Auto-generated method stub
-        // Check to make sure the string is okay, at the very least, throw an error if it is ""
-        // Use this in the constructor
+        // Check to make sure the string is okay, at the very least, throw an
+        // error if it is "" Use this in the constructor
         return false;
     }
 
