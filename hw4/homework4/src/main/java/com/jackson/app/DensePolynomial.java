@@ -183,10 +183,12 @@ public class DensePolynomial implements Polynomial {
                 if (k < 0)
                     throw new IllegalArgumentException(
                         "Dense polynomials cannot be added to sparse polynomials with negative degrees");
+            return this.toSparsePolynomial().add(q);
         }
-        return this.toSparsePolynomial().add(q);
+        return addDense(this, (DensePolynomial)q);
     }
 
+    // this multiplies two dense polys only
     private DensePolynomial multiplyDense(DensePolynomial p,
                                           DensePolynomial p2) {
         Polynomial smallest = p.degree() <= p2.degree() ? p : p2; // 2x
@@ -244,6 +246,20 @@ public class DensePolynomial implements Polynomial {
         return multiplyDense(this, (DensePolynomial)q);
     }
 
+    // This subtracts two dense polys only
+    private DensePolynomial subtractDense(DensePolynomial p, DensePolynomial p2) {
+        Polynomial smallest = p.degree() <= p2.degree() ? p : p2;
+        Polynomial largest = p.degree() > p2.degree() ? p : p2;
+        int[] addedValues = new int[largest.degree() + 1];
+
+        for (int i = largest.degree(); i != -1; i--) {
+            addedValues[i] =
+                largest.getCoefficient(i) - smallest.getCoefficient(i);
+        }
+
+        return new DensePolynomial(addedValues);
+    }
+
     /**
      * Returns a  polynomial by subtracting the parameter from the current
      * instance. Neither the current instance nor the parameter are modified.
@@ -265,8 +281,9 @@ public class DensePolynomial implements Polynomial {
                 if (k < 0)
                     throw new IllegalArgumentException(
                         "Dense polynomials cannot be subtracted with sparse polynomials with negative degrees");
+            return this.toSparsePolynomial().subtract(q);
         }
-        return this.toSparsePolynomial().subtract(q);
+        return subtractDense(this, (DensePolynomial)q);
     }
 
     /**
