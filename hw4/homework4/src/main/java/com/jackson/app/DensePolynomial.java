@@ -328,8 +328,11 @@ public class DensePolynomial implements Polynomial {
         if (getClass() != obj.getClass())
             return false;
         DensePolynomial other = (DensePolynomial)obj;
+        boolean initialTest = true;
         if (!Arrays.equals(values, other.values))
-            return false;
+            initialTest = false;
+        if(!initialTest)
+            return this.toString().equals(other.toString());
         return true;
     }
 }
