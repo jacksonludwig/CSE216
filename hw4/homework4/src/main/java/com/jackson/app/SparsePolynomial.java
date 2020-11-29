@@ -27,12 +27,10 @@ public class SparsePolynomial implements Polynomial {
         this.values = values;
     }
 
-    // TODO use in arithmetic methods
     private SparsePolynomial toSparsePolynomial(Polynomial p) {
         return new SparsePolynomial(p.toString());
     }
 
-    // TODO finish
     private Map<Integer, Integer> tokenizeEquation(String poly) {
         String[] p = poly.replaceAll("\\s", "").split("[+]");
 
@@ -123,7 +121,6 @@ public class SparsePolynomial implements Polynomial {
      */
     @Override
     public int degree() {
-        // TODO Auto-generated method stub
         boolean first = true;
         int highestKey = 0;
         for (Map.Entry<Integer, Integer> e : this.values.entrySet()) {
@@ -147,7 +144,6 @@ public class SparsePolynomial implements Polynomial {
      */
     @Override
     public int getCoefficient(int d) {
-        // TODO Auto-generated method stub
         Object coeff = this.values.get(d);
         if (coeff == null)
             return 0;
@@ -159,7 +155,6 @@ public class SparsePolynomial implements Polynomial {
      */
     @Override
     public boolean isZero() {
-        // TODO Auto-generated method stub
         for (Map.Entry<Integer, Integer> e : this.values.entrySet()) {
             if (e.getValue() != 0)
                 return false;
@@ -200,7 +195,6 @@ public class SparsePolynomial implements Polynomial {
      */
     @Override
     public Polynomial add(Polynomial q) {
-        // TODO Auto-generated method stub
         if (q == null)
             throw new NullPointerException("cannot add null polynomials");
 
@@ -242,7 +236,6 @@ public class SparsePolynomial implements Polynomial {
      */
     @Override
     public Polynomial multiply(Polynomial q) {
-        // TODO Auto-generated method stub
         if (q == null)
             throw new NullPointerException("cannot multiply null polynomials");
 
@@ -284,7 +277,6 @@ public class SparsePolynomial implements Polynomial {
      */
     @Override
     public Polynomial subtract(Polynomial q) {
-        // TODO Auto-generated method stub
         if (q == null)
             throw new NullPointerException("cannot subtract null polynomials");
 
@@ -299,7 +291,6 @@ public class SparsePolynomial implements Polynomial {
      */
     @Override
     public Polynomial minus() {
-        // TODO Auto-generated method stub
         Map<Integer, Integer> minus = new TreeMap<>(Collections.reverseOrder());
         for (Map.Entry<Integer, Integer> entry : this.values.entrySet()) {
             int expo = entry.getKey();
@@ -319,7 +310,6 @@ public class SparsePolynomial implements Polynomial {
      */
     @Override
     public boolean wellFormed() {
-        // TODO Auto-generated method stub
         if (inputPoly.equals(""))
             return false;
         if (inputPoly.contains("."))

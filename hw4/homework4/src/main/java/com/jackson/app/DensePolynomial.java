@@ -7,7 +7,6 @@ public class DensePolynomial implements Polynomial {
     private String inputPoly;
     private int[] values;
 
-    // TODO finish
     public DensePolynomial(String poly) {
         inputPoly = poly;
         if (wellFormed())
@@ -18,7 +17,6 @@ public class DensePolynomial implements Polynomial {
 
     private DensePolynomial(int[] arr) { this.values = arr; }
 
-    // TODO finish (exceptions?)
     private int[] tokenizeEquation(String poly) {
         String[] p = poly.replaceAll("\\s", "").split("[+]");
 
@@ -141,14 +139,12 @@ public class DensePolynomial implements Polynomial {
      */
     @Override
     public boolean isZero() {
-        // TODO Auto-generated method stub
         for (int coeff : this.values)
             if (coeff != 0)
                 return false;
         return true;
     }
 
-    // TODO use in arithmetic methods
     private DensePolynomial toDensePolynomial(Polynomial q) {
         return new DensePolynomial(q.toString());
     }
@@ -179,7 +175,6 @@ public class DensePolynomial implements Polynomial {
      */
     @Override
     public Polynomial add(Polynomial q) {
-        // TODO finish second part
         if (q == null)
             throw new NullPointerException("cannot add null polynomials");
         if (q.getClass() == SparsePolynomial.class) {
@@ -236,7 +231,6 @@ public class DensePolynomial implements Polynomial {
      */
     @Override
     public Polynomial multiply(Polynomial q) {
-        // TODO Auto-generated method stub
         if (q == null)
             throw new NullPointerException("cannot multiply null polynomials");
         if (q.getClass() == SparsePolynomial.class) {
@@ -275,7 +269,6 @@ public class DensePolynomial implements Polynomial {
      */
     @Override
     public Polynomial subtract(Polynomial q) {
-        // TODO Auto-generated method stub
         if (q == null)
             throw new NullPointerException("cannot subtract null polynomials");
         if (q.getClass() == SparsePolynomial.class) {
@@ -296,7 +289,6 @@ public class DensePolynomial implements Polynomial {
      */
     @Override
     public Polynomial minus() {
-        // TODO Auto-generated method stub
         int[] v = new int[this.values.length];
         for (int i = 0; i < this.values.length; i++)
             v[i] = -1 * values[i];
@@ -313,7 +305,6 @@ public class DensePolynomial implements Polynomial {
      */
     @Override
     public boolean wellFormed() {
-        // TODO Auto-generated method stub
         if (inputPoly.equals(""))
             return false;
         if (inputPoly.contains("."))
