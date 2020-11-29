@@ -258,6 +258,8 @@ public class DensePolynomial implements Polynomial {
     @Override
     public boolean wellFormed() {
         // TODO Auto-generated method stub
+        // Check to make sure the string is okay, at the very least, throw an error if it is ""
+        // Use this in the constructor
         return false;
     }
 
