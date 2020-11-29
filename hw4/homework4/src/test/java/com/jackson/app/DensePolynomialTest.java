@@ -20,9 +20,12 @@ public class DensePolynomialTest {
     Polynomial d6;
     Polynomial d7;
     Polynomial d8;
+    Polynomial d9;
+    Polynomial d10;
     Polynomial s1;
     Polynomial s2;
     Polynomial s3;
+    Polynomial s4;
 
     @BeforeAll
     public void setup() {
@@ -34,9 +37,12 @@ public class DensePolynomialTest {
         d6 = new DensePolynomial("8x + 4");
         d7 = new DensePolynomial("8x^2 + 4x");
         d8 = new DensePolynomial("2x");
+        d9 = new DensePolynomial("x");
+        d10 = new DensePolynomial("x^2");
         s1 = new SparsePolynomial("-6x^2 + 3x + -1");
         s2 = new SparsePolynomial("8x + 4");
         s3 = new SparsePolynomial("2x^-2");
+        s4 = new SparsePolynomial("x");
     }
 
     @Test
@@ -81,6 +87,7 @@ public class DensePolynomialTest {
     @Test
     public void testAdd() {
         assertNotEquals(d1, d1.add(d1));
+        assertEquals(d6, d3.add(s2));
         assertEquals(d6, d4.add(d4));
         assertEquals(d3, d4.add(d5));
         assertNotEquals(s2, d4.add(d4));
@@ -92,6 +99,7 @@ public class DensePolynomialTest {
     public void testMultiply() {
         assertEquals(d7, d4.multiply(d8));
         assertEquals(d3, d4.multiply(d3));
+        assertEquals(d10, d9.multiply(s4));
         assertNotEquals(d1, d1.multiply(d1));
         assertNotEquals(s2, d4.multiply(d4));
         assertThrows(IllegalArgumentException.class,
@@ -103,6 +111,7 @@ public class DensePolynomialTest {
         assertNotEquals(d1, d1.subtract(d1));
         assertNotEquals(s2, d4.subtract(d4));
         assertEquals(d3, d1.subtract(d4));
+        assertEquals(d3, d9.subtract(s4));
         assertThrows(IllegalArgumentException.class,
                      () -> d1.subtract(s3));
     }
