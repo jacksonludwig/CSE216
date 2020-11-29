@@ -51,6 +51,7 @@ public class DensePolynomialTest {
     public void testDegree() {
         assertEquals(1, d1.degree());
         assertEquals(3, d2.degree());
+        assertEquals(0, d3.degree());
     }
 
     @Test
@@ -74,12 +75,15 @@ public class DensePolynomialTest {
         assertNotEquals(d1, d2);
         assertNotEquals(d1, d3);
         assertEquals(d1, d4);
+        assertEquals(d1, d1);
     }
 
     @Test
     public void testAdd() {
         assertNotEquals(d1, d1.add(d1));
         assertEquals(d6, d4.add(d4));
+        assertEquals(d3, d4.add(d5));
+        assertNotEquals(s2, d4.add(d4));
         assertThrows(IllegalArgumentException.class,
                      () -> d1.add(s3));
     }
@@ -87,6 +91,7 @@ public class DensePolynomialTest {
     @Test
     public void testMultiply() {
         assertEquals(d7, d4.multiply(d8));
+        assertEquals(d3, d4.multiply(d3));
         assertNotEquals(d1, d1.multiply(d1));
         assertNotEquals(s2, d4.multiply(d4));
         assertThrows(IllegalArgumentException.class,
