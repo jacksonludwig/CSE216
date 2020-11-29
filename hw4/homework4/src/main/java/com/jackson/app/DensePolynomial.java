@@ -4,11 +4,16 @@ import java.util.Arrays;
 import java.util.Map;
 
 public class DensePolynomial implements Polynomial {
+    private String inputPoly;
     private int[] values;
 
     // TODO finish
     public DensePolynomial(String poly) {
-        this.values = tokenizeEquation(poly);
+        inputPoly = poly;
+        if (wellFormed())
+            this.values = tokenizeEquation(poly);
+        else
+            throw new IllegalArgumentException("The inputted polynomial string was malformed");
     }
 
     private DensePolynomial(int[] arr) { this.values = arr; }
@@ -300,6 +305,8 @@ public class DensePolynomial implements Polynomial {
 
     /**
      * Checks if the class invariant holds for the current instance.
+     * This method assures that the given string is not empty, is all integers, and does not contain empty input
+     * like "0x".
      *
      * @return {@literal true} if the class invariant holds, and {@literal
      *     false} otherwise.
@@ -307,9 +314,13 @@ public class DensePolynomial implements Polynomial {
     @Override
     public boolean wellFormed() {
         // TODO Auto-generated method stub
-        // Check to make sure the string is okay, at the very least, throw an
-        // error if it is "" Use this in the constructor
-        return false;
+        if (inputPoly.equals(""))
+            return false;
+        if (inputPoly.contains("."))
+            return false;
+        if (inputPoly.contains(" 0x "))
+            return false;
+        return true;
     }
 
     public int[] getValues() { return values; }

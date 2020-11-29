@@ -122,4 +122,17 @@ public class DensePolynomialTest {
         assertEquals(d4.minus(), d5);
         assertEquals(d5, d4.minus());
     }
+
+    @Test
+    public void testWellFormed() {
+        assertTrue(d1.wellFormed());
+        assertTrue(d5.wellFormed());
+        assertTrue(d8.wellFormed());
+        assertThrows(IllegalArgumentException.class,
+                     () -> new DensePolynomial(""));
+        assertThrows(IllegalArgumentException.class,
+                     () -> new DensePolynomial("2x^2 + 0x + 3"));
+        assertThrows(IllegalArgumentException.class,
+                     () -> new DensePolynomial("3.1x + 2"));
+    }
 }

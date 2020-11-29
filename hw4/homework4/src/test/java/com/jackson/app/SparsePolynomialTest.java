@@ -3,6 +3,7 @@ package com.jackson.app;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -105,5 +106,18 @@ public class SparsePolynomialTest {
         assertEquals(s10, s9.minus());
         assertEquals(s9.minus(), s10);
         assertNotEquals(s8, s8.minus());
+    }
+
+    @Test
+    public void testWellFormed() {
+        assertTrue(s1.wellFormed());
+        assertTrue(s5.wellFormed());
+        assertTrue(s8.wellFormed());
+        assertThrows(IllegalArgumentException.class,
+                     () -> new DensePolynomial(""));
+        assertThrows(IllegalArgumentException.class,
+                     () -> new DensePolynomial("2x^2 + 0x + 3"));
+        assertThrows(IllegalArgumentException.class,
+                     () -> new DensePolynomial("3.1x + 2"));
     }
 }

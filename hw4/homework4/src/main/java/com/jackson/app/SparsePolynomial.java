@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class SparsePolynomial implements Polynomial {
+    private String inputPoly;
     private Map<Integer, Integer> values;
 
     private SparsePolynomial(Map<Integer, Integer> values) {
@@ -13,7 +14,11 @@ public class SparsePolynomial implements Polynomial {
     }
 
     public SparsePolynomial(String poly) {
-        this.values = tokenizeEquation(poly);
+        inputPoly = poly;
+        if (wellFormed())
+            this.values = tokenizeEquation(poly);
+        else
+            throw new IllegalArgumentException("The inputted polynomial string was malformed");
     }
 
     public Map<Integer, Integer> getValues() { return values; }
@@ -306,6 +311,8 @@ public class SparsePolynomial implements Polynomial {
 
     /**
      * Checks if the class invariant holds for the current instance.
+     * This method assures that the given string is not empty, is all integers, and does not contain empty input
+     * like "0x".
      *
      * @return {@literal true} if the class invariant holds, and {@literal
      *     false} otherwise.
@@ -313,7 +320,13 @@ public class SparsePolynomial implements Polynomial {
     @Override
     public boolean wellFormed() {
         // TODO Auto-generated method stub
-        return false;
+        if (inputPoly.equals(""))
+            return false;
+        if (inputPoly.contains("."))
+            return false;
+        if (inputPoly.contains(" 0x "))
+            return false;
+        return true;
     }
 
     @Override
