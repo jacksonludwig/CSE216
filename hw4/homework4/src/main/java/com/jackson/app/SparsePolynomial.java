@@ -246,6 +246,9 @@ public class SparsePolynomial implements Polynomial {
 
     // Helper
     private Polynomial subSparse(SparsePolynomial p1, SparsePolynomial p2) {
+        if (p2.toString().equals("0"))
+            return p1;
+
         Map<Integer, Integer> m1 = p1.getValues();
         Map<Integer, Integer> m2 = p2.getValues();
 
