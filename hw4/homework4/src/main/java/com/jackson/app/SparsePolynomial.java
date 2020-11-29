@@ -22,19 +22,8 @@ public class SparsePolynomial implements Polynomial {
         this.values = values;
     }
 
-    // sort by reverse exponent, AND account for negatives
-    // private Comparator<Integer> generateComparator() {
-    //     Comparator<Integer> c = new Comparator<Integer>() {
-    //         @Override
-    //         public int compare(Integer arg0, Integer arg1) {
-    //             return Integer.compare(Math.abs(arg0), Math.abs(arg1));
-    //         }
-    //     };
-    //     return c;
-    // }
-
     // TODO use in arithmetic methods
-    private SparsePolynomial toSparsePolynomial(DensePolynomial p) {
+    private SparsePolynomial toSparsePolynomial(Polynomial p) {
         return new SparsePolynomial(p.toString());
     }
 
@@ -209,11 +198,8 @@ public class SparsePolynomial implements Polynomial {
         // TODO Auto-generated method stub
         if (q == null)
             throw new NullPointerException("cannot add null polynomials");
-        if (this.getClass() == q.getClass()) {
-            return addSparse(this, (SparsePolynomial)q);
-        }
 
-        return addSparse(this, toSparsePolynomial((DensePolynomial)q));
+        return addSparse(this, toSparsePolynomial(q));
     }
 
     // Helper
@@ -254,11 +240,8 @@ public class SparsePolynomial implements Polynomial {
         // TODO Auto-generated method stub
         if (q == null)
             throw new NullPointerException("cannot multiply null polynomials");
-        if (this.getClass() == q.getClass()) {
-            return multSparse(this, (SparsePolynomial)q);
-        }
 
-        return multSparse(this, toSparsePolynomial((DensePolynomial)q));
+        return multSparse(this, toSparsePolynomial(q));
     }
 
     // Helper
@@ -296,11 +279,8 @@ public class SparsePolynomial implements Polynomial {
         // TODO Auto-generated method stub
         if (q == null)
             throw new NullPointerException("cannot subtract null polynomials");
-        if (this.getClass() == q.getClass()) {
-            return subSparse(this, (SparsePolynomial)q);
-        }
 
-        return subSparse(this, toSparsePolynomial((DensePolynomial)q));
+        return subSparse(this, toSparsePolynomial(q));
     }
 
     /**

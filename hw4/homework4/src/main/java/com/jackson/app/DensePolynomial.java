@@ -144,8 +144,8 @@ public class DensePolynomial implements Polynomial {
     }
 
     // TODO use in arithmetic methods
-    private SparsePolynomial toSparsePolynomial() {
-        return new SparsePolynomial(this.toString());
+    private DensePolynomial toDensePolynomial(Polynomial q) {
+        return new DensePolynomial(q.toString());
     }
 
     // This adds two dense polys only
@@ -183,9 +183,8 @@ public class DensePolynomial implements Polynomial {
                 if (k < 0)
                     throw new IllegalArgumentException(
                         "Dense polynomials cannot be added to sparse polynomials with negative degrees");
-            return this.toSparsePolynomial().add(q);
         }
-        return addDense(this, (DensePolynomial)q);
+        return addDense(this, toDensePolynomial(q));
     }
 
     // this multiplies two dense polys only
@@ -241,9 +240,8 @@ public class DensePolynomial implements Polynomial {
                 if (k < 0)
                     throw new IllegalArgumentException(
                         "Dense polynomials cannot be multiplied by sparse polynomials with negative degrees");
-            return this.toSparsePolynomial().multiply(q);
         }
-        return multiplyDense(this, (DensePolynomial)q);
+        return multiplyDense(this, toDensePolynomial(q));
     }
 
     // This subtracts two dense polys only
@@ -281,9 +279,8 @@ public class DensePolynomial implements Polynomial {
                 if (k < 0)
                     throw new IllegalArgumentException(
                         "Dense polynomials cannot be subtracted with sparse polynomials with negative degrees");
-            return this.toSparsePolynomial().subtract(q);
         }
-        return subtractDense(this, (DensePolynomial)q);
+        return subtractDense(this, toDensePolynomial(q));
     }
 
     /**
