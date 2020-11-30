@@ -91,8 +91,8 @@ public class DensePolynomialTest {
         assertEquals(d6, d4.add(d4));
         assertEquals(d3, d4.add(d5));
         assertNotEquals(s2, d4.add(d4));
-        assertThrows(IllegalArgumentException.class,
-                     () -> d1.add(s3));
+        assertThrows(NullPointerException.class, () -> d1.add(null));
+        assertThrows(IllegalArgumentException.class, () -> d1.add(s3));
     }
 
     @Test
@@ -102,8 +102,8 @@ public class DensePolynomialTest {
         assertEquals(d10, d9.multiply(s4));
         assertNotEquals(d1, d1.multiply(d1));
         assertNotEquals(s2, d4.multiply(d4));
-        assertThrows(IllegalArgumentException.class,
-                     () -> d1.multiply(s3));
+        assertThrows(NullPointerException.class, () -> d1.multiply(null));
+        assertThrows(IllegalArgumentException.class, () -> d1.multiply(s3));
     }
 
     @Test
@@ -112,8 +112,8 @@ public class DensePolynomialTest {
         assertNotEquals(s2, d4.subtract(d4));
         assertEquals(d3, d1.subtract(d4));
         assertEquals(d3, d9.subtract(s4));
-        assertThrows(IllegalArgumentException.class,
-                     () -> d1.subtract(s3));
+        assertThrows(NullPointerException.class, () -> d1.subtract(null));
+        assertThrows(IllegalArgumentException.class, () -> d1.subtract(s3));
     }
 
     @Test
@@ -128,6 +128,8 @@ public class DensePolynomialTest {
         assertTrue(d1.wellFormed());
         assertTrue(d5.wellFormed());
         assertTrue(d8.wellFormed());
+        assertThrows(IllegalArgumentException.class,
+                     () -> new DensePolynomial(null));
         assertThrows(IllegalArgumentException.class,
                      () -> new DensePolynomial(""));
         assertThrows(IllegalArgumentException.class,

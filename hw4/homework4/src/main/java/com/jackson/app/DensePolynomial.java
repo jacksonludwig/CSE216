@@ -298,13 +298,15 @@ public class DensePolynomial implements Polynomial {
     /**
      * Checks if the class invariant holds for the current instance.
      * This method assures that the given string is not empty, is all integers, and does not contain empty input
-     * like "0x".
+     * like "0x", and that the input is not null.
      *
      * @return {@literal true} if the class invariant holds, and {@literal
      *     false} otherwise.
      */
     @Override
     public boolean wellFormed() {
+        if (inputPoly == null)
+            return false;
         if (inputPoly.equals(""))
             return false;
         if (inputPoly.contains("."))
