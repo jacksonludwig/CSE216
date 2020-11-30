@@ -81,6 +81,7 @@ public class SparsePolynomialTest {
         assertEquals(s4, s3.add(s7));
         assertEquals(s4, s3.add(s3));
         assertEquals(s12, s11.add(d1));
+        assertThrows(NullPointerException.class, () -> s1.add(null));
     }
 
     @Test
@@ -90,6 +91,7 @@ public class SparsePolynomialTest {
         assertEquals(s5, s1.multiply(s5));
         assertEquals(s12, s13.multiply(d1));
         assertNotEquals(s12, d1.multiply(s13));
+        assertThrows(NullPointerException.class, () -> s1.multiply(null));
     }
 
     @Test
@@ -99,6 +101,7 @@ public class SparsePolynomialTest {
         assertEquals(s3, s4.subtract(s3));
         assertNotEquals(s3.subtract(s4), s4.subtract(s3));
         assertEquals(s9, s9.subtract(s5));
+        assertThrows(NullPointerException.class, () -> s1.subtract(null));
     }
 
     @Test
@@ -114,10 +117,12 @@ public class SparsePolynomialTest {
         assertTrue(s5.wellFormed());
         assertTrue(s8.wellFormed());
         assertThrows(IllegalArgumentException.class,
-                     () -> new DensePolynomial(""));
+                     () -> new SparsePolynomial(null));
         assertThrows(IllegalArgumentException.class,
-                     () -> new DensePolynomial("2x^2 + 0x + 3"));
+                     () -> new SparsePolynomial(""));
         assertThrows(IllegalArgumentException.class,
-                     () -> new DensePolynomial("3.1x + 2"));
+                     () -> new SparsePolynomial("2x^2 + 0x + 3"));
+        assertThrows(IllegalArgumentException.class,
+                     () -> new SparsePolynomial("3.1x + 2"));
     }
 }
