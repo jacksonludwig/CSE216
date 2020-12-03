@@ -20,7 +20,8 @@ public class WordCounter {
     public static final int NUMBER_OF_THREADS = 2;
 
     public static ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
-    public static Map<String, Integer> data = new ConcurrentHashMap<>();
+    // filename, <word, amount>
+    public static Map<String, ConcurrentHashMap<String, Integer>> data = new ConcurrentHashMap<>();
 
     public static void main(String[] args) { 
         System.out.println("Hello World!"); 
