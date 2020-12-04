@@ -154,7 +154,6 @@ public class WordCounter {
 
     public static void submitTasks(List<File> files) {
         files.forEach(f -> executorService.submit(() -> {
-            System.out.println(Thread.currentThread().toString() + " started");
             addToWordMap(f, readLinesFromFile(f));
         }));
     }
