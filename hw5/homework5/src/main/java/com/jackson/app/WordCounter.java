@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -38,7 +39,8 @@ public class WordCounter {
         List<File> files = getListOfFiles();
         submitTasks(files);
         shutdownAndAwaitTermination(executorService);
-        System.out.println(data);
+        Map<String, Integer> totals = getFinalCount();
+        System.out.println(totals);
     }
 
     public static List<File> getListOfFiles() throws IOException {
@@ -74,6 +76,21 @@ public class WordCounter {
             else
                 data.get(f.toString()).put(word, 1);
         }
+    }
+
+    public static Map<String, Integer> getFinalCount() {
+        Map<String, Integer> finalCount = new HashMap<>();
+        for (ConcurrentHashMap<String, Integer> map : data.values()) {
+            for (Map.Entry<String, Integer> entry : map.entrySet()) {
+                String word = entry.getKey();
+                Integer amount = entry.getValue();
+                if (finalCount.get(word) != null)
+                    finalCount.put(word, finalCount.get(word) + amount);
+                else 
+                    finalCount.put(word, amount);
+             }
+        }
+        return finalCount;
     }
 
     public static void submitTasks(List<File> files) {
