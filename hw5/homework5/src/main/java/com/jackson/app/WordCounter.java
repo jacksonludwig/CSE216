@@ -70,21 +70,17 @@ public class WordCounter {
             data.put(f.toString(), new ConcurrentHashMap<String, Integer>());
         for (String word : words) {
             Integer c = data.get(f.toString()).get(word);
-            if (c != null) {
+            if (c != null)
                 data.get(f.toString()).put(word, c + 1);
-                System.out.println("was not null");
-            } else {
+            else
                 data.get(f.toString()).put(word, 1);
-                System.out.println("was null");
-            }
         }
     }
 
     public static void submitTasks(List<File> files) {
         files.forEach(f -> executorService.submit(() -> {
             System.out.println(Thread.currentThread().toString() + " started");
-            List<String> words = readLinesFromFile(f);
-            createWordMap(f, words);
+            createWordMap(f, readLinesFromFile(f));
         }));
     }
 
