@@ -43,8 +43,8 @@ public class WordCounter {
 
     public static List<File> getListOfFiles() throws IOException {
         List<File> files;
-        try (Stream<Path> walk = Files.walk(FOLDER_OF_TEXT_FILES)) {
-            files = walk.filter(f -> Files.isRegularFile(f))
+        try (Stream<Path> path = Files.walk(FOLDER_OF_TEXT_FILES)) {
+            files = path.filter(f -> Files.isRegularFile(f))
                         .map(f -> f.toFile())
                         .collect(Collectors.toList());
         }
