@@ -7,10 +7,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -52,7 +54,6 @@ public class WordCounter {
 
     public static void createCountFile() {
         Map<String, Integer> totals = getFinalCountMap();
-        int fileCount = data.size();
         int longestWordLength = totals.keySet()
                                     .stream()
                                     .map(s -> s.length())
@@ -60,34 +61,45 @@ public class WordCounter {
                                     .orElse(0);
         StringBuilder output = new StringBuilder();
 
-        data.forEach((k, v) -> output.append(" " + getCorrectSpaces(longestWordLength, 0) + k ));
-        output.append("\n");
+        data.forEach((k, v) -> {
+            if (output.toString().equals(""))
+                output.append(" " + getCorrectSpaces(longestWordLength, 0) + k);
+            else
+                output.append("\t" + k);
+        });
+        output.append("\t" + "total\n");
         for (Map.Entry<String, Integer> e : totals.entrySet()) {
             String word = e.getKey();
             Integer amountTotal = e.getValue();
             output.append(word);
             output.append(getCorrectSpaces(longestWordLength, word.length()) + " ");
             for (Map.Entry<String, ConcurrentHashMap<String, Integer>> fileData : data.entrySet()) {
-                String filename = fileData.getKey();
                 Map<String, Integer> words = fileData.getValue();
-                if (words.get(word) != null)
+                if (words.get(word) != null) {
                     output.append(words.get(word));
-                else
+                    output.append(getCorrectSpaces(longestWordLength,
+                                                   (int)(Math.floor(Math.log10(words.get(word))))) +
+                                  "\t");
+                } else {
                     output.append(0);
-                output.append(getCorrectSpaces(longestWordLength, 0) + getCorrectSpaces(filename.length(), 0));
+                    output.append(getCorrectSpaces(longestWordLength, 0) + "\t");
+                }
             }
-
+            output.append(amountTotal);
             output.append("\n");
         }
-
         System.out.println(output);
     }
 
     public static String getCorrectSpaces(int longest, int current) {
         StringBuilder s = new StringBuilder();
-        IntStream stream = IntStream.range(0, longest - current);
-        stream.forEach(i -> s.append("."));
-        return s.toString();
+        int range = longest - current;
+        if (range >= 0) {
+            IntStream stream = IntStream.range(0, range);
+            stream.forEach(i -> s.append(" "));
+            return s.toString();
+        }
+        return "";
     }
 
     public static List<File> getListOfFiles() throws IOException {
@@ -126,15 +138,15 @@ public class WordCounter {
     }
 
     public static Map<String, Integer> getFinalCountMap() {
-        Map<String, Integer> finalCount = new HashMap<>();
+        Map<String, Integer> finalCount = new TreeMap<>(); 
         for (ConcurrentHashMap<String, Integer> map : data.values()) {
             for (Map.Entry<String, Integer> entry : map.entrySet()) {
                 String word = entry.getKey();
                 Integer amount = entry.getValue();
-                if (finalCount.get(word) != null)
-                    finalCount.put(word, finalCount.get(word) + amount);
+                if (finalCount.get(word.toLowerCase()) != null)
+                    finalCount.put(word.toLowerCase(), finalCount.get(word) + amount);
                 else
-                    finalCount.put(word, amount);
+                    finalCount.put(word.toLowerCase(), amount);
             }
         }
         return finalCount;
