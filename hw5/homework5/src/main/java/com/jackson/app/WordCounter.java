@@ -66,8 +66,7 @@ public class WordCounter {
     }
 
     public static void createWordMap(File f, List<String> words) {
-        if (data.get(f.toString()) == null)
-            data.put(f.toString(), new ConcurrentHashMap<String, Integer>());
+        data.put(f.toString(), new ConcurrentHashMap<String, Integer>());
         for (String word : words) {
             Integer c = data.get(f.toString()).get(word);
             if (c != null)
