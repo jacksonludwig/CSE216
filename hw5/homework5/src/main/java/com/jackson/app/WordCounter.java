@@ -98,9 +98,11 @@ public class WordCounter {
                  next = iter.next();
                 output.append(" " + getCorrectSpaces(longestWordLength, 0) + next.getKey());
             }
+            if (!iter.hasNext()) {
+                output.append(getCorrectSpaces(longestFileNameLength, next.getKey().length()) + " ");
+            }
         }
-
-        output.append("\ttotal\n");
+        output.append("total\n");
         for (Map.Entry<String, Integer> e : totals.entrySet()) {
             String word = e.getKey();
             Integer amountTotal = e.getValue();
