@@ -13,6 +13,7 @@ import java.util.Scanner;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -36,7 +37,8 @@ public class WordCounter {
     public static void main(String[] args) throws IOException {
         List<File> files = getListOfFiles();
         submitTasks(files);
-        executorService.shutdown();
+        shutdownAndAwaitTermination(executorService);
+        System.out.println(data);
     }
 
     public static List<File> getListOfFiles() throws IOException {
@@ -63,10 +65,41 @@ public class WordCounter {
         return words;
     }
 
+    public static void createWordMap(File f, List<String> words) {
+        if (data.get(f.toString()) == null)
+            data.put(f.toString(), new ConcurrentHashMap<String, Integer>());
+        for (String word : words) {
+            Integer c = data.get(f.toString()).get(word);
+            if (c != null) {
+                data.get(f.toString()).put(word, c + 1);
+                System.out.println("was not null");
+            } else {
+                data.get(f.toString()).put(word, 1);
+                System.out.println("was null");
+            }
+        }
+    }
+
     public static void submitTasks(List<File> files) {
         files.forEach(f -> executorService.submit(() -> {
             System.out.println(Thread.currentThread().toString() + " started");
-            System.out.println(readLinesFromFile(f));
+            List<String> words = readLinesFromFile(f);
+            createWordMap(f, words);
         }));
+    }
+
+    // shutdown executor as per Oracle docs (wait for all threads to finish their current task)
+    public static void shutdownAndAwaitTermination(ExecutorService pool) {
+        pool.shutdown(); 
+        try {
+            if (!pool.awaitTermination(60, TimeUnit.SECONDS)) {
+                pool.shutdownNow(); 
+                if (!pool.awaitTermination(60, TimeUnit.SECONDS))
+                    System.err.println("Pool did not terminate");
+            }
+        } catch (InterruptedException ie) {
+            pool.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
     }
 }
