@@ -88,12 +88,13 @@ public class WordCounter {
         }));
     }
 
-    // shutdown executor as per Oracle docs (wait for all threads to finish their current task)
+    // shutdown executor as per Oracle docs (wait for all threads to finish their current task
+    // before continuing main thread)
     public static void shutdownAndAwaitTermination(ExecutorService pool) {
-        pool.shutdown(); 
+        pool.shutdown();
         try {
             if (!pool.awaitTermination(60, TimeUnit.SECONDS)) {
-                pool.shutdownNow(); 
+                pool.shutdownNow();
                 if (!pool.awaitTermination(60, TimeUnit.SECONDS))
                     System.err.println("Pool did not terminate");
             }
