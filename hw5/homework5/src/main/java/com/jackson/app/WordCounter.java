@@ -16,6 +16,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class WordCounter {
@@ -31,7 +32,7 @@ public class WordCounter {
     // max. number of threads to spawn
     public static final int NUMBER_OF_THREADS = 2;
 
-    public static ExecutorService executorService; 
+    public static ExecutorService executorService;
     // <filename, <word, amount>
     public static Map<String, ConcurrentHashMap<String, Integer>> data = new ConcurrentHashMap<>();
 
@@ -52,8 +53,31 @@ public class WordCounter {
     public static void createCountFile() {
         Map<String, Integer> totals = getFinalCountMap();
         int fileCount = data.size();
+        int longestWordLength = totals.keySet()
+                                    .stream()
+                                    .map(s -> s.length())
+                                    .max((s1, s2) -> s1.compareTo(s2))
+                                    .orElse(0);
         StringBuilder output = new StringBuilder();
-        data.forEach((k,v) -> System.out.println(k));
+
+        data.forEach((k, v) -> output.append(k + "\t"));
+        output.append("\n");
+        for (Map.Entry<String, Integer> entry : totals.entrySet()) {
+            String word = entry.getKey();
+            Integer amountTotal = entry.getValue();
+            output.append(word);
+            output.append(getCorrectSpaces(longestWordLength, word.length()));
+            output.append("\n");
+        }
+
+        System.out.println(output);
+    }
+
+    public static String getCorrectSpaces(int longest, int current) {
+        StringBuilder s = new StringBuilder();
+        IntStream stream = IntStream.range(0, longest - current);
+        stream.forEach(i -> s.append("."));
+        return s.toString();
     }
 
     public static List<File> getListOfFiles() throws IOException {
@@ -99,9 +123,9 @@ public class WordCounter {
                 Integer amount = entry.getValue();
                 if (finalCount.get(word) != null)
                     finalCount.put(word, finalCount.get(word) + amount);
-                else 
+                else
                     finalCount.put(word, amount);
-             }
+            }
         }
         return finalCount;
     }
