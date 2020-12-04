@@ -2,13 +2,13 @@ package com.jackson.app;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -30,7 +30,7 @@ public class WordCounter {
         "/home/jackson/Unmanaged/git_repos/cse216/hw5/homework5/src/main/resources/words");
     // path to the output plain-text (.txt) file
     public static final Path WORD_COUNT_TABLE_FILE = Paths.get(
-        "/home/jackson/Unmanaged/git_repos/cse216/hw5/homework5/src/resources/count/count.txt");
+        "/home/jackson/Unmanaged/git_repos/cse216/hw5/homework5/src/main/resources/count/count.txt");
     // max. number of threads to spawn
     public static final int NUMBER_OF_THREADS = 2;
 
@@ -40,7 +40,7 @@ public class WordCounter {
 
     public static void main(String[] args) throws IOException {
         initializeExecutor();
-        submitTasks(getListOfFiles());
+        submitTasks();
         shutdownAndAwaitTermination(executorService);
         createCountFile();
     }
@@ -52,43 +52,61 @@ public class WordCounter {
             executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
     }
 
-    public static void createCountFile() {
+    public static void createCountFile() throws IOException {
+        try (Writer fileWriter = new FileWriter(WORD_COUNT_TABLE_FILE.toFile(), false)) {
+            fileWriter.write(createCountString());
+        }
+    }
+
+    public static String createCountString() {
+        List<Map.Entry<String, ConcurrentHashMap<String, Integer>>> sortedEntries =
+            new ArrayList<>(data.entrySet());
+        sortedEntries.sort((e1, e2) -> e1.getKey().compareTo(e2.getKey()));
         Map<String, Integer> totals = getFinalCountMap();
+
         int longestWordLength = totals.keySet()
                                     .stream()
                                     .map(s -> s.length())
                                     .max((s1, s2) -> s1.compareTo(s2))
                                     .orElse(0);
+        int longestFileNameLength = sortedEntries.stream()
+                                        .map(s -> s.getKey().length())
+                                        .max((s1, s2) -> s1.compareTo(s2))
+                                        .orElse(0);
+        int longest =
+            longestWordLength >= longestFileNameLength ? longestWordLength : longestFileNameLength;
+
         StringBuilder output = new StringBuilder();
 
-        data.forEach((k, v) -> {
+        sortedEntries.forEach(e -> {
             if (output.toString().equals(""))
-                output.append(" " + getCorrectSpaces(longestWordLength, 0) + k);
+                output.append(" " + getCorrectSpaces(longestWordLength, 0) + e.getKey());
             else
-                output.append("\t" + k);
+                output.append( "\t" + e.getKey());
         });
-        output.append("\t" + "total\n");
+        output.append("\ttotal\n");
         for (Map.Entry<String, Integer> e : totals.entrySet()) {
             String word = e.getKey();
             Integer amountTotal = e.getValue();
             output.append(word);
             output.append(getCorrectSpaces(longestWordLength, word.length()) + " ");
-            for (Map.Entry<String, ConcurrentHashMap<String, Integer>> fileData : data.entrySet()) {
+
+            for (Map.Entry<String, ConcurrentHashMap<String, Integer>> fileData : sortedEntries) {
                 Map<String, Integer> words = fileData.getValue();
                 if (words.get(word) != null) {
                     output.append(words.get(word));
-                    output.append(getCorrectSpaces(longestWordLength,
-                                                   (int)(Math.floor(Math.log10(words.get(word))))) +
-                                  "\t");
+                    output.append(
+                        getCorrectSpaces(longest, (int)(Math.floor(Math.log10(words.get(word))))) +
+                        "\t");
                 } else {
                     output.append(0);
-                    output.append(getCorrectSpaces(longestWordLength, 0) + "\t");
+                    output.append(getCorrectSpaces(longest, 0) + "\t");
                 }
             }
             output.append(amountTotal);
             output.append("\n");
         }
-        System.out.println(output);
+        return output.toString();
     }
 
     public static String getCorrectSpaces(int longest, int current) {
@@ -96,7 +114,7 @@ public class WordCounter {
         int range = longest - current;
         if (range >= 0) {
             IntStream stream = IntStream.range(0, range);
-            stream.forEach(i -> s.append(" "));
+            stream.forEach(i -> s.append("."));
             return s.toString();
         }
         return "";
@@ -116,7 +134,7 @@ public class WordCounter {
         List<String> words = new ArrayList<>();
         try (Scanner scanner = new Scanner(f)) {
             while (scanner.hasNextLine()) {
-                String[] separated = scanner.nextLine().split(" ");
+                String[] separated = scanner.nextLine().trim().split(" ");
                 for (String s : separated)
                     words.add(s.toLowerCase());
             }
@@ -138,7 +156,7 @@ public class WordCounter {
     }
 
     public static Map<String, Integer> getFinalCountMap() {
-        Map<String, Integer> finalCount = new TreeMap<>(); 
+        Map<String, Integer> finalCount = new TreeMap<>();
         for (ConcurrentHashMap<String, Integer> map : data.values()) {
             for (Map.Entry<String, Integer> entry : map.entrySet()) {
                 String word = entry.getKey();
@@ -152,10 +170,9 @@ public class WordCounter {
         return finalCount;
     }
 
-    public static void submitTasks(List<File> files) {
-        files.forEach(f -> executorService.submit(() -> {
-            addToWordMap(f, readLinesFromFile(f));
-        }));
+    public static void submitTasks() throws IOException {
+        getListOfFiles().forEach(
+            f -> executorService.submit(() -> { addToWordMap(f, readLinesFromFile(f)); }));
     }
 
     // shutdown executor as per Oracle docs (wait for all threads to finish their current task
