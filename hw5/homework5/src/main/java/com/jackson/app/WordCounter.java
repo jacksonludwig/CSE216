@@ -31,16 +31,23 @@ public class WordCounter {
     // max. number of threads to spawn
     public static final int NUMBER_OF_THREADS = 2;
 
-    public static ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    public static ExecutorService executorService; 
     // <filename, <word, amount>
     public static Map<String, ConcurrentHashMap<String, Integer>> data = new ConcurrentHashMap<>();
 
     public static void main(String[] args) throws IOException {
-        List<File> files = getListOfFiles();
-        submitTasks(files);
+        initializeExecutor();
+        submitTasks(getListOfFiles());
         shutdownAndAwaitTermination(executorService);
-        Map<String, Integer> totals = getFinalCount();
+        Map<String, Integer> totals = getFinalCountMap();
         System.out.println(totals);
+    }
+
+    public static void initializeExecutor() {
+        if (NUMBER_OF_THREADS <= 1)
+            executorService = Executors.newFixedThreadPool(1);
+        else
+            executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
     }
 
     public static List<File> getListOfFiles() throws IOException {
@@ -67,7 +74,7 @@ public class WordCounter {
         return words;
     }
 
-    public static void createWordMap(File f, List<String> words) {
+    public static void addToWordMap(File f, List<String> words) {
         data.put(f.toString(), new ConcurrentHashMap<String, Integer>());
         for (String word : words) {
             Integer c = data.get(f.toString()).get(word);
@@ -78,7 +85,7 @@ public class WordCounter {
         }
     }
 
-    public static Map<String, Integer> getFinalCount() {
+    public static Map<String, Integer> getFinalCountMap() {
         Map<String, Integer> finalCount = new HashMap<>();
         for (ConcurrentHashMap<String, Integer> map : data.values()) {
             for (Map.Entry<String, Integer> entry : map.entrySet()) {
@@ -96,7 +103,7 @@ public class WordCounter {
     public static void submitTasks(List<File> files) {
         files.forEach(f -> executorService.submit(() -> {
             System.out.println(Thread.currentThread().toString() + " started");
-            createWordMap(f, readLinesFromFile(f));
+            addToWordMap(f, readLinesFromFile(f));
         }));
     }
 
