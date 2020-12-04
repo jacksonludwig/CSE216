@@ -39,8 +39,7 @@ public class WordCounter {
         initializeExecutor();
         submitTasks(getListOfFiles());
         shutdownAndAwaitTermination(executorService);
-        Map<String, Integer> totals = getFinalCountMap();
-        System.out.println(totals);
+        System.out.println(getFinalCountMap());
     }
 
     public static void initializeExecutor() {
@@ -48,6 +47,10 @@ public class WordCounter {
             executorService = Executors.newFixedThreadPool(1);
         else
             executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    }
+
+    public static void createCountFile() {
+        Map<String, Integer> totals = getFinalCountMap();
     }
 
     public static List<File> getListOfFiles() throws IOException {
@@ -117,7 +120,7 @@ public class WordCounter {
                 if (!pool.awaitTermination(60, TimeUnit.SECONDS))
                     System.err.println("Pool did not terminate");
             }
-        } catch (InterruptedException ie) {
+        } catch (InterruptedException e) {
             pool.shutdownNow();
             Thread.currentThread().interrupt();
         }
