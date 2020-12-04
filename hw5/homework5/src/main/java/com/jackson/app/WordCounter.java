@@ -78,13 +78,6 @@ public class WordCounter {
             longestWordLength >= longestFileNameLength ? longestWordLength : longestFileNameLength;
 
         StringBuilder output = new StringBuilder();
-
-//         sortedEntries.forEach(e -> {
-//             if (output.toString().equals(""))
-//                 output.append(" " + getCorrectSpaces(longestWordLength, 0) + e.getKey());
-//             else
-//                 output.append(getCorrectSpaces(longestFileNameLength, 0) + "\t" + e.getKey());
-//         });
         
         ListIterator<Map.Entry<String, ConcurrentHashMap<String, Integer>>> iter = sortedEntries.listIterator();
         while(iter.hasNext()){
