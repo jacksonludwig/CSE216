@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -78,12 +79,27 @@ public class WordCounter {
 
         StringBuilder output = new StringBuilder();
 
-        sortedEntries.forEach(e -> {
-            if (output.toString().equals(""))
-                output.append(" " + getCorrectSpaces(longestWordLength, 0) + e.getKey());
-            else
-                output.append( "\t" + e.getKey());
-        });
+//         sortedEntries.forEach(e -> {
+//             if (output.toString().equals(""))
+//                 output.append(" " + getCorrectSpaces(longestWordLength, 0) + e.getKey());
+//             else
+//                 output.append(getCorrectSpaces(longestFileNameLength, 0) + "\t" + e.getKey());
+//         });
+        
+        ListIterator<Map.Entry<String, ConcurrentHashMap<String, Integer>>> iter = sortedEntries.listIterator();
+        while(iter.hasNext()){
+            Map.Entry<String, ConcurrentHashMap<String, Integer>> next;
+            if (iter.hasPrevious()) {
+                 Map.Entry<String, ConcurrentHashMap<String, Integer>> prev = iter.previous();
+                 iter.next();
+                 next = iter.next();
+                 output.append(getCorrectSpaces(longestFileNameLength, prev.getKey().length()) + "\t" + next.getKey());
+            } else {
+                 next = iter.next();
+                output.append(" " + getCorrectSpaces(longestWordLength, 0) + next.getKey());
+            }
+        }
+
         output.append("\ttotal\n");
         for (Map.Entry<String, Integer> e : totals.entrySet()) {
             String word = e.getKey();
@@ -96,11 +112,11 @@ public class WordCounter {
                 if (words.get(word) != null) {
                     output.append(words.get(word));
                     output.append(
-                        getCorrectSpaces(longest, (int)(Math.floor(Math.log10(words.get(word))))) +
+                        getCorrectSpaces(longest, (int)(Math.floor(Math.log10(words.get(word)))) + 1) +
                         "\t");
                 } else {
                     output.append(0);
-                    output.append(getCorrectSpaces(longest, 0) + "\t");
+                    output.append(getCorrectSpaces(longest, 1) + "\t");
                 }
             }
             output.append(amountTotal);
