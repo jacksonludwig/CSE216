@@ -39,7 +39,7 @@ public class WordCounter {
         initializeExecutor();
         submitTasks(getListOfFiles());
         shutdownAndAwaitTermination(executorService);
-        System.out.println(getFinalCountMap());
+        createCountFile();
     }
 
     public static void initializeExecutor() {
@@ -51,6 +51,9 @@ public class WordCounter {
 
     public static void createCountFile() {
         Map<String, Integer> totals = getFinalCountMap();
+        int fileCount = data.size();
+        StringBuilder output = new StringBuilder();
+        data.forEach((k,v) -> System.out.println(k));
     }
 
     public static List<File> getListOfFiles() throws IOException {
@@ -78,13 +81,13 @@ public class WordCounter {
     }
 
     public static void addToWordMap(File f, List<String> words) {
-        data.put(f.toString(), new ConcurrentHashMap<String, Integer>());
+        data.put(f.getName(), new ConcurrentHashMap<String, Integer>());
         for (String word : words) {
-            Integer c = data.get(f.toString()).get(word);
+            Integer c = data.get(f.getName()).get(word);
             if (c != null)
-                data.get(f.toString()).put(word, c + 1);
+                data.get(f.getName()).put(word, c + 1);
             else
-                data.get(f.toString()).put(word, 1);
+                data.get(f.getName()).put(word, 1);
         }
     }
 
