@@ -118,7 +118,7 @@ public class WordCounter {
             while (scanner.hasNextLine()) {
                 String[] separated = scanner.nextLine().split(" ");
                 for (String s : separated)
-                    words.add(s);
+                    words.add(s.toLowerCase());
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -143,10 +143,10 @@ public class WordCounter {
             for (Map.Entry<String, Integer> entry : map.entrySet()) {
                 String word = entry.getKey();
                 Integer amount = entry.getValue();
-                if (finalCount.get(word.toLowerCase()) != null)
-                    finalCount.put(word.toLowerCase(), finalCount.get(word) + amount);
+                if (finalCount.get(word) != null)
+                    finalCount.put(word, finalCount.get(word) + amount);
                 else
-                    finalCount.put(word.toLowerCase(), amount);
+                    finalCount.put(word, amount);
             }
         }
         return finalCount;
