@@ -60,13 +60,23 @@ public class WordCounter {
                                     .orElse(0);
         StringBuilder output = new StringBuilder();
 
-        data.forEach((k, v) -> output.append(k + "\t"));
+        data.forEach((k, v) -> output.append(" " + getCorrectSpaces(longestWordLength, 0) + k ));
         output.append("\n");
-        for (Map.Entry<String, Integer> entry : totals.entrySet()) {
-            String word = entry.getKey();
-            Integer amountTotal = entry.getValue();
+        for (Map.Entry<String, Integer> e : totals.entrySet()) {
+            String word = e.getKey();
+            Integer amountTotal = e.getValue();
             output.append(word);
-            output.append(getCorrectSpaces(longestWordLength, word.length()));
+            output.append(getCorrectSpaces(longestWordLength, word.length()) + " ");
+            for (Map.Entry<String, ConcurrentHashMap<String, Integer>> fileData : data.entrySet()) {
+                String filename = fileData.getKey();
+                Map<String, Integer> words = fileData.getValue();
+                if (words.get(word) != null)
+                    output.append(words.get(word));
+                else
+                    output.append(0);
+                output.append(getCorrectSpaces(longestWordLength, 0) + getCorrectSpaces(filename.length(), 0));
+            }
+
             output.append("\n");
         }
 
