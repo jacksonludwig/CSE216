@@ -88,7 +88,7 @@ public class WordCounter {
                 iter.next();
                 next = iter.next();
                 output.append(getCorrectSpaces(longestFileNameLength, prev.getKey().length()) +
-                              "\t" + next.getKey());
+                              " " + next.getKey());
             } else {
                 next = iter.next();
                 output.append(" " + getCorrectSpaces(longestWordLength, 0) + next.getKey());
@@ -111,10 +111,10 @@ public class WordCounter {
                     output.append(words.get(word));
                     output.append(getCorrectSpaces(
                                       longest, (int)(Math.floor(Math.log10(words.get(word)))) + 1) +
-                                  "\t");
+                                  " ");
                 } else {
                     output.append(0);
-                    output.append(getCorrectSpaces(longest, 1) + "\t");
+                    output.append(getCorrectSpaces(longest, 1) + " ");
                 }
             }
             output.append(amountTotal);
