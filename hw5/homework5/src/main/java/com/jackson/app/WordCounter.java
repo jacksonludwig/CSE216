@@ -40,10 +40,15 @@ public class WordCounter {
     public static Map<String, ConcurrentHashMap<String, Integer>> data = new ConcurrentHashMap<>();
 
     public static void main(String[] args) throws IOException {
+        long startTime = System.nanoTime();
         initializeExecutor();
         submitTasks();
         shutdownAndAwaitTermination(executorService);
         createCountFile();
+        long endTime   = System.nanoTime();
+        long totalTime = endTime - startTime;
+        System.out.println("Execution time in nanoseconds  : " + totalTime);
+        System.out.println("Execution time in milliseconds : " + totalTime / 1000000);
     }
 
     public static void initializeExecutor() {
@@ -150,7 +155,8 @@ public class WordCounter {
             while (scanner.hasNextLine()) {
                 String[] separated = scanner.nextLine().replaceAll("\\p{P}", "").trim().split(" ");
                 for (String s : separated)
-                    words.add(s.toLowerCase());
+                    if (!s.equals(" ") && !s.equals(""))
+                        words.add(s.toLowerCase());
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
