@@ -148,7 +148,7 @@ public class WordCounter {
         List<String> words = new ArrayList<>();
         try (Scanner scanner = new Scanner(f)) {
             while (scanner.hasNextLine()) {
-                String[] separated = scanner.nextLine().trim().split(" ");
+                String[] separated = scanner.nextLine().replaceAll("\\p{P}", "").trim().split(" ");
                 for (String s : separated)
                     words.add(s.toLowerCase());
             }
