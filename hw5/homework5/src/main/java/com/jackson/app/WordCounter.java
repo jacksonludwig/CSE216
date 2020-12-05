@@ -40,15 +40,10 @@ public class WordCounter {
     public static Map<String, ConcurrentHashMap<String, Integer>> data = new ConcurrentHashMap<>();
 
     public static void main(String[] args) throws IOException {
-        long startTime = System.nanoTime();
         initializeExecutor();
         submitTasks();
         shutdownAndAwaitTermination(executorService);
         createCountFile();
-        long endTime   = System.nanoTime();
-        long totalTime = endTime - startTime;
-        System.out.println("Execution time in nanoseconds  : " + totalTime);
-        System.out.println("Execution time in milliseconds : " + totalTime / 1000000);
     }
 
     public static void initializeExecutor() {
