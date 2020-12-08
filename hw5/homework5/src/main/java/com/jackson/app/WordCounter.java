@@ -33,7 +33,7 @@ public class WordCounter {
     public static final Path WORD_COUNT_TABLE_FILE = Paths.get(
         "/home/jackson/Unmanaged/git_repos/cse216/hw5/homework5/src/main/resources/count/count.txt");
     // max. number of threads to spawn
-    public static final int NUMBER_OF_THREADS = 2;
+    public static final int NUMBER_OF_THREADS = 8;
 
     public static ExecutorService executorService;
     // <filename, <word, amount>
@@ -87,18 +87,18 @@ public class WordCounter {
                 Map.Entry<String, ConcurrentHashMap<String, Integer>> prev = iter.previous();
                 iter.next();
                 next = iter.next();
-                output.append(getCorrectSpaces(longestFileNameLength, prev.getKey().length()) +
-                              " " + next.getKey());
+                output.append(getCorrectSpaces(longest, prev.getKey().length()) + " " +
+                              next.getKey());
             } else {
                 next = iter.next();
-                output.append(" " + getCorrectSpaces(longestWordLength, 0) + next.getKey());
+                output.append(" " + getCorrectSpaces(longest, 0) + next.getKey());
             }
             if (!iter.hasNext()) {
-                output.append(getCorrectSpaces(longestFileNameLength, next.getKey().length()) +
-                              " ");
+                output.append(getCorrectSpaces(longest, next.getKey().length()) + " ");
             }
         }
-        output.append("total\n");
+        if (!output.toString().trim().equals(""))
+            output.append("total\n");
         for (Map.Entry<String, Integer> e : totals.entrySet()) {
             String word = e.getKey();
             Integer amountTotal = e.getValue();
