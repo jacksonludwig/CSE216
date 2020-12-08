@@ -128,7 +128,7 @@ public class WordCounter {
         int range = longest - current;
         if (range >= 0) {
             IntStream stream = IntStream.range(0, range);
-            stream.forEach(i -> s.append("."));
+            stream.forEach(i -> s.append(" "));
             return s.toString();
         }
         return "";
