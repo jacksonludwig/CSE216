@@ -120,12 +120,12 @@ let rec powerset list =
 
 
 (* EXTRA *)
-let rec list_print list =
-match list with
-| [] -> ()
-| hd::tl ->
-print_string hd;
-list_print(tl)
+(* let rec list_print list = *)
+(* match list with *)
+(* | [] -> () *)
+(* | hd::tl -> *)
+(* print_string hd; *)
+(* list_print(tl) *)
 
 
 (* type 'a binary_tree =
